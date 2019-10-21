@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace PlesnaSkola.WebAPI.Models
+namespace PlesnaSkola.Model
 {
     public partial class Grupe
     {

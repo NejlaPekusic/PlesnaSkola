@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace PlesnaSkola.WebAPI.Models
+namespace PlesnaSkola.Model
 {
     public partial class Treneri
     {

@@ -10,7 +10,7 @@ using PlesnaSkola.WebAPI.Models;
 namespace PlesnaSkola.WebAPI.Migrations
 {
     [DbContext(typeof(PlesnaSkolaContext))]
-    [Migration("20191021193356_Inicijalna")]
+    [Migration("20191021210658_Inicijalna")]
     partial class Inicijalna
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -23,26 +23,9 @@ namespace PlesnaSkola.WebAPI.Migrations
 
             modelBuilder.Entity("PlesnaSkola.WebAPI.Models.Asistenti", b =>
                 {
-                    b.Property<int>("AsistentId")
-                        .HasColumnName("AsistentID");
+                    b.Property<int>("Id");
 
-                    b.Property<bool?>("Aktivan");
-
-                    b.Property<DateTime?>("DatumRodjenja")
-                        .HasColumnType("date");
-
-                    b.Property<string>("Ime")
-                        .IsRequired()
-                        .HasMaxLength(50);
-
-                    b.Property<string>("Mail")
-                        .HasMaxLength(100);
-
-                    b.Property<string>("Prezime")
-                        .IsRequired()
-                        .HasMaxLength(50);
-
-                    b.HasKey("AsistentId");
+                    b.HasKey("Id");
 
                     b.ToTable("Asistenti");
                 });
@@ -50,13 +33,12 @@ namespace PlesnaSkola.WebAPI.Migrations
             modelBuilder.Entity("PlesnaSkola.WebAPI.Models.Grupe", b =>
                 {
                     b.Property<int>("GrupaId")
-                        .HasColumnName("GrupaID");
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int>("BrojClanova");
 
-                    b.Property<string>("NazivGrupe")
-                        .IsRequired()
-                        .HasMaxLength(20);
+                    b.Property<string>("NazivGrupe");
 
                     b.HasKey("GrupaId");
 
@@ -66,14 +48,12 @@ namespace PlesnaSkola.WebAPI.Migrations
             modelBuilder.Entity("PlesnaSkola.WebAPI.Models.Koreografije", b =>
                 {
                     b.Property<int>("KoreografijaId")
-                        .HasColumnName("KoreografijaID");
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("NazivKoreografije")
-                        .IsRequired()
-                        .HasMaxLength(20);
+                    b.Property<string>("NazivKoreografije");
 
-                    b.Property<int>("VoditeljId")
-                        .HasColumnName("VoditeljID");
+                    b.Property<int>("VoditeljId");
 
                     b.HasKey("KoreografijaId");
 
@@ -82,23 +62,40 @@ namespace PlesnaSkola.WebAPI.Migrations
                     b.ToTable("Koreografije");
                 });
 
+            modelBuilder.Entity("PlesnaSkola.WebAPI.Models.Korisnici", b =>
+                {
+                    b.Property<int>("KorisnikId")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<bool?>("Aktivan");
+
+                    b.Property<DateTime?>("DatumRodjenja");
+
+                    b.Property<string>("Ime");
+
+                    b.Property<string>("Mail");
+
+                    b.Property<string>("Prezime");
+
+                    b.HasKey("KorisnikId");
+
+                    b.ToTable("Korisnici");
+                });
+
             modelBuilder.Entity("PlesnaSkola.WebAPI.Models.Muzika", b =>
                 {
                     b.Property<int>("MuzikaId")
-                        .HasColumnName("MuzikaID");
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("AsistentId")
-                        .HasColumnName("AsistentID");
+                    b.Property<int>("AsistentId");
 
-                    b.Property<int>("GrupaId")
-                        .HasColumnName("GrupaID");
+                    b.Property<int>("GrupaId");
 
-                    b.Property<int>("KoreografijaId")
-                        .HasColumnName("KoreografijaID");
+                    b.Property<int>("KoreografijaId");
 
-                    b.Property<string>("NazivPjesme")
-                        .IsRequired()
-                        .HasMaxLength(50);
+                    b.Property<string>("NazivPjesme");
 
                     b.Property<TimeSpan>("Trajanje");
 
@@ -113,10 +110,30 @@ namespace PlesnaSkola.WebAPI.Migrations
                     b.ToTable("Muzika");
                 });
 
+            modelBuilder.Entity("PlesnaSkola.WebAPI.Models.Obavijesti", b =>
+                {
+                    b.Property<int>("ObavijestId")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("KorisnikId");
+
+                    b.Property<string>("Naslov");
+
+                    b.Property<byte[]>("Prilog");
+
+                    b.Property<string>("Sadrzaj");
+
+                    b.HasKey("ObavijestId");
+
+                    b.HasIndex("KorisnikId");
+
+                    b.ToTable("Obavijesti");
+                });
+
             modelBuilder.Entity("PlesnaSkola.WebAPI.Models.Plesaci", b =>
                 {
-                    b.Property<int>("PlesacId")
-                        .HasColumnName("PlesacID");
+                    b.Property<int>("Id");
 
                     b.Property<bool?>("Aktivan");
 
@@ -124,16 +141,13 @@ namespace PlesnaSkola.WebAPI.Migrations
 
                     b.Property<int?>("BrojOdjece");
 
-                    b.Property<int>("GrupaId")
-                        .HasColumnName("GrupaID");
+                    b.Property<int>("GrupaId");
 
-                    b.Property<string>("NazivSkole")
-                        .HasMaxLength(40);
+                    b.Property<string>("NazivSkole");
 
-                    b.Property<int>("RoditeljId")
-                        .HasColumnName("RoditeljID");
+                    b.Property<int>("RoditeljId");
 
-                    b.HasKey("PlesacId");
+                    b.HasKey("Id");
 
                     b.HasIndex("GrupaId");
 
@@ -145,30 +159,20 @@ namespace PlesnaSkola.WebAPI.Migrations
             modelBuilder.Entity("PlesnaSkola.WebAPI.Models.Pravdanja", b =>
                 {
                     b.Property<int>("PravdanjeId")
-                        .HasColumnName("PravdanjeID");
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime>("DatumDo")
-                        .HasColumnName("DatumDO")
-                        .HasColumnType("date");
+                    b.Property<DateTime>("DatumDo");
 
-                    b.Property<DateTime>("DatumOd")
-                        .HasColumnName("DatumOD")
-                        .HasColumnType("date");
+                    b.Property<DateTime>("DatumOd");
 
-                    b.Property<string>("Ime")
-                        .IsRequired()
-                        .HasMaxLength(50);
+                    b.Property<string>("Ime");
 
-                    b.Property<string>("NazivSkole")
-                        .IsRequired()
-                        .HasMaxLength(30);
+                    b.Property<string>("NazivSkole");
 
-                    b.Property<string>("Prezime")
-                        .IsRequired()
-                        .HasMaxLength(50);
+                    b.Property<string>("Prezime");
 
-                    b.Property<int>("VoditeljId")
-                        .HasColumnName("VoditeljID");
+                    b.Property<int>("VoditeljId");
 
                     b.HasKey("PravdanjeId");
 
@@ -180,29 +184,22 @@ namespace PlesnaSkola.WebAPI.Migrations
             modelBuilder.Entity("PlesnaSkola.WebAPI.Models.Radionice", b =>
                 {
                     b.Property<int>("RadionicaId")
-                        .HasColumnName("RadionicaID");
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("AsistentId")
-                        .HasColumnName("AsistentID");
+                    b.Property<int>("AsistentId");
 
                     b.Property<int>("BrojUcesnika");
 
-                    b.Property<DateTime>("DatumOdrzavanja")
-                        .HasColumnType("date");
+                    b.Property<DateTime>("DatumOdrzavanja");
 
-                    b.Property<string>("MjestoOdrzavanja")
-                        .IsRequired()
-                        .HasMaxLength(30);
+                    b.Property<string>("MjestoOdrzavanja");
 
-                    b.Property<string>("NazivRadionice")
-                        .IsRequired()
-                        .HasMaxLength(50);
+                    b.Property<string>("NazivRadionice");
 
-                    b.Property<string>("Opis")
-                        .HasMaxLength(200);
+                    b.Property<string>("Opis");
 
-                    b.Property<int>("RasporedId")
-                        .HasColumnName("RasporedID");
+                    b.Property<int>("RasporedId");
 
                     b.Property<TimeSpan>("VrijemeOdrzavanja");
 
@@ -218,20 +215,16 @@ namespace PlesnaSkola.WebAPI.Migrations
             modelBuilder.Entity("PlesnaSkola.WebAPI.Models.Rasporedi", b =>
                 {
                     b.Property<int>("RasporedId")
-                        .HasColumnName("RasporedID");
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime>("DatumObjave")
-                        .HasColumnType("date");
+                    b.Property<DateTime>("DatumObjave");
 
-                    b.Property<string>("NazivRasporeda")
-                        .IsRequired()
-                        .HasMaxLength(30);
+                    b.Property<string>("NazivRasporeda");
 
-                    b.Property<string>("Sadrzaj")
-                        .HasMaxLength(200);
+                    b.Property<string>("Sadrzaj");
 
-                    b.Property<int>("TrenerId")
-                        .HasColumnName("TrenerID");
+                    b.Property<int>("TrenerId");
 
                     b.HasKey("RasporedId");
 
@@ -242,58 +235,24 @@ namespace PlesnaSkola.WebAPI.Migrations
 
             modelBuilder.Entity("PlesnaSkola.WebAPI.Models.Roditelji", b =>
                 {
-                    b.Property<int>("RoditeljId")
-                        .HasColumnName("RoditeljID");
+                    b.Property<int>("Id");
 
-                    b.Property<string>("Ime")
-                        .IsRequired()
-                        .HasMaxLength(50);
-
-                    b.Property<string>("Mail")
-                        .HasMaxLength(100);
-
-                    b.Property<string>("Prezime")
-                        .IsRequired()
-                        .HasMaxLength(50);
-
-                    b.HasKey("RoditeljId");
+                    b.HasKey("Id");
 
                     b.ToTable("Roditelji");
                 });
 
             modelBuilder.Entity("PlesnaSkola.WebAPI.Models.Treneri", b =>
                 {
-                    b.Property<int>("TrenerId")
-                        .HasColumnName("TrenerID");
+                    b.Property<int>("Id");
 
-                    b.Property<bool>("Aktivan");
+                    b.Property<string>("BrojPasosa");
 
-                    b.Property<string>("BrojPasosa")
-                        .HasColumnName("Broj_pasosa")
-                        .HasMaxLength(8);
+                    b.Property<string>("Funkcija");
 
-                    b.Property<DateTime?>("DatumRodjenja")
-                        .HasColumnType("date");
+                    b.Property<string>("Licenca");
 
-                    b.Property<string>("Funkcija")
-                        .IsRequired()
-                        .HasMaxLength(50);
-
-                    b.Property<string>("Ime")
-                        .IsRequired()
-                        .HasMaxLength(50);
-
-                    b.Property<string>("Licenca")
-                        .HasMaxLength(100);
-
-                    b.Property<string>("Mail")
-                        .HasMaxLength(100);
-
-                    b.Property<string>("Prezime")
-                        .IsRequired()
-                        .HasMaxLength(50);
-
-                    b.HasKey("TrenerId");
+                    b.HasKey("Id");
 
                     b.ToTable("Treneri");
                 });
@@ -301,22 +260,18 @@ namespace PlesnaSkola.WebAPI.Migrations
             modelBuilder.Entity("PlesnaSkola.WebAPI.Models.Treninzi", b =>
                 {
                     b.Property<int>("TreningId")
-                        .HasColumnName("TreningID");
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime>("DatumOdrzavanja")
-                        .HasColumnType("date");
+                    b.Property<DateTime>("DatumOdrzavanja");
 
-                    b.Property<int>("GrupaId")
-                        .HasColumnName("GrupaID");
+                    b.Property<int>("GrupaId");
 
-                    b.Property<string>("Sala")
-                        .IsRequired()
-                        .HasMaxLength(20);
+                    b.Property<string>("Sala");
 
                     b.Property<TimeSpan>("Satnica");
 
-                    b.Property<int>("TrenerId")
-                        .HasColumnName("TrenerID");
+                    b.Property<int>("TrenerId");
 
                     b.HasKey("TreningId");
 
@@ -330,18 +285,16 @@ namespace PlesnaSkola.WebAPI.Migrations
             modelBuilder.Entity("PlesnaSkola.WebAPI.Models.Uplate", b =>
                 {
                     b.Property<int>("UplataId")
-                        .HasColumnName("UplataID");
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime>("DatumUplate")
-                        .HasColumnType("date");
+                    b.Property<DateTime>("DatumUplate");
 
                     b.Property<double>("IznosUplate");
 
-                    b.Property<int>("PlesacId")
-                        .HasColumnName("PlesacID");
+                    b.Property<int>("PlesacId");
 
-                    b.Property<int>("VoditeljId")
-                        .HasColumnName("VoditeljID");
+                    b.Property<int>("VoditeljId");
 
                     b.HasKey("UplataId");
 
@@ -354,31 +307,23 @@ namespace PlesnaSkola.WebAPI.Migrations
 
             modelBuilder.Entity("PlesnaSkola.WebAPI.Models.Voditelji", b =>
                 {
-                    b.Property<int>("VoditeljId")
-                        .HasColumnName("VoditeljID");
+                    b.Property<int>("Id");
 
-                    b.Property<bool>("Aktivan");
+                    b.Property<string>("BrojPasosa");
 
-                    b.Property<string>("BrojPasosa")
-                        .HasMaxLength(8);
+                    b.Property<string>("Telefon");
 
-                    b.Property<string>("Ime")
-                        .IsRequired()
-                        .HasMaxLength(50);
-
-                    b.Property<string>("Mail")
-                        .HasMaxLength(100);
-
-                    b.Property<string>("Prezime")
-                        .IsRequired()
-                        .HasMaxLength(50);
-
-                    b.Property<string>("Telefon")
-                        .HasMaxLength(15);
-
-                    b.HasKey("VoditeljId");
+                    b.HasKey("Id");
 
                     b.ToTable("Voditelji");
+                });
+
+            modelBuilder.Entity("PlesnaSkola.WebAPI.Models.Asistenti", b =>
+                {
+                    b.HasOne("PlesnaSkola.WebAPI.Models.Korisnici", "Korisnik")
+                        .WithOne("Asistent")
+                        .HasForeignKey("PlesnaSkola.WebAPI.Models.Asistenti", "Id")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("PlesnaSkola.WebAPI.Models.Koreografije", b =>
@@ -386,7 +331,7 @@ namespace PlesnaSkola.WebAPI.Migrations
                     b.HasOne("PlesnaSkola.WebAPI.Models.Voditelji", "Voditelj")
                         .WithMany("Koreografije")
                         .HasForeignKey("VoditeljId")
-                        .HasConstraintName("FK__Koreograf__Vodit__5AEE82B9");
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("PlesnaSkola.WebAPI.Models.Muzika", b =>
@@ -394,18 +339,25 @@ namespace PlesnaSkola.WebAPI.Migrations
                     b.HasOne("PlesnaSkola.WebAPI.Models.Asistenti", "Asistent")
                         .WithMany("Muzika")
                         .HasForeignKey("AsistentId")
-                        .HasConstraintName("FK__Muzika__Asistent__534D60F1")
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("PlesnaSkola.WebAPI.Models.Grupe", "Grupa")
                         .WithMany("Muzika")
                         .HasForeignKey("GrupaId")
-                        .HasConstraintName("FK__Muzika__Grupe_Gr__5535A963");
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("PlesnaSkola.WebAPI.Models.Koreografije", "Koreografija")
                         .WithMany("Muzika")
                         .HasForeignKey("KoreografijaId")
-                        .HasConstraintName("FK__Muzika__Koreogra__5441852A");
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("PlesnaSkola.WebAPI.Models.Obavijesti", b =>
+                {
+                    b.HasOne("PlesnaSkola.WebAPI.Models.Korisnici", "Korisnik")
+                        .WithMany()
+                        .HasForeignKey("KorisnikId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("PlesnaSkola.WebAPI.Models.Plesaci", b =>
@@ -413,12 +365,17 @@ namespace PlesnaSkola.WebAPI.Migrations
                     b.HasOne("PlesnaSkola.WebAPI.Models.Grupe", "Grupa")
                         .WithMany("Plesaci")
                         .HasForeignKey("GrupaId")
-                        .HasConstraintName("FK__Plesaci__Grupe_G__4F7CD00D");
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("PlesnaSkola.WebAPI.Models.Korisnici", "Korisnik")
+                        .WithOne("Plesac")
+                        .HasForeignKey("PlesnaSkola.WebAPI.Models.Plesaci", "Id")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("PlesnaSkola.WebAPI.Models.Roditelji", "Roditelj")
                         .WithMany("Plesaci")
                         .HasForeignKey("RoditeljId")
-                        .HasConstraintName("FK__Plesaci__Roditel__4E88ABD4");
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("PlesnaSkola.WebAPI.Models.Pravdanja", b =>
@@ -426,7 +383,6 @@ namespace PlesnaSkola.WebAPI.Migrations
                     b.HasOne("PlesnaSkola.WebAPI.Models.Voditelji", "Voditelj")
                         .WithMany("Pravdanja")
                         .HasForeignKey("VoditeljId")
-                        .HasConstraintName("FK__Pravdanja__Vodit__5629CD9C")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
@@ -435,13 +391,12 @@ namespace PlesnaSkola.WebAPI.Migrations
                     b.HasOne("PlesnaSkola.WebAPI.Models.Asistenti", "Asistent")
                         .WithMany("Radionice")
                         .HasForeignKey("AsistentId")
-                        .HasConstraintName("FK__Radionice__Asist__59063A47")
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("PlesnaSkola.WebAPI.Models.Rasporedi", "Raspored")
                         .WithMany("Radionice")
                         .HasForeignKey("RasporedId")
-                        .HasConstraintName("FK__Radionice__Raspo__59FA5E80");
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("PlesnaSkola.WebAPI.Models.Rasporedi", b =>
@@ -449,7 +404,23 @@ namespace PlesnaSkola.WebAPI.Migrations
                     b.HasOne("PlesnaSkola.WebAPI.Models.Treneri", "Trener")
                         .WithMany("Rasporedi")
                         .HasForeignKey("TrenerId")
-                        .HasConstraintName("FK__Rasporedi__Trene__52593CB8");
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("PlesnaSkola.WebAPI.Models.Roditelji", b =>
+                {
+                    b.HasOne("PlesnaSkola.WebAPI.Models.Korisnici", "Korisnik")
+                        .WithOne("Roditelj")
+                        .HasForeignKey("PlesnaSkola.WebAPI.Models.Roditelji", "Id")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("PlesnaSkola.WebAPI.Models.Treneri", b =>
+                {
+                    b.HasOne("PlesnaSkola.WebAPI.Models.Korisnici", "Korisnik")
+                        .WithOne("Trener")
+                        .HasForeignKey("PlesnaSkola.WebAPI.Models.Treneri", "Id")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("PlesnaSkola.WebAPI.Models.Treninzi", b =>
@@ -457,12 +428,11 @@ namespace PlesnaSkola.WebAPI.Migrations
                     b.HasOne("PlesnaSkola.WebAPI.Models.Grupe", "Grupa")
                         .WithMany("Treninzi")
                         .HasForeignKey("GrupaId")
-                        .HasConstraintName("FK__Treninzi__Grupe___5165187F");
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("PlesnaSkola.WebAPI.Models.Treneri", "Trener")
                         .WithMany("Treninzi")
                         .HasForeignKey("TrenerId")
-                        .HasConstraintName("FK__Treninzi__Trener__5070F446")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
@@ -471,12 +441,19 @@ namespace PlesnaSkola.WebAPI.Migrations
                     b.HasOne("PlesnaSkola.WebAPI.Models.Plesaci", "Plesac")
                         .WithMany("Uplate")
                         .HasForeignKey("PlesacId")
-                        .HasConstraintName("FK__Uplate__Plesaci___5812160E");
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("PlesnaSkola.WebAPI.Models.Voditelji", "Voditelj")
                         .WithMany("Uplate")
                         .HasForeignKey("VoditeljId")
-                        .HasConstraintName("FK__Uplate__Voditelj__571DF1D5")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("PlesnaSkola.WebAPI.Models.Voditelji", b =>
+                {
+                    b.HasOne("PlesnaSkola.WebAPI.Models.Korisnici", "Korisnik")
+                        .WithOne("Voditelj")
+                        .HasForeignKey("PlesnaSkola.WebAPI.Models.Voditelji", "Id")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618

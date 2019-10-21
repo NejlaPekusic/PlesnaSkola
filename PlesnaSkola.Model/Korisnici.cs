@@ -4,11 +4,10 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace PlesnaSkola.WebAPI.Models
+namespace PlesnaSkola.Model
 {
     public class Korisnici
     {
-        [Key]
         public int KorisnikId { get; set; }
 
         public string Ime { get; set; }
