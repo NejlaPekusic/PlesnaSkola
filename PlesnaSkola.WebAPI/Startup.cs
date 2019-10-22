@@ -35,6 +35,12 @@ namespace PlesnaSkola.WebAPI
 #pragma warning restore CS0618 // Type or member is obsolete
 
             services.AddScoped<IKorisniciService, KorisniciService>();
+            services.AddScoped<IPravdanjaService, PravdanjaService>();
+            services.AddScoped<IUplateService, UplateService>();
+            services.AddScoped<IMuzikaService, MuzikaService>();
+            services.AddScoped<IObavijestiService, ObavijestiService>();
+            services.AddScoped<IRadioniceService, RadioniceService>();
+            services.AddScoped<ITreninziService, TreninziService>();
 
             services.AddSwaggerGen(c =>
             {
