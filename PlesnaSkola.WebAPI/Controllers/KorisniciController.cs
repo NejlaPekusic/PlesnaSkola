@@ -33,7 +33,7 @@ namespace PlesnaSkola.WebAPI.Controllers
             return _service.GetById(Id);
         }
 
-        [HttpPost("Register")]
+        [HttpPost]
         public Model.Korisnici Insert([FromBody] Model.Requests.KorisniciInsertRequest request)
         {
             return _service.Insert(request);
@@ -45,7 +45,6 @@ namespace PlesnaSkola.WebAPI.Controllers
         {
             return _service.Update(Id, request);
         }
-
 
     }
 }

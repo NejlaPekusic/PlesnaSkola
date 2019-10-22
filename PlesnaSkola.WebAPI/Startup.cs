@@ -12,6 +12,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using PlesnaSkola.WebAPI.Models;
+using PlesnaSkola.WebAPI.Services;
 using Swashbuckle.AspNetCore.Swagger;
 
 namespace PlesnaSkola.WebAPI
@@ -33,6 +34,7 @@ namespace PlesnaSkola.WebAPI
             services.AddAutoMapper();
 #pragma warning restore CS0618 // Type or member is obsolete
 
+            services.AddScoped<IKorisniciService, KorisniciService>();
 
             services.AddSwaggerGen(c =>
             {

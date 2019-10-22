@@ -8,12 +8,10 @@ using System.Threading.Tasks;
 
 namespace PlesnaSkola.WebAPI.Services
 {
-    public class KorisniciService
+    public class KorisniciService: IKorisniciService
     {
         private readonly PlesnaSkolaContext _context;
         private readonly IMapper _mapper;
-
-        private Model.Korisnici _currentUser;
 
         public KorisniciService(PlesnaSkolaContext context, IMapper mapper)
         {
@@ -24,7 +22,7 @@ namespace PlesnaSkola.WebAPI.Services
         public List<Model.Korisnici> Get(KorisniciSearchRequest request)
         {
             var query = _context.Korisnici.AsQueryable();
-            
+
             var list = query.ToList();
 
             return _mapper.Map<List<Model.Korisnici>>(list);
@@ -34,24 +32,12 @@ namespace PlesnaSkola.WebAPI.Services
         {
             var entity = _context.Korisnici.Where(x => x.KorisnikId == id).FirstOrDefault();
 
-
             return _mapper.Map<Model.Korisnici>(entity);
         }
 
         public Model.Korisnici Insert(KorisniciInsertRequest request)
         {
             var entity = _mapper.Map<Models.Korisnici>(request);
-            _context.Korisnici.Add(entity);
-            _context.SaveChanges();
-
-            return _mapper.Map<Model.Korisnici>(entity);
-        }
-
-        public Model.Korisnici InsertAdmin(KorisniciInsertRequest request)
-        {
-            var entity = _mapper.Map<Models.Korisnici>(request);
-
-        
             _context.Korisnici.Add(entity);
             _context.SaveChanges();
 
