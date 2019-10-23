@@ -6,7 +6,6 @@ namespace PlesnaSkola.Model
 {
     public partial class Radionice
     {
-        [Key]
         public int RadionicaId { get; set; }
         public string NazivRadionice { get; set; }
         public string Opis { get; set; }

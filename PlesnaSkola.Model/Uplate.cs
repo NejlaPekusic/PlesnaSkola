@@ -6,7 +6,6 @@ namespace PlesnaSkola.Model
 {
     public partial class Uplate
     {
-        [Key]
         public int UplataId { get; set; }
         public double IznosUplate { get; set; }
         public DateTime DatumUplate { get; set; }

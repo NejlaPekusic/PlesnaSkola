@@ -8,7 +8,6 @@ namespace PlesnaSkola.Model
 {
     public class Obavijesti
     {
-        [Key]
         public int ObavijestId { get; set; }
 
         public string Naslov { get; set; }

@@ -6,7 +6,6 @@ namespace PlesnaSkola.Model
 {
     public partial class Treninzi
     {
-        [Key]
         public int TreningId { get; set; }
         public TimeSpan Satnica { get; set; }
         public DateTime DatumOdrzavanja { get; set; }

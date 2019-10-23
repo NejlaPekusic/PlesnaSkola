@@ -7,12 +7,6 @@ namespace PlesnaSkola.Model
 {
     public partial class Plesaci
     {
-        public Plesaci()
-        {
-            Uplate = new HashSet<Uplate>();
-        }
-        [ForeignKey("Korisnik")]
-        [Required]
         public int Id { get; set; }
         public Korisnici Korisnik { get; set; }
         public int? BrojOdjece { get; set; }
@@ -24,6 +18,5 @@ namespace PlesnaSkola.Model
 
         public Grupe Grupa { get; set; }
         public Roditelji Roditelj { get; set; }
-        public ICollection<Uplate> Uplate { get; set; }
     }
 }

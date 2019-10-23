@@ -6,7 +6,6 @@ namespace PlesnaSkola.Model
 {
     public partial class Muzika
     {
-        [Key]
         public int MuzikaId { get; set; }
         public string NazivPjesme { get; set; }
         public TimeSpan Trajanje { get; set; }

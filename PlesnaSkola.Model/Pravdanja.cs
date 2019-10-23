@@ -6,7 +6,6 @@ namespace PlesnaSkola.Model
 {
     public partial class Pravdanja
     {
-        [Key]
         public int PravdanjeId { get; set; }
         public string NazivSkole { get; set; }
         public string Ime { get; set; }
