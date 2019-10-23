@@ -35,6 +35,9 @@ namespace PlesnaSkola.WebAPI.Mapper
             CreateMap<Obavijesti, Model.Requests.ObavijestiInsertRequest>().ReverseMap();
             CreateMap<Radionice, Model.Requests.RadioniceInsertRequest>().ReverseMap();
             CreateMap<Treninzi, Model.Requests.TreninziInsertRequest>().ReverseMap();
+            CreateMap<Rasporedi, Model.Requests.RasporediInsertRequest>().ReverseMap();
+            CreateMap<Grupe, Model.Requests.GrupeInsertRequest>().ReverseMap();
+            CreateMap<Koreografije, Model.Requests.KoreografijeInsertRequest>().ReverseMap();
         }
     }
 }
