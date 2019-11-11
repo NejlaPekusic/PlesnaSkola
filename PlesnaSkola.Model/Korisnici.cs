@@ -12,9 +12,13 @@ namespace PlesnaSkola.Model
 
         public string Ime { get; set; }
         public string Prezime { get; set; }
+        public string ImePrezime { get => Ime + " " + Prezime;  }
+        public string Username { get; set; }
         public string Mail { get; set; }
         public DateTime? DatumRodjenja { get; set; }
+        public string DatumRodjenjaPrikaz { get => DatumRodjenja.HasValue ? DatumRodjenja.Value.ToShortDateString() : "N/A"; }
         public bool? Aktivan { get; set; }
+        public string BrojPasosa { get; set; }
 
         public Asistenti Asistent { get; set; }
         public Roditelji Roditelj { get; set; }

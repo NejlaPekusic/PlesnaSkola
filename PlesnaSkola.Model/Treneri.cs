@@ -8,8 +8,6 @@ namespace PlesnaSkola.Model
     public partial class Treneri
     {
         public int Id { get; set; }
-        public Korisnici Korisnik { get; set; }
-        public string BrojPasosa { get; set; }
         public string Licenca { get; set; }
         public string Funkcija { get; set; }
 

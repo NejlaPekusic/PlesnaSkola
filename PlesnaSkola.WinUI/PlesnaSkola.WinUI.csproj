@@ -59,14 +59,36 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="APIService.cs" />
+    <Compile Include="Clanovi\frmClanovi.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Clanovi\frmClanovi.Designer.cs">
+      <DependentUpon>frmClanovi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Clanovi\frmRoditeljiDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Clanovi\frmRoditeljiDetails.Designer.cs">
+      <DependentUpon>frmRoditeljiDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Clanovi\frmPlesaciDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Clanovi\frmPlesaciDetails.Designer.cs">
+      <DependentUpon>frmPlesaciDetails.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Clanovi\frmClanovi.resx">
+      <DependentUpon>frmClanovi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Clanovi\frmRoditeljiDetails.resx">
+      <DependentUpon>frmRoditeljiDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Clanovi\frmPlesaciDetails.resx">
+      <DependentUpon>frmPlesaciDetails.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -78,7 +100,7 @@
     </Compile>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
+      <Generator>PublicSettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <Compile Include="Properties\Settings.Designer.cs">
@@ -89,6 +111,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PlesnaSkola.Model\PlesnaSkola.Model.csproj">
+      <Project>{d80adea2-183b-4a79-b09d-0523912caecc}</Project>
+      <Name>PlesnaSkola.Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

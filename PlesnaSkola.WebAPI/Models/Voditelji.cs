@@ -18,7 +18,6 @@ namespace PlesnaSkola.WebAPI.Models
         [Required]
         public int Id { get; set; }
         public Korisnici Korisnik { get; set; }
-        public string BrojPasosa { get; set; }
         public string Telefon { get; set; }
 
         public ICollection<Koreografije> Koreografije { get; set; }

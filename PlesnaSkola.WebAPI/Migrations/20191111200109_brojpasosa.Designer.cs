@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PlesnaSkola.WebAPI.Models;
 
 namespace PlesnaSkola.WebAPI.Migrations
 {
     [DbContext(typeof(PlesnaSkolaContext))]
-    partial class PlesnaSkolaContextModelSnapshot : ModelSnapshot
+    [Migration("20191111200109_brojpasosa")]
+    partial class brojpasosa
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -74,13 +76,7 @@ namespace PlesnaSkola.WebAPI.Migrations
 
                     b.Property<string>("Mail");
 
-                    b.Property<string>("PasswordHash");
-
-                    b.Property<string>("PasswordSalt");
-
                     b.Property<string>("Prezime");
-
-                    b.Property<string>("Username");
 
                     b.HasKey("KorisnikId");
 
@@ -138,6 +134,8 @@ namespace PlesnaSkola.WebAPI.Migrations
             modelBuilder.Entity("PlesnaSkola.WebAPI.Models.Plesaci", b =>
                 {
                     b.Property<int>("Id");
+
+                    b.Property<bool?>("Aktivan");
 
                     b.Property<int?>("BrojObuce");
 

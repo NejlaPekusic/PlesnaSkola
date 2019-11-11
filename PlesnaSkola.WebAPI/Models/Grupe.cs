@@ -16,8 +16,6 @@ namespace PlesnaSkola.WebAPI.Models
 
         public int GrupaId { get; set; }
         public string NazivGrupe { get; set; }
-        public int BrojClanova { get; set; }
-
         public ICollection<Muzika> Muzika { get; set; }
         public ICollection<Plesaci> Plesaci { get; set; }
         public ICollection<Treninzi> Treninzi { get; set; }

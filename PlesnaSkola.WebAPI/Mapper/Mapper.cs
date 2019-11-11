@@ -38,6 +38,12 @@ namespace PlesnaSkola.WebAPI.Mapper
             CreateMap<Rasporedi, Model.Requests.RasporediInsertRequest>().ReverseMap();
             CreateMap<Grupe, Model.Requests.GrupeInsertRequest>().ReverseMap();
             CreateMap<Koreografije, Model.Requests.KoreografijeInsertRequest>().ReverseMap();
+
+            CreateMap<Model.Asistenti, Asistenti>();
+            CreateMap<Model.Plesaci, Plesaci>();
+            CreateMap<Model.Roditelji, Roditelji>();
+            CreateMap<Model.Treneri, Treneri>();
+            CreateMap<Model.Voditelji, Voditelji>();
         }
     }
 }

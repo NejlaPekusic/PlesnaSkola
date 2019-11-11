@@ -14,8 +14,12 @@ namespace PlesnaSkola.WebAPI.Models
         public string Ime { get; set; }
         public string Prezime { get; set; }
         public string Mail { get; set; }
+        public string Username { get; set; }
+        public string PasswordHash { get; set; }
+        public string PasswordSalt { get; set; }
         public DateTime? DatumRodjenja { get; set; }
         public bool? Aktivan { get; set; }
+        public string BrojPasosa { get; set; }
 
         public Asistenti Asistent { get; set; }
         public Roditelji Roditelj { get; set; }
