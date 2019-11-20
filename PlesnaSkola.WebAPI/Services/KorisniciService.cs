@@ -17,6 +17,8 @@ namespace PlesnaSkola.WebAPI.Services
         private readonly PlesnaSkolaContext _context;
         private readonly IMapper _mapper;
 
+        private Model.Korisnici _prijavljeniKorisnik;
+
         public KorisniciService(PlesnaSkolaContext context, IMapper mapper)
         {
             _context = context;
@@ -27,7 +29,7 @@ namespace PlesnaSkola.WebAPI.Services
         {
             var query = _context.Korisnici.AsQueryable();
 
-            if(request.IncludeClanovi || request.IncludeUposlenici || request.IncludeRoditelji)
+            if (request.IncludeClanovi || request.IncludeUposlenici || request.IncludeRoditelji)
             {
                 if (request.IncludeClanovi)
                     query = query.Where(x => x.Roditelj != null || x.Plesac != null);
@@ -38,7 +40,7 @@ namespace PlesnaSkola.WebAPI.Services
                     query = query.Where(x => x.Roditelj != null);
             }
 
-            if(!string.IsNullOrEmpty(request.ImePrezime))
+            if (!string.IsNullOrEmpty(request.ImePrezime))
             {
                 query = query.Where(x =>
                     x.Ime.Contains(request.ImePrezime)
@@ -70,6 +72,18 @@ namespace PlesnaSkola.WebAPI.Services
 
             return _mapper.Map<Model.Korisnici>(entity);
         }
+        public Model.Korisnici GetMyProfile()
+        {
+            var entity = _context.Korisnici.Where(x => x.KorisnikId == _prijavljeniKorisnik.KorisnikId)
+                .Include(x => x.Asistent)
+                .Include(x => x.Plesac)
+                .Include(x => x.Voditelj)
+                .Include(x => x.Roditelj)
+                .Include(x => x.Trener)
+            .FirstOrDefault();
+
+            return _mapper.Map<Model.Korisnici>(entity);
+        }
 
         public Model.Korisnici Insert(KorisniciInsertRequest request)
         {
@@ -91,7 +105,7 @@ namespace PlesnaSkola.WebAPI.Services
 
         public Model.Korisnici Update(int id, KorisniciUpdateRequest request)
         {
-            var entity = _context.Korisnici.Where(x=>x.KorisnikId == id)
+            var entity = _context.Korisnici.Where(x => x.KorisnikId == id)
                 .Include(x => x.Asistent)
                 .Include(x => x.Plesac)
                 .Include(x => x.Voditelj)
@@ -123,7 +137,7 @@ namespace PlesnaSkola.WebAPI.Services
             entity.BrojPasosa = request.BrojPasosa;
             entity.DatumRodjenja = request.DatumRodjenja;
 
-            if(request.Plesac != null)
+            if (request.Plesac != null)
             {
                 entity.Plesac.BrojObuce = request.Plesac.BrojObuce;
                 entity.Plesac.BrojOdjece = request.Plesac.BrojOdjece;
@@ -156,6 +170,31 @@ namespace PlesnaSkola.WebAPI.Services
             HashAlgorithm algorithm = HashAlgorithm.Create("SHA1");
             byte[] inArray = algorithm.ComputeHash(dst);
             return Convert.ToBase64String(inArray);
+        }
+
+        public Model.Korisnici Autentifikacija(string username, string pass)
+        {
+            var korisnik = _context.Korisnici.FirstOrDefault(x => x.Username == username);
+
+            if (korisnik != null)
+            {
+                var newHash = GenerateHash(korisnik.PasswordSalt, pass);
+
+                if (newHash == korisnik.PasswordHash)
+                {
+                    return _mapper.Map<Model.Korisnici>(korisnik);
+                }
+            }
+            return null;
+        }
+
+        public void SetPrijavljeniKorisnik(Model.Korisnici korisnik)
+        {
+            _prijavljeniKorisnik = korisnik;
+        }
+        public Model.Korisnici GetPrijavljeniKorisnik()
+        {
+            return _prijavljeniKorisnik;
         }
     }
 }

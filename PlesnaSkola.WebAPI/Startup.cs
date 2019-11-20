@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -13,11 +14,26 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using PlesnaSkola.WebAPI.Filters;
 using PlesnaSkola.WebAPI.Models;
+using PlesnaSkola.WebAPI.Security;
 using PlesnaSkola.WebAPI.Services;
 using Swashbuckle.AspNetCore.Swagger;
+using Swashbuckle.AspNetCore.SwaggerGen;
 
 namespace PlesnaSkola.WebAPI
 {
+    public class BasicAuthDocumentFilter : IDocumentFilter
+    {
+        public void Apply(SwaggerDocument swaggerDoc, DocumentFilterContext context)
+        {
+            var securityRequirements = new Dictionary<string, IEnumerable<string>>()
+        {
+            { "basic", new string[] { } }  // in swagger you specify empty list unless using OAuth2 scopes
+        };
+
+            swaggerDoc.Security = new[] { securityRequirements };
+        }
+    }
+
     public class Startup
     {
         public Startup(IConfiguration configuration)
@@ -49,7 +65,12 @@ namespace PlesnaSkola.WebAPI
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new Info { Title = "PlesnaSkola API v1", Version = "v1" });
+                c.AddSecurityDefinition("basic", new BasicAuthScheme() { Type = "basic" });
+                c.DocumentFilter<BasicAuthDocumentFilter>();
             });
+
+            services.AddAuthentication("BasicAuthentication")
+               .AddScheme<AuthenticationSchemeOptions, BasicAuthenticationHandler>("BasicAuthentication", null);
 
             var connection = Configuration.GetConnectionString("localDB");
             services.AddDbContext<PlesnaSkolaContext>(options => options.UseSqlServer(connection));
@@ -73,6 +94,7 @@ namespace PlesnaSkola.WebAPI
                 s.SwaggerEndpoint("/swagger/v1/swagger.json", "PlesnaSkola API v1");
             });
 
+            app.UseAuthentication();
             app.UseMvc();
         }
     }

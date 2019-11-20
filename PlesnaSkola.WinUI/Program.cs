@@ -17,7 +17,13 @@ namespace PlesnaSkola.WinUI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmClanovi());
+
+            var loginForm = new frmLogin();
+            if(loginForm.ShowDialog() == DialogResult.OK)
+            {
+                Application.Run(new frmMain());
+            }
+
         }
     }
 }

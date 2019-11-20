@@ -174,10 +174,11 @@
             this.Controls.Add(this.btnPrikazi);
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmClanovi";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Članovi";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmClanovi_Load);
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvClanovi)).EndInit();

@@ -67,8 +67,8 @@ namespace PlesnaSkola.WinUI.Clanovi
             }
             else if (Korisnik.Roditelj != null)
             {
-                //var frm = new frmRoditeljiDetails(KorisnikId);
-                //frm.ShowDialog();
+                var frm = new frmRoditeljiDetails(KorisnikId);
+                frm.ShowDialog();
                 await UcitajDataGrid();
             }
         }

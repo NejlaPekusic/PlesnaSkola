@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -45,6 +46,14 @@ namespace PlesnaSkola.WebAPI.Controllers
         {
             return _service.Update(Id, request);
         }
+
+        [Authorize]
+        [HttpGet("MyProfile")]
+        public Model.Korisnici MyProfile()
+        {
+            return _service.GetMyProfile();
+        }
+
 
     }
 }

@@ -13,9 +13,17 @@ namespace PlesnaSkola.WinUI.Clanovi
     public partial class frmRoditeljiDetails : Form
     {
         private APIService _serviceKorisnici = new APIService("Korisnici");
+        private int _korisnikId;
+
         public frmRoditeljiDetails()
         {
             InitializeComponent();
+        }
+
+        public frmRoditeljiDetails(int korisnikId)
+        {
+            InitializeComponent();
+            _korisnikId = korisnikId;
         }
 
         private async void btnDodaj_Click(object sender, EventArgs e)

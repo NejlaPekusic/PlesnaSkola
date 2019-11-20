@@ -42,11 +42,11 @@ namespace PlesnaSkola.WinUI
             {
                 if (ex.Call.HttpStatus == System.Net.HttpStatusCode.Unauthorized)
                 {
-                    MessageBox.Show("You are not logged in.");
+                    MessageBox.Show("Korisničko ime ili lozinka nisu tačni.");
                 }
                 if (ex.Call.HttpStatus == System.Net.HttpStatusCode.Forbidden)
                 {
-                    MessageBox.Show("You are not authorized.");
+                    MessageBox.Show("Nemate pristup.");
                 }
                 throw;
             }
@@ -70,11 +70,11 @@ namespace PlesnaSkola.WinUI
             {
                 if (ex.Call.HttpStatus == System.Net.HttpStatusCode.Unauthorized)
                 {
-                    MessageBox.Show("You are not logged in.");
+                    MessageBox.Show("Korisničko ime ili lozinka nisu tačni.");
                 }
                 if (ex.Call.HttpStatus == System.Net.HttpStatusCode.Forbidden)
                 {
-                    MessageBox.Show("You are not authorized.");
+                    MessageBox.Show("Nemate pristup.");
                 }
                 throw;
             }
@@ -96,11 +96,11 @@ namespace PlesnaSkola.WinUI
             {
                 if (ex.Call.HttpStatus == System.Net.HttpStatusCode.Unauthorized)
                 {
-                    MessageBox.Show("You are not logged in.");
+                    MessageBox.Show("Korisničko ime ili lozinka nisu tačni.");
                 }
                 else if (ex.Call.HttpStatus == System.Net.HttpStatusCode.Forbidden)
                 {
-                    MessageBox.Show("You are not authorized.");
+                    MessageBox.Show("Nemate pristup.");
                 }
                 else
                 {
@@ -142,11 +142,11 @@ namespace PlesnaSkola.WinUI
             {
                 if (ex.Call.HttpStatus == System.Net.HttpStatusCode.Unauthorized)
                 {
-                    MessageBox.Show("You are not logged in.");
+                    MessageBox.Show("Korisničko ime ili lozinka nisu tačni.");
                 }
                 else if (ex.Call.HttpStatus == System.Net.HttpStatusCode.Forbidden)
                 {
-                    MessageBox.Show("You are not authorized.");
+                    MessageBox.Show("Nemate pristup.");
                 }
                 else
                 {
