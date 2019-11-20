@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using PlesnaSkola.Model.Requests;
+using PlesnaSkola.WebAPI.Exceptions;
 using PlesnaSkola.WebAPI.Models;
 using System;
 using System.Collections.Generic;
@@ -74,7 +75,12 @@ namespace PlesnaSkola.WebAPI.Services
         {
             var entity = _mapper.Map<Models.Korisnici>(request);
 
-            entity.PasswordHash = GenerateSalt();
+            if (request.Password != request.PasswordConfirmation)
+            {
+                throw new UserException("Lozinke se ne podudaraju");
+            }
+
+            entity.PasswordSalt = GenerateSalt();
             entity.PasswordHash = GenerateHash(entity.PasswordSalt, request.Password);
 
             _context.Korisnici.Add(entity);
@@ -85,7 +91,13 @@ namespace PlesnaSkola.WebAPI.Services
 
         public Model.Korisnici Update(int id, KorisniciUpdateRequest request)
         {
-            var entity = _context.Korisnici.Find(id);
+            var entity = _context.Korisnici.Where(x=>x.KorisnikId == id)
+                .Include(x => x.Asistent)
+                .Include(x => x.Plesac)
+                .Include(x => x.Voditelj)
+                .Include(x => x.Roditelj)
+                .Include(x => x.Trener)
+                .FirstOrDefault();
 
             _context.Korisnici.Attach(entity);
             _context.Korisnici.Update(entity);
@@ -94,14 +106,31 @@ namespace PlesnaSkola.WebAPI.Services
             {
                 if (request.Password != request.PasswordConfirmation)
                 {
-                    throw new Exception("Lozinke se ne podudaraju");
+                    throw new UserException("Lozinke se ne podudaraju");
                 }
 
                 entity.PasswordSalt = GenerateSalt();
                 entity.PasswordHash = GenerateHash(entity.PasswordSalt, request.Password);
             }
 
-            _mapper.Map(request, entity);
+            //_mapper.Map(request, entity);
+
+            entity.Ime = request.Ime;
+            entity.Prezime = request.Prezime;
+            entity.Username = request.Username;
+            entity.Aktivan = request.Aktivan;
+            entity.Mail = request.Mail;
+            entity.BrojPasosa = request.BrojPasosa;
+            entity.DatumRodjenja = request.DatumRodjenja;
+
+            if(request.Plesac != null)
+            {
+                entity.Plesac.BrojObuce = request.Plesac.BrojObuce;
+                entity.Plesac.BrojOdjece = request.Plesac.BrojOdjece;
+                entity.Plesac.NazivSkole = request.Plesac.NazivSkole;
+                entity.Plesac.GrupaId = request.Plesac.GrupaId;
+                entity.Plesac.RoditeljId = request.Plesac.RoditeljId;
+            }
 
             _context.SaveChanges();
 

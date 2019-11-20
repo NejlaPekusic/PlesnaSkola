@@ -48,6 +48,7 @@
             this.label9 = new System.Windows.Forms.Label();
             this.txtBrojPasosa = new System.Windows.Forms.TextBox();
             this.gbxDodatniPodaci = new System.Windows.Forms.GroupBox();
+            this.btnDodajRoditelja = new System.Windows.Forms.Button();
             this.cmbGrupa = new System.Windows.Forms.ComboBox();
             this.cmbRoditelj = new System.Windows.Forms.ComboBox();
             this.txtNazivSkole = new System.Windows.Forms.TextBox();
@@ -59,7 +60,6 @@
             this.label13 = new System.Windows.Forms.Label();
             this.txtBrojObuce = new System.Windows.Forms.TextBox();
             this.chbAktivan = new System.Windows.Forms.CheckBox();
-            this.btnDodajRoditelja = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.gbxDodatniPodaci.SuspendLayout();
@@ -190,6 +190,7 @@
             this.btnDodaj.TabIndex = 16;
             this.btnDodaj.Text = "Dodaj";
             this.btnDodaj.UseVisualStyleBackColor = true;
+            this.btnDodaj.Click += new System.EventHandler(this.btnDodaj_Click);
             // 
             // groupBox1
             // 
@@ -261,13 +262,20 @@
             this.gbxDodatniPodaci.TabStop = false;
             this.gbxDodatniPodaci.Text = "Dodatni podaci";
             // 
+            // btnDodajRoditelja
+            // 
+            this.btnDodajRoditelja.Location = new System.Drawing.Point(154, 196);
+            this.btnDodajRoditelja.Name = "btnDodajRoditelja";
+            this.btnDodajRoditelja.Size = new System.Drawing.Size(97, 23);
+            this.btnDodajRoditelja.TabIndex = 31;
+            this.btnDodajRoditelja.Text = "Dodaj roditelja";
+            this.btnDodajRoditelja.UseVisualStyleBackColor = true;
+            this.btnDodajRoditelja.Click += new System.EventHandler(this.btnDodajRoditelja_Click);
+            // 
             // cmbGrupa
             // 
             this.cmbGrupa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbGrupa.FormattingEnabled = true;
-            this.cmbGrupa.Items.AddRange(new object[] {
-            "Plesač",
-            "Roditelj"});
             this.cmbGrupa.Location = new System.Drawing.Point(102, 126);
             this.cmbGrupa.Name = "cmbGrupa";
             this.cmbGrupa.Size = new System.Drawing.Size(149, 21);
@@ -277,9 +285,6 @@
             // 
             this.cmbRoditelj.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbRoditelj.FormattingEnabled = true;
-            this.cmbRoditelj.Items.AddRange(new object[] {
-            "Plesač",
-            "Roditelj"});
             this.cmbRoditelj.Location = new System.Drawing.Point(102, 161);
             this.cmbRoditelj.Name = "cmbRoditelj";
             this.cmbRoditelj.Size = new System.Drawing.Size(149, 21);
@@ -354,6 +359,8 @@
             // chbAktivan
             // 
             this.chbAktivan.AutoSize = true;
+            this.chbAktivan.Checked = true;
+            this.chbAktivan.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chbAktivan.Location = new System.Drawing.Point(215, 380);
             this.chbAktivan.Name = "chbAktivan";
             this.chbAktivan.Size = new System.Drawing.Size(62, 17);
@@ -361,16 +368,6 @@
             this.chbAktivan.Text = "Aktivan";
             this.chbAktivan.UseVisualStyleBackColor = true;
             this.chbAktivan.Visible = false;
-            // 
-            // btnDodajRoditelja
-            // 
-            this.btnDodajRoditelja.Location = new System.Drawing.Point(154, 196);
-            this.btnDodajRoditelja.Name = "btnDodajRoditelja";
-            this.btnDodajRoditelja.Size = new System.Drawing.Size(97, 23);
-            this.btnDodajRoditelja.TabIndex = 31;
-            this.btnDodajRoditelja.Text = "Dodaj roditelja";
-            this.btnDodajRoditelja.UseVisualStyleBackColor = true;
-            this.btnDodajRoditelja.Click += new System.EventHandler(this.btnDodajRoditelja_Click);
             // 
             // frmPlesaciDetails
             // 
@@ -387,6 +384,7 @@
             this.Name = "frmPlesaciDetails";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Detalji člana";
+            this.Load += new System.EventHandler(this.frmPlesaciDetails_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);

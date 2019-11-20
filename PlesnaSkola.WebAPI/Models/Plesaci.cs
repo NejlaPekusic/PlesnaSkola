@@ -15,8 +15,8 @@ namespace PlesnaSkola.WebAPI.Models
         [Required]
         public int Id { get; set; }
         public Korisnici Korisnik { get; set; }
-        public int? BrojOdjece { get; set; }
-        public int? BrojObuce { get; set; }
+        public int BrojOdjece { get; set; }
+        public int BrojObuce { get; set; }
         public string NazivSkole { get; set; }
         public int? RoditeljId { get; set; }
         public int GrupaId { get; set; }

@@ -11,6 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using PlesnaSkola.WebAPI.Filters;
 using PlesnaSkola.WebAPI.Models;
 using PlesnaSkola.WebAPI.Services;
 using Swashbuckle.AspNetCore.Swagger;
@@ -29,7 +30,7 @@ namespace PlesnaSkola.WebAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddMvc(x => x.Filters.Add<ErrorFilter>()).SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 #pragma warning disable CS0618 // Type or member is obsolete
             services.AddAutoMapper();
 #pragma warning restore CS0618 // Type or member is obsolete

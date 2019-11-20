@@ -30,15 +30,15 @@
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgvClanovi = new System.Windows.Forms.DataGridView();
-            this.btnPrikazi = new System.Windows.Forms.Button();
-            this.txtPretraga = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.KorisnikId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ImePrezime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Mail = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DatumRodjenja = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BrojPasosa = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Aktivan = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.btnPrikazi = new System.Windows.Forms.Button();
+            this.txtPretraga = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.btnDodajClana = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvClanovi)).BeginInit();
@@ -77,32 +77,7 @@
             this.dgvClanovi.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvClanovi.Size = new System.Drawing.Size(769, 333);
             this.dgvClanovi.TabIndex = 0;
-            // 
-            // btnPrikazi
-            // 
-            this.btnPrikazi.Location = new System.Drawing.Point(710, 34);
-            this.btnPrikazi.Name = "btnPrikazi";
-            this.btnPrikazi.Size = new System.Drawing.Size(75, 23);
-            this.btnPrikazi.TabIndex = 1;
-            this.btnPrikazi.Text = "Prikaži";
-            this.btnPrikazi.UseVisualStyleBackColor = true;
-            this.btnPrikazi.Click += new System.EventHandler(this.btnPrikazi_Click);
-            // 
-            // txtPretraga
-            // 
-            this.txtPretraga.Location = new System.Drawing.Point(16, 34);
-            this.txtPretraga.Name = "txtPretraga";
-            this.txtPretraga.Size = new System.Drawing.Size(242, 20);
-            this.txtPretraga.TabIndex = 2;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(16, 13);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(104, 13);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Ime ili prezime člana:";
+            this.dgvClanovi.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvClanovi_CellDoubleClick);
             // 
             // KorisnikId
             // 
@@ -151,6 +126,32 @@
             this.Aktivan.Name = "Aktivan";
             this.Aktivan.ReadOnly = true;
             this.Aktivan.TrueValue = "1";
+            // 
+            // btnPrikazi
+            // 
+            this.btnPrikazi.Location = new System.Drawing.Point(710, 34);
+            this.btnPrikazi.Name = "btnPrikazi";
+            this.btnPrikazi.Size = new System.Drawing.Size(75, 23);
+            this.btnPrikazi.TabIndex = 1;
+            this.btnPrikazi.Text = "Prikaži";
+            this.btnPrikazi.UseVisualStyleBackColor = true;
+            this.btnPrikazi.Click += new System.EventHandler(this.btnPrikazi_Click);
+            // 
+            // txtPretraga
+            // 
+            this.txtPretraga.Location = new System.Drawing.Point(16, 34);
+            this.txtPretraga.Name = "txtPretraga";
+            this.txtPretraga.Size = new System.Drawing.Size(242, 20);
+            this.txtPretraga.TabIndex = 2;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(16, 13);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(104, 13);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "Ime ili prezime člana:";
             // 
             // btnDodajClana
             // 

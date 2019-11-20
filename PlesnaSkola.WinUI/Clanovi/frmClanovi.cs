@@ -52,5 +52,25 @@ namespace PlesnaSkola.WinUI.Clanovi
 
             await UcitajDataGrid();
         }
+
+
+        private async void dgvClanovi_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int KorisnikId = int.Parse(dgvClanovi.SelectedRows[0].Cells["KorisnikId"].Value.ToString());
+            Model.Korisnici Korisnik = dgvClanovi.SelectedRows[0].DataBoundItem as Model.Korisnici;
+
+            if (Korisnik.Plesac != null)
+            {
+                var frm = new frmPlesaciDetails(KorisnikId);
+                frm.ShowDialog();
+                await UcitajDataGrid();
+            }
+            else if (Korisnik.Roditelj != null)
+            {
+                //var frm = new frmRoditeljiDetails(KorisnikId);
+                //frm.ShowDialog();
+                await UcitajDataGrid();
+            }
+        }
     }
 }

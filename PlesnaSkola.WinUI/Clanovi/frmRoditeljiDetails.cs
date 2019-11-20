@@ -37,11 +37,8 @@ namespace PlesnaSkola.WinUI.Clanovi
             var entity = await _serviceKorisnici.Insert<Model.Korisnici>(request);
             if(entity != null)
             {
-                MessageBox.Show("Roditelj dodan.");
+                MessageBox.Show("Roditelj dodan.", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 DialogResult = DialogResult.OK;
-            }
-            else {
-                MessageBox.Show("Roditelj nije dodan.");
             }
         }
     }
