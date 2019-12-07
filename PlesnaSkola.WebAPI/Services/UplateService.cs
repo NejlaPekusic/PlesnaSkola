@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 using PlesnaSkola.Model.Requests;
 using PlesnaSkola.WebAPI.Models;
 using System;
@@ -12,16 +13,32 @@ namespace PlesnaSkola.WebAPI.Services
     {
         private readonly PlesnaSkolaContext _context;
         private readonly IMapper _mapper;
+        private readonly IKorisniciService _korisniciService;
 
-        public UplateService(PlesnaSkolaContext context, IMapper mapper)
+        public UplateService(PlesnaSkolaContext context, IMapper mapper, IKorisniciService korisniciService)
         {
             _context = context;
             _mapper = mapper;
+            _korisniciService = korisniciService;
         }
 
         public List<Model.Uplate> Get(UplateSearchRequest request)
         {
             var query = _context.Uplate.AsQueryable();
+
+            if(request.IncludeClanovi)
+            {
+                query = query.Include(x => x.Plesac.Korisnik);
+            }
+
+            if(!string.IsNullOrWhiteSpace(request.ImePrezime))
+            {
+                query = query.Where(x =>
+                    x.Plesac.Korisnik.Ime.Contains(request.ImePrezime)
+                    || x.Plesac.Korisnik.Prezime.Contains(request.ImePrezime)
+                    || (x.Plesac.Korisnik.Ime + " " + x.Plesac.Korisnik.Prezime).Contains(request.ImePrezime)
+                    || (x.Plesac.Korisnik.Prezime + " " + x.Plesac.Korisnik.Ime).Contains(request.ImePrezime));
+            }
 
             var list = query.ToList();
 
@@ -30,7 +47,7 @@ namespace PlesnaSkola.WebAPI.Services
 
         public Model.Uplate GetById(int id)
         {
-            var entity = _context.Uplate.Where(x => x.UplataId == id).FirstOrDefault();
+            var entity = _context.Uplate.Include(x => x.Plesac.Korisnik).Where(x => x.UplataId == id).FirstOrDefault();
 
             return _mapper.Map<Model.Uplate>(entity);
         }
@@ -38,6 +55,7 @@ namespace PlesnaSkola.WebAPI.Services
         public Model.Uplate Insert(UplateInsertRequest request)
         {
             var entity = _mapper.Map<Models.Uplate>(request);
+            entity.VoditeljId = _korisniciService.GetPrijavljeniKorisnik().KorisnikId;
             _context.Uplate.Add(entity);
             _context.SaveChanges();
 

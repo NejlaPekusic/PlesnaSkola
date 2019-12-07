@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 using PlesnaSkola.Model.Requests;
 using PlesnaSkola.WebAPI.Models;
 using System;
@@ -12,11 +13,13 @@ namespace PlesnaSkola.WebAPI.Services
     {
         private readonly PlesnaSkolaContext _context;
         private readonly IMapper _mapper;
+        private readonly IKorisniciService _korisniciService;
 
-        public KoreografijeService(PlesnaSkolaContext context, IMapper mapper)
+        public KoreografijeService(PlesnaSkolaContext context, IMapper mapper, IKorisniciService korisniciService)
         {
             _context = context;
             _mapper = mapper;
+            _korisniciService = korisniciService;
         }
 
         public List<Model.Koreografije> Get(KoreografijeSearchRequest request)
@@ -30,7 +33,7 @@ namespace PlesnaSkola.WebAPI.Services
 
         public Model.Koreografije GetById(int id)
         {
-            var entity = _context.Koreografije.Where(x => x.KoreografijaId == id).FirstOrDefault();
+            var entity = _context.Koreografije.Where(x => x.KoreografijaId == id).Include(x=>x.Muzika).FirstOrDefault();
 
             return _mapper.Map<Model.Koreografije>(entity);
         }
@@ -38,6 +41,7 @@ namespace PlesnaSkola.WebAPI.Services
         public Model.Koreografije Insert(KoreografijeInsertRequest request)
         {
             var entity = _mapper.Map<Models.Koreografije>(request);
+            entity.VoditeljId = _korisniciService.GetPrijavljeniKorisnik().KorisnikId;
             _context.Koreografije.Add(entity);
             _context.SaveChanges();
 

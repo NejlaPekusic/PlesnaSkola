@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PlesnaSkola.WebAPI.Models;
 
 namespace PlesnaSkola.WebAPI.Migrations
 {
     [DbContext(typeof(PlesnaSkolaContext))]
-    partial class PlesnaSkolaContextModelSnapshot : ModelSnapshot
+    [Migration("20191207210834_relacije")]
+    partial class relacije
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -112,6 +114,8 @@ namespace PlesnaSkola.WebAPI.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int?>("AsistentiId");
+
                     b.Property<int>("KoreografijaId");
 
                     b.Property<string>("NazivPjesme");
@@ -121,6 +125,8 @@ namespace PlesnaSkola.WebAPI.Migrations
                     b.Property<TimeSpan>("Trajanje");
 
                     b.HasKey("MuzikaId");
+
+                    b.HasIndex("AsistentiId");
 
                     b.ToTable("Muzika");
                 });
@@ -368,6 +374,13 @@ namespace PlesnaSkola.WebAPI.Migrations
                         .WithMany("Koreografije")
                         .HasForeignKey("VoditeljId")
                         .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("PlesnaSkola.WebAPI.Models.Muzika", b =>
+                {
+                    b.HasOne("PlesnaSkola.WebAPI.Models.Asistenti")
+                        .WithMany("Muzika")
+                        .HasForeignKey("AsistentiId");
                 });
 
             modelBuilder.Entity("PlesnaSkola.WebAPI.Models.Obavijesti", b =>

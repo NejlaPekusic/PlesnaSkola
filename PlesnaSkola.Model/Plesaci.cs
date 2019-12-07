@@ -8,6 +8,7 @@ namespace PlesnaSkola.Model
     public partial class Plesaci
     {
         public int Id { get; set; }
+        public Korisnici_Basic Korisnik { get; set; }
         [Required]
         public int BrojOdjece { get; set; }
         [Required]
@@ -19,5 +20,10 @@ namespace PlesnaSkola.Model
 
         public Grupe Grupa { get; set; }
         public Roditelji Roditelj { get; set; }
+
+        public override string ToString()
+        {
+            return Korisnik.Ime + " " + Korisnik.Prezime;
+        }
     }
 }

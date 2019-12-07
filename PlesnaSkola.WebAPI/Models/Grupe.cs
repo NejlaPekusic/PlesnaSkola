@@ -8,7 +8,7 @@ namespace PlesnaSkola.WebAPI.Models
     {
         public Grupe()
         {
-            Muzika = new HashSet<Muzika>();
+            Koreografije = new HashSet<Koreografije>();
             Plesaci = new HashSet<Plesaci>();
             Treninzi = new HashSet<Treninzi>();
         }
@@ -16,7 +16,9 @@ namespace PlesnaSkola.WebAPI.Models
 
         public int GrupaId { get; set; }
         public string NazivGrupe { get; set; }
-        public ICollection<Muzika> Muzika { get; set; }
+        public int TrenerId { get; set; }
+        public Treneri Trener { get; set; }
+        public ICollection<Koreografije> Koreografije { get; set; }
         public ICollection<Plesaci> Plesaci { get; set; }
         public ICollection<Treninzi> Treninzi { get; set; }
     }

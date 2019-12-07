@@ -33,13 +33,21 @@
             this.prikažiČlanoveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dodajPlesačaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dodajRoditeljaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.uplateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.prikažiUplateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dodajUplatuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.koreografijaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.prikažiKoregrafijeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dodajKoreografiuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.članoviToolStripMenuItem});
+            this.članoviToolStripMenuItem,
+            this.uplateToolStripMenuItem,
+            this.koreografijaToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(800, 24);
@@ -59,23 +67,69 @@
             // prikažiČlanoveToolStripMenuItem
             // 
             this.prikažiČlanoveToolStripMenuItem.Name = "prikažiČlanoveToolStripMenuItem";
-            this.prikažiČlanoveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.prikažiČlanoveToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.prikažiČlanoveToolStripMenuItem.Text = "Prikaži članove";
             this.prikažiČlanoveToolStripMenuItem.Click += new System.EventHandler(this.prikažiČlanoveToolStripMenuItem_Click);
             // 
             // dodajPlesačaToolStripMenuItem
             // 
             this.dodajPlesačaToolStripMenuItem.Name = "dodajPlesačaToolStripMenuItem";
-            this.dodajPlesačaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.dodajPlesačaToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.dodajPlesačaToolStripMenuItem.Text = "Dodaj plesača";
             this.dodajPlesačaToolStripMenuItem.Click += new System.EventHandler(this.dodajPlesačaToolStripMenuItem_Click);
             // 
             // dodajRoditeljaToolStripMenuItem
             // 
             this.dodajRoditeljaToolStripMenuItem.Name = "dodajRoditeljaToolStripMenuItem";
-            this.dodajRoditeljaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.dodajRoditeljaToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.dodajRoditeljaToolStripMenuItem.Text = "Dodaj roditelja";
             this.dodajRoditeljaToolStripMenuItem.Click += new System.EventHandler(this.dodajRoditeljaToolStripMenuItem_Click);
+            // 
+            // uplateToolStripMenuItem
+            // 
+            this.uplateToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.prikažiUplateToolStripMenuItem,
+            this.dodajUplatuToolStripMenuItem});
+            this.uplateToolStripMenuItem.Name = "uplateToolStripMenuItem";
+            this.uplateToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
+            this.uplateToolStripMenuItem.Text = "Uplate";
+            // 
+            // prikažiUplateToolStripMenuItem
+            // 
+            this.prikažiUplateToolStripMenuItem.Name = "prikažiUplateToolStripMenuItem";
+            this.prikažiUplateToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
+            this.prikažiUplateToolStripMenuItem.Text = "Prikaži uplate";
+            this.prikažiUplateToolStripMenuItem.Click += new System.EventHandler(this.prikažiUplateToolStripMenuItem_Click);
+            // 
+            // dodajUplatuToolStripMenuItem
+            // 
+            this.dodajUplatuToolStripMenuItem.Name = "dodajUplatuToolStripMenuItem";
+            this.dodajUplatuToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
+            this.dodajUplatuToolStripMenuItem.Text = "Dodaj uplatu";
+            this.dodajUplatuToolStripMenuItem.Click += new System.EventHandler(this.dodajUplatuToolStripMenuItem_Click);
+            // 
+            // koreografijaToolStripMenuItem
+            // 
+            this.koreografijaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.prikažiKoregrafijeToolStripMenuItem,
+            this.dodajKoreografiuToolStripMenuItem});
+            this.koreografijaToolStripMenuItem.Name = "koreografijaToolStripMenuItem";
+            this.koreografijaToolStripMenuItem.Size = new System.Drawing.Size(83, 20);
+            this.koreografijaToolStripMenuItem.Text = "Koreografija";
+            // 
+            // prikažiKoregrafijeToolStripMenuItem
+            // 
+            this.prikažiKoregrafijeToolStripMenuItem.Name = "prikažiKoregrafijeToolStripMenuItem";
+            this.prikažiKoregrafijeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.prikažiKoregrafijeToolStripMenuItem.Text = "Prikaži koregrafije";
+            this.prikažiKoregrafijeToolStripMenuItem.Click += new System.EventHandler(this.prikažiKoregrafijeToolStripMenuItem_Click);
+            // 
+            // dodajKoreografiuToolStripMenuItem
+            // 
+            this.dodajKoreografiuToolStripMenuItem.Name = "dodajKoreografiuToolStripMenuItem";
+            this.dodajKoreografiuToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.dodajKoreografiuToolStripMenuItem.Text = "Dodaj koreografiju";
+            this.dodajKoreografiuToolStripMenuItem.Click += new System.EventHandler(this.dodajKoreografiuToolStripMenuItem_Click);
             // 
             // frmMain
             // 
@@ -102,5 +156,11 @@
         private System.Windows.Forms.ToolStripMenuItem prikažiČlanoveToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem dodajPlesačaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem dodajRoditeljaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem uplateToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem prikažiUplateToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem dodajUplatuToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem koreografijaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem prikažiKoregrafijeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem dodajKoreografiuToolStripMenuItem;
     }
 }

@@ -90,8 +90,32 @@
     <Compile Include="frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="Koreografije\frmKoreografije.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Koreografije\frmKoreografije.Designer.cs">
+      <DependentUpon>frmKoreografije.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Koreografije\frmKoreografijeDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Koreografije\frmKoreografijeDetails.Designer.cs">
+      <DependentUpon>frmKoreografijeDetails.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Uplate\frmUplateDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Uplate\frmUplateDetails.Designer.cs">
+      <DependentUpon>frmUplateDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Uplate\frmUplate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Uplate\frmUplate.Designer.cs">
+      <DependentUpon>frmUplate.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Clanovi\frmClanovi.resx">
       <DependentUpon>frmClanovi.cs</DependentUpon>
     </EmbeddedResource>
@@ -107,6 +131,12 @@
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Koreografije\frmKoreografije.resx">
+      <DependentUpon>frmKoreografije.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Koreografije\frmKoreografijeDetails.resx">
+      <DependentUpon>frmKoreografijeDetails.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -116,6 +146,12 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Uplate\frmUplateDetails.resx">
+      <DependentUpon>frmUplateDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Uplate\frmUplate.resx">
+      <DependentUpon>frmUplate.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>PublicSettingsSingleFileGenerator</Generator>
@@ -136,5 +172,6 @@
       <Name>PlesnaSkola.Model</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -35,5 +35,31 @@ namespace PlesnaSkola.WinUI
             var frm = new Clanovi.frmRoditeljiDetails();
             frm.ShowDialog();
         }
+
+        private void prikažiUplateToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var frm = new Uplate.frmUplate();
+            frm.MdiParent = this;
+            frm.Show();
+        }
+
+        private void dodajUplatuToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var frm = new Uplate.frmUplateDetails();
+            frm.ShowDialog();
+        }
+
+        private void prikažiKoregrafijeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var frm = new Koreografije.frmKoreografije();
+            frm.MdiParent = this;
+            frm.Show();
+        }
+
+        private void dodajKoreografiuToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var frm = new Koreografije.frmKoreografijeDetails();
+            frm.ShowDialog();
+        }
     }
 }

@@ -9,7 +9,6 @@ namespace PlesnaSkola.WebAPI.Models
     {
         public Asistenti()
         {
-            Muzika = new HashSet<Muzika>();
             Radionice = new HashSet<Radionice>();
         }
         
@@ -18,7 +17,6 @@ namespace PlesnaSkola.WebAPI.Models
         public int Id { get; set; }
         public Korisnici Korisnik { get; set; }
 
-        public ICollection<Muzika> Muzika { get; set; }
         public ICollection<Radionice> Radionice { get; set; }
     }
 }

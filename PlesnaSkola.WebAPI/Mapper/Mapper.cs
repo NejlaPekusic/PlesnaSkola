@@ -15,6 +15,7 @@ namespace PlesnaSkola.WebAPI.Mapper
             CreateMap<Grupe, Model.Grupe>();
             CreateMap<Koreografije, Model.Koreografije>();
             CreateMap<Korisnici, Model.Korisnici>();
+            CreateMap<Korisnici, Model.Korisnici_Basic>();
             CreateMap<Muzika, Model.Muzika>();
             CreateMap<Obavijesti, Model.Obavijesti>();
             CreateMap<Plesaci, Model.Plesaci>();
@@ -44,6 +45,7 @@ namespace PlesnaSkola.WebAPI.Mapper
             CreateMap<Model.Roditelji, Roditelji>();
             CreateMap<Model.Treneri, Treneri>();
             CreateMap<Model.Voditelji, Voditelji>();
+            CreateMap<Model.Muzika, Muzika>();
         }
     }
 }

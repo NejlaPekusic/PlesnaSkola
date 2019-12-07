@@ -8,5 +8,6 @@ namespace PlesnaSkola.Model
     public partial class Roditelji
     {
         public int Id { get; set; }
+        public Korisnici_Basic Korisnik { get; set; }
     }
 }

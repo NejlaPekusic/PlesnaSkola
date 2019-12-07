@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PlesnaSkola.WebAPI.Models;
 
 namespace PlesnaSkola.WebAPI.Migrations
 {
     [DbContext(typeof(PlesnaSkolaContext))]
-    partial class PlesnaSkolaContextModelSnapshot : ModelSnapshot
+    [Migration("20191207195736_vrstauplate")]
+    partial class vrstauplate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -36,11 +38,7 @@ namespace PlesnaSkola.WebAPI.Migrations
 
                     b.Property<string>("NazivGrupe");
 
-                    b.Property<int>("TrenerId");
-
                     b.HasKey("GrupaId");
-
-                    b.HasIndex("TrenerId");
 
                     b.ToTable("Grupe");
                 });
@@ -51,26 +49,11 @@ namespace PlesnaSkola.WebAPI.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("AsistentId");
-
-                    b.Property<int>("GrupaId");
-
-                    b.Property<int>("MuzikaId");
-
                     b.Property<string>("NazivKoreografije");
-
-                    b.Property<int>("Stil");
 
                     b.Property<int>("VoditeljId");
 
                     b.HasKey("KoreografijaId");
-
-                    b.HasIndex("AsistentId");
-
-                    b.HasIndex("GrupaId");
-
-                    b.HasIndex("MuzikaId")
-                        .IsUnique();
 
                     b.HasIndex("VoditeljId");
 
@@ -112,15 +95,23 @@ namespace PlesnaSkola.WebAPI.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int>("AsistentId");
+
+                    b.Property<int>("GrupaId");
+
                     b.Property<int>("KoreografijaId");
 
                     b.Property<string>("NazivPjesme");
 
-                    b.Property<byte[]>("Pjesma");
-
                     b.Property<TimeSpan>("Trajanje");
 
                     b.HasKey("MuzikaId");
+
+                    b.HasIndex("AsistentId");
+
+                    b.HasIndex("GrupaId");
+
+                    b.HasIndex("KoreografijaId");
 
                     b.ToTable("Muzika");
                 });
@@ -339,34 +330,29 @@ namespace PlesnaSkola.WebAPI.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("PlesnaSkola.WebAPI.Models.Grupe", b =>
+            modelBuilder.Entity("PlesnaSkola.WebAPI.Models.Koreografije", b =>
                 {
-                    b.HasOne("PlesnaSkola.WebAPI.Models.Treneri", "Trener")
-                        .WithMany()
-                        .HasForeignKey("TrenerId")
+                    b.HasOne("PlesnaSkola.WebAPI.Models.Voditelji", "Voditelj")
+                        .WithMany("Koreografije")
+                        .HasForeignKey("VoditeljId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("PlesnaSkola.WebAPI.Models.Koreografije", b =>
+            modelBuilder.Entity("PlesnaSkola.WebAPI.Models.Muzika", b =>
                 {
                     b.HasOne("PlesnaSkola.WebAPI.Models.Asistenti", "Asistent")
-                        .WithMany()
+                        .WithMany("Muzika")
                         .HasForeignKey("AsistentId")
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("PlesnaSkola.WebAPI.Models.Grupe", "Grupa")
-                        .WithMany("Koreografije")
+                        .WithMany("Muzika")
                         .HasForeignKey("GrupaId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("PlesnaSkola.WebAPI.Models.Muzika", "Muzika")
-                        .WithOne("Koreografija")
-                        .HasForeignKey("PlesnaSkola.WebAPI.Models.Koreografije", "MuzikaId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("PlesnaSkola.WebAPI.Models.Voditelji", "Voditelj")
-                        .WithMany("Koreografije")
-                        .HasForeignKey("VoditeljId")
+                    b.HasOne("PlesnaSkola.WebAPI.Models.Koreografije", "Koreografija")
+                        .WithMany("Muzika")
+                        .HasForeignKey("KoreografijaId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 

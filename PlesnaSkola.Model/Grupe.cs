@@ -8,6 +8,8 @@ namespace PlesnaSkola.Model
     {
         public int GrupaId { get; set; }
         public string NazivGrupe { get; set; }
+        public int TrenerId { get; set; }
+        public Treneri Trener { get; set; }
         public int BrojClanova { get; set; }
     }
 }

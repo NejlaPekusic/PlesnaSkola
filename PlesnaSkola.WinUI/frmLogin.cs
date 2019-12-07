@@ -17,6 +17,8 @@ namespace PlesnaSkola.WinUI
         public frmLogin()
         {
             InitializeComponent();
+            txtUsername.Text = "nejla";
+            txtLozinka.Text = "123";
         }
 
         private async void btnPrijava_Click(object sender, EventArgs e)

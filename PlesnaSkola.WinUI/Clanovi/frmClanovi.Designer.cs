@@ -155,7 +155,7 @@
             // 
             // btnDodajClana
             // 
-            this.btnDodajClana.Location = new System.Drawing.Point(13, 444);
+            this.btnDodajClana.Location = new System.Drawing.Point(15, 444);
             this.btnDodajClana.Name = "btnDodajClana";
             this.btnDodajClana.Size = new System.Drawing.Size(75, 23);
             this.btnDodajClana.TabIndex = 4;

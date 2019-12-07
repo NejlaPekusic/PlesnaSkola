@@ -8,8 +8,9 @@ namespace PlesnaSkola.Model.Requests
     {
         public double IznosUplate { get; set; }
         public DateTime DatumUplate { get; set; }
-        public int VoditeljId { get; set; }
         public int PlesacId { get; set; }
+        public VrstaUplate VrstaUplate { get; set; }
+        public string Opis { get; set; }
 
     }
 }

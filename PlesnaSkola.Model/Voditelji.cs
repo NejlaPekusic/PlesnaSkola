@@ -8,6 +8,7 @@ namespace PlesnaSkola.Model
     public partial class Voditelji
     {
         public int Id { get; set; }
+        public Korisnici_Basic Korisnik { get; set; }
         public string Telefon { get; set; }
     }
 }
