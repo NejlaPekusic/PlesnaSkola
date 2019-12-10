@@ -83,12 +83,9 @@ namespace PlesnaSkola.WinUI.Koreografije
             {
                 txtNaziv.Text = entity.NazivKoreografije;
                 txtNazivPjesme.Text = entity.Muzika.NazivPjesme;
-                // todo
-                //DateTime dt = new DateTime(0);
 
-                //dt.Add(entity.Muzika.Trajanje);
+                dtpTrajanje.Value = DateTime.Now.Date.Add(entity.Muzika.Trajanje);
 
-                //dtpTrajanje.Value = dt;
                 Pjesma = entity.Muzika.Pjesma;
 
                 foreach (Model.Grupe grupa in cmbGrupa.Items)

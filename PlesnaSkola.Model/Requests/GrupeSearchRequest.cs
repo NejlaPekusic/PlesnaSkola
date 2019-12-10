@@ -6,6 +6,6 @@ namespace PlesnaSkola.Model.Requests
 {
     public class GrupeSearchRequest
     {
-
+        public string NazivGrupe { get; set; }
     }
 }

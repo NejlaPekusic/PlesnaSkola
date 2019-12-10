@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PlesnaSkola.WebAPI.Models;
 
 namespace PlesnaSkola.WebAPI.Migrations
 {
     [DbContext(typeof(PlesnaSkolaContext))]
-    partial class PlesnaSkolaContextModelSnapshot : ModelSnapshot
+    [Migration("20191210202505_satnica")]
+    partial class satnica
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -192,25 +194,6 @@ namespace PlesnaSkola.WebAPI.Migrations
                     b.HasIndex("VoditeljId");
 
                     b.ToTable("Pravdanja");
-                });
-
-            modelBuilder.Entity("PlesnaSkola.WebAPI.Models.Prisustva", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("PlesacId");
-
-                    b.Property<int>("TreningId");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("PlesacId");
-
-                    b.HasIndex("TreningId");
-
-                    b.ToTable("Prisustva");
                 });
 
             modelBuilder.Entity("PlesnaSkola.WebAPI.Models.Radionice", b =>
@@ -398,19 +381,6 @@ namespace PlesnaSkola.WebAPI.Migrations
                     b.HasOne("PlesnaSkola.WebAPI.Models.Voditelji", "Voditelj")
                         .WithMany("Pravdanja")
                         .HasForeignKey("VoditeljId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("PlesnaSkola.WebAPI.Models.Prisustva", b =>
-                {
-                    b.HasOne("PlesnaSkola.WebAPI.Models.Plesaci", "Plesac")
-                        .WithMany()
-                        .HasForeignKey("PlesacId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("PlesnaSkola.WebAPI.Models.Treninzi", "Trening")
-                        .WithMany("Prisustva")
-                        .HasForeignKey("TreningId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 

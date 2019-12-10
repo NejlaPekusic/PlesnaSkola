@@ -20,12 +20,12 @@ namespace PlesnaSkola.WebAPI.Models
         public virtual DbSet<Plesaci> Plesaci { get; set; }
         public virtual DbSet<Pravdanja> Pravdanja { get; set; }
         public virtual DbSet<Radionice> Radionice { get; set; }
-        public virtual DbSet<Rasporedi> Rasporedi { get; set; }
         public virtual DbSet<Roditelji> Roditelji { get; set; }
         public virtual DbSet<Treneri> Treneri { get; set; }
         public virtual DbSet<Treninzi> Treninzi { get; set; }
         public virtual DbSet<Uplate> Uplate { get; set; }
         public virtual DbSet<Voditelji> Voditelji { get; set; }
+        public virtual DbSet<Prisustva> Prisustva { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

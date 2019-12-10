@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 using PlesnaSkola.Model.Requests;
 using PlesnaSkola.WebAPI.Models;
 using System;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace PlesnaSkola.WebAPI.Services
 {
-    public class GrupeService:IGrupeService
+    public class GrupeService : IGrupeService
     {
         private readonly PlesnaSkolaContext _context;
         private readonly IMapper _mapper;
@@ -22,17 +23,30 @@ namespace PlesnaSkola.WebAPI.Services
         public List<Model.Grupe> Get(GrupeSearchRequest request)
         {
             var query = _context.Grupe.AsQueryable();
+            query = query.Include(x => x.Trener.Korisnik);
+
+            if(!string.IsNullOrWhiteSpace(request.NazivGrupe))
+            {
+                query = query.Where(x => x.NazivGrupe.Contains(request.NazivGrupe));
+            }
 
             var list = query.ToList();
 
-            return _mapper.Map<List<Model.Grupe>>(list);
+            var model = _mapper.Map<List<Model.Grupe>>(list);
+            foreach (var grupa in model)
+            {
+                grupa.BrojClanova = _context.Plesaci.Count(x => x.GrupaId == grupa.GrupaId);
+            }
+
+            return model;
         }
 
         public Model.Grupe GetById(int id)
         {
             var entity = _context.Grupe.Where(x => x.GrupaId == id).FirstOrDefault();
-
-            return _mapper.Map<Model.Grupe>(entity);
+            var model = _mapper.Map<Model.Grupe>(entity);
+            model.BrojClanova = _context.Plesaci.Count(x => x.GrupaId == id);
+            return model;
         }
 
         public Model.Grupe Insert(GrupeInsertRequest request)

@@ -58,7 +58,6 @@ namespace PlesnaSkola.WebAPI
             services.AddScoped<IObavijestiService, ObavijestiService>();
             services.AddScoped<IRadioniceService, RadioniceService>();
             services.AddScoped<ITreninziService, TreninziService>();
-            services.AddScoped<IRasporediService, RasporediService>();
             services.AddScoped<IGrupeService, GrupeService>();
             services.AddScoped<IKoreografijeService, KoreografijeService>();
 

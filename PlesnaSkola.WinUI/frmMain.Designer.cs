@@ -39,6 +39,12 @@
             this.koreografijaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.prikažiKoregrafijeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dodajKoreografiuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.grupeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.prikažiGrupeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dodajGrupuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.treninziToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.prikažiTreningeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dodajTreningToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -47,7 +53,9 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.članoviToolStripMenuItem,
             this.uplateToolStripMenuItem,
-            this.koreografijaToolStripMenuItem});
+            this.koreografijaToolStripMenuItem,
+            this.grupeToolStripMenuItem,
+            this.treninziToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(800, 24);
@@ -120,16 +128,62 @@
             // prikažiKoregrafijeToolStripMenuItem
             // 
             this.prikažiKoregrafijeToolStripMenuItem.Name = "prikažiKoregrafijeToolStripMenuItem";
-            this.prikažiKoregrafijeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.prikažiKoregrafijeToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.prikažiKoregrafijeToolStripMenuItem.Text = "Prikaži koregrafije";
             this.prikažiKoregrafijeToolStripMenuItem.Click += new System.EventHandler(this.prikažiKoregrafijeToolStripMenuItem_Click);
             // 
             // dodajKoreografiuToolStripMenuItem
             // 
             this.dodajKoreografiuToolStripMenuItem.Name = "dodajKoreografiuToolStripMenuItem";
-            this.dodajKoreografiuToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.dodajKoreografiuToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.dodajKoreografiuToolStripMenuItem.Text = "Dodaj koreografiju";
             this.dodajKoreografiuToolStripMenuItem.Click += new System.EventHandler(this.dodajKoreografiuToolStripMenuItem_Click);
+            // 
+            // grupeToolStripMenuItem
+            // 
+            this.grupeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.prikažiGrupeToolStripMenuItem,
+            this.dodajGrupuToolStripMenuItem});
+            this.grupeToolStripMenuItem.Name = "grupeToolStripMenuItem";
+            this.grupeToolStripMenuItem.Size = new System.Drawing.Size(51, 20);
+            this.grupeToolStripMenuItem.Text = "Grupe";
+            // 
+            // prikažiGrupeToolStripMenuItem
+            // 
+            this.prikažiGrupeToolStripMenuItem.Name = "prikažiGrupeToolStripMenuItem";
+            this.prikažiGrupeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.prikažiGrupeToolStripMenuItem.Text = "Prikaži grupe";
+            this.prikažiGrupeToolStripMenuItem.Click += new System.EventHandler(this.prikažiGrupeToolStripMenuItem_Click);
+            // 
+            // dodajGrupuToolStripMenuItem
+            // 
+            this.dodajGrupuToolStripMenuItem.Name = "dodajGrupuToolStripMenuItem";
+            this.dodajGrupuToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.dodajGrupuToolStripMenuItem.Text = "Dodaj grupu";
+            this.dodajGrupuToolStripMenuItem.Click += new System.EventHandler(this.dodajGrupuToolStripMenuItem_Click);
+            // 
+            // treninziToolStripMenuItem
+            // 
+            this.treninziToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.prikažiTreningeToolStripMenuItem,
+            this.dodajTreningToolStripMenuItem});
+            this.treninziToolStripMenuItem.Name = "treninziToolStripMenuItem";
+            this.treninziToolStripMenuItem.Size = new System.Drawing.Size(60, 20);
+            this.treninziToolStripMenuItem.Text = "Treninzi";
+            // 
+            // prikažiTreningeToolStripMenuItem
+            // 
+            this.prikažiTreningeToolStripMenuItem.Name = "prikažiTreningeToolStripMenuItem";
+            this.prikažiTreningeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.prikažiTreningeToolStripMenuItem.Text = "Prikaži treninge";
+            this.prikažiTreningeToolStripMenuItem.Click += new System.EventHandler(this.prikažiTreningeToolStripMenuItem_Click);
+            // 
+            // dodajTreningToolStripMenuItem
+            // 
+            this.dodajTreningToolStripMenuItem.Name = "dodajTreningToolStripMenuItem";
+            this.dodajTreningToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.dodajTreningToolStripMenuItem.Text = "Dodaj trening";
+            this.dodajTreningToolStripMenuItem.Click += new System.EventHandler(this.dodajTreningToolStripMenuItem_Click);
             // 
             // frmMain
             // 
@@ -162,5 +216,11 @@
         private System.Windows.Forms.ToolStripMenuItem koreografijaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem prikažiKoregrafijeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem dodajKoreografiuToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem grupeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem prikažiGrupeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem dodajGrupuToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem treninziToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem prikažiTreningeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem dodajTreningToolStripMenuItem;
     }
 }

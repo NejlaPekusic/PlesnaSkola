@@ -12,5 +12,10 @@ namespace PlesnaSkola.Model
         public string Licenca { get; set; }
         public string Funkcija { get; set; }
 
+        public override string ToString()
+        {
+            return Korisnik.Ime + " " + Korisnik.Prezime;
+        }
+
     }
 }

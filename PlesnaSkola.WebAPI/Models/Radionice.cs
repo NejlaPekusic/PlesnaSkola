@@ -18,6 +18,5 @@ namespace PlesnaSkola.WebAPI.Models
         public int RasporedId { get; set; }
 
         public Asistenti Asistent { get; set; }
-        public Rasporedi Raspored { get; set; }
     }
 }

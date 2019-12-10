@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 using PlesnaSkola.Model.Requests;
 using PlesnaSkola.WebAPI.Models;
 using System;
@@ -22,6 +23,12 @@ namespace PlesnaSkola.WebAPI.Services
         public List<Model.Treninzi> Get(TreninziSearchRequest request)
         {
             var query = _context.Treninzi.AsQueryable();
+            query = query.Include(x => x.Grupa).Include(x => x.Trener.Korisnik);
+
+            if(request.GrupaId != 0)
+            {
+                query = query.Where(x => x.GrupaId == request.GrupaId);
+            }
 
             var list = query.ToList();
 
@@ -30,7 +37,7 @@ namespace PlesnaSkola.WebAPI.Services
 
         public Model.Treninzi GetById(int id)
         {
-            var entity = _context.Treninzi.Where(x => x.TreningId == id).FirstOrDefault();
+            var entity = _context.Treninzi.Where(x => x.TreningId == id).Include(x=>x.Prisustva).FirstOrDefault();
 
             return _mapper.Map<Model.Treninzi>(entity);
         }
@@ -47,6 +54,12 @@ namespace PlesnaSkola.WebAPI.Services
         public Model.Treninzi Update(int id, TreninziInsertRequest request)
         {
             var entity = _context.Treninzi.Find(id);
+
+            var listToDelete = _context.Prisustva.Where(x => x.TreningId == id).ToList();
+            foreach (var item in listToDelete)
+            {
+                _context.Prisustva.Remove(item);
+            }
 
             _context.Treninzi.Attach(entity);
             _context.Treninzi.Update(entity);

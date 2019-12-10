@@ -11,5 +11,10 @@ namespace PlesnaSkola.Model
         public int TrenerId { get; set; }
         public Treneri Trener { get; set; }
         public int BrojClanova { get; set; }
+
+        public override string ToString()
+        {
+            return NazivGrupe;
+        }
     }
 }

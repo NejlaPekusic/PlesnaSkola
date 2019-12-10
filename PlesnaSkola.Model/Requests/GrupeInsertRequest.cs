@@ -7,6 +7,6 @@ namespace PlesnaSkola.Model.Requests
     public class GrupeInsertRequest
     {
         public string NazivGrupe { get; set; }
-        public int BrojClanova { get; set; }
+        public int TrenerId { get; set; }
     }
 }
