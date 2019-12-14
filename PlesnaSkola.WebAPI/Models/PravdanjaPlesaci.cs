@@ -5,12 +5,12 @@ using System.Threading.Tasks;
 
 namespace PlesnaSkola.WebAPI.Models
 {
-    public class Prisustva
+    public class PravdanjaPlesaci
     {
         public int Id { get; set; }
         public int PlesacId { get; set; }
         public Plesaci Plesac { get; set; }
-        public int TreningId { get; set; }
-        public Treninzi Trening { get; set; }
+        public int PravdanjeId { get; set; }
+        public Pravdanja Pravdanje { get; set; }
     }
 }

@@ -120,6 +120,30 @@
     <Compile Include="Koreografije\frmKoreografijeDetails.Designer.cs">
       <DependentUpon>frmKoreografijeDetails.cs</DependentUpon>
     </Compile>
+    <Compile Include="Obavijesti\frmObavijestiDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Obavijesti\frmObavijestiDetails.Designer.cs">
+      <DependentUpon>frmObavijestiDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Obavijesti\frmObavijesti.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Obavijesti\frmObavijesti.Designer.cs">
+      <DependentUpon>frmObavijesti.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pravdanja\frmPravdanjaDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pravdanja\frmPravdanjaDetails.Designer.cs">
+      <DependentUpon>frmPravdanjaDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pravdanja\frmPravdanja.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pravdanja\frmPravdanja.Designer.cs">
+      <DependentUpon>frmPravdanja.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Treninzi\frmTreningDetails.cs">
@@ -176,6 +200,18 @@
     <EmbeddedResource Include="Koreografije\frmKoreografijeDetails.resx">
       <DependentUpon>frmKoreografijeDetails.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Obavijesti\frmObavijestiDetails.resx">
+      <DependentUpon>frmObavijestiDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Obavijesti\frmObavijesti.resx">
+      <DependentUpon>frmObavijesti.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pravdanja\frmPravdanjaDetails.resx">
+      <DependentUpon>frmPravdanjaDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pravdanja\frmPravdanja.resx">
+      <DependentUpon>frmPravdanja.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -184,6 +220,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="Treninzi\frmTreningDetails.resx">
       <DependentUpon>frmTreningDetails.cs</DependentUpon>

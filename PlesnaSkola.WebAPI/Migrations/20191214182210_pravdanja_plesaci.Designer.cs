@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PlesnaSkola.WebAPI.Models;
 
 namespace PlesnaSkola.WebAPI.Migrations
 {
     [DbContext(typeof(PlesnaSkolaContext))]
-    partial class PlesnaSkolaContextModelSnapshot : ModelSnapshot
+    [Migration("20191214182210_pravdanja_plesaci")]
+    partial class pravdanja_plesaci
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

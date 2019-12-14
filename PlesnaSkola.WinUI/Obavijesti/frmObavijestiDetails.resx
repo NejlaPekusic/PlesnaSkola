@@ -117,7 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="errorProvider1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  <metadata name="openFileDialog1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
+  <data name="openFileDialog1.Filter" xml:space="preserve">
+    <value>Documents and Images|*.doc;*.docx;*.xls;*.xlsx;*.pdf;*.jpg;*.png;*.gif;*.bmp;*.tif;*.tiff;*.jpeg|Documents|*.doc;*.docx;*.xls;*.xlsx;*.pdf|Images|*.jpg;*.png;*.gif;*.bmp;*.tif;*.tiff;*.jpeg|All Files|*.*</value>
+  </data>
 </root>

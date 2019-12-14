@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PlesnaSkola.WebAPI.Models;
 
 namespace PlesnaSkola.WebAPI.Migrations
 {
     [DbContext(typeof(PlesnaSkolaContext))]
-    partial class PlesnaSkolaContextModelSnapshot : ModelSnapshot
+    [Migration("20191214170835_obavijest_filename")]
+    partial class obavijest_filename
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -179,11 +181,13 @@ namespace PlesnaSkola.WebAPI.Migrations
 
                     b.Property<DateTime>("DatumDo");
 
-                    b.Property<DateTime>("DatumIzdavanja");
-
                     b.Property<DateTime>("DatumOd");
 
-                    b.Property<string>("Opis");
+                    b.Property<string>("Ime");
+
+                    b.Property<string>("NazivSkole");
+
+                    b.Property<string>("Prezime");
 
                     b.Property<int>("VoditeljId");
 
@@ -192,25 +196,6 @@ namespace PlesnaSkola.WebAPI.Migrations
                     b.HasIndex("VoditeljId");
 
                     b.ToTable("Pravdanja");
-                });
-
-            modelBuilder.Entity("PlesnaSkola.WebAPI.Models.PravdanjaPlesaci", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("PlesacId");
-
-                    b.Property<int>("PravdanjeId");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("PlesacId");
-
-                    b.HasIndex("PravdanjeId");
-
-                    b.ToTable("PravdanjaPlesaci");
                 });
 
             modelBuilder.Entity("PlesnaSkola.WebAPI.Models.Prisustva", b =>
@@ -224,8 +209,6 @@ namespace PlesnaSkola.WebAPI.Migrations
                     b.Property<int>("TreningId");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("PlesacId");
 
                     b.HasIndex("TreningId");
 
@@ -420,27 +403,9 @@ namespace PlesnaSkola.WebAPI.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("PlesnaSkola.WebAPI.Models.PravdanjaPlesaci", b =>
-                {
-                    b.HasOne("PlesnaSkola.WebAPI.Models.Plesaci", "Plesac")
-                        .WithMany()
-                        .HasForeignKey("PlesacId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("PlesnaSkola.WebAPI.Models.Pravdanja", "Pravdanje")
-                        .WithMany("Plesaci")
-                        .HasForeignKey("PravdanjeId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
             modelBuilder.Entity("PlesnaSkola.WebAPI.Models.Prisustva", b =>
                 {
-                    b.HasOne("PlesnaSkola.WebAPI.Models.Plesaci", "Plesac")
-                        .WithMany()
-                        .HasForeignKey("PlesacId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("PlesnaSkola.WebAPI.Models.Treninzi", "Trening")
+                    b.HasOne("PlesnaSkola.WebAPI.Models.Treninzi")
                         .WithMany("Prisustva")
                         .HasForeignKey("TreningId")
                         .OnDelete(DeleteBehavior.Cascade);

@@ -27,6 +27,7 @@ namespace PlesnaSkola.WebAPI.Mapper
             CreateMap<Uplate, Model.Uplate>();
             CreateMap<Voditelji, Model.Voditelji>();
             CreateMap<Prisustva, Model.Prisustva>();
+            CreateMap<PravdanjaPlesaci, Model.PravdanjaPlesaci>();
 
             CreateMap<Korisnici, Model.Requests.KorisniciInsertRequest>().ReverseMap();
             CreateMap<Korisnici, Model.Requests.KorisniciUpdateRequest>().ReverseMap();
@@ -46,6 +47,8 @@ namespace PlesnaSkola.WebAPI.Mapper
             CreateMap<Model.Voditelji, Voditelji>();
             CreateMap<Model.Muzika, Muzika>();
             CreateMap<Model.Prisustva, Prisustva>();
+            CreateMap<Model.Korisnici_Basic, Korisnici>();
+            CreateMap<Model.PravdanjaPlesaci, PravdanjaPlesaci>();
         }
     }
 }

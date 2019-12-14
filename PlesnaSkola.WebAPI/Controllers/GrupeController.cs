@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -12,6 +13,7 @@ namespace PlesnaSkola.WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class GrupeController : ControllerBase
     {
         private readonly IGrupeService _service;
@@ -34,6 +36,7 @@ namespace PlesnaSkola.WebAPI.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Voditelj,Trener")]
         public Model.Grupe Insert([FromBody] Model.Requests.GrupeInsertRequest request)
         {
             return _service.Insert(request);
@@ -41,6 +44,7 @@ namespace PlesnaSkola.WebAPI.Controllers
 
 
         [HttpPut("{Id}")]
+        [Authorize(Roles = "Voditelj,Trener")]
         public Model.Grupe Update(int Id, [FromBody] Model.Requests.GrupeInsertRequest request)
         {
             return _service.Update(Id, request);

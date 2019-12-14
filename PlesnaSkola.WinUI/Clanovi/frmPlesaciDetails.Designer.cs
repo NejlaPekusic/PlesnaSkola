@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.txtIme = new System.Windows.Forms.TextBox();
@@ -60,9 +61,11 @@
             this.label13 = new System.Windows.Forms.Label();
             this.txtBrojObuce = new System.Windows.Forms.TextBox();
             this.chbAktivan = new System.Windows.Forms.CheckBox();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.gbxDodatniPodaci.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // label2
@@ -89,6 +92,7 @@
             this.txtIme.Name = "txtIme";
             this.txtIme.Size = new System.Drawing.Size(149, 20);
             this.txtIme.TabIndex = 4;
+            this.txtIme.Validating += new System.ComponentModel.CancelEventHandler(this.txtIme_Validating);
             // 
             // txtPrezime
             // 
@@ -96,6 +100,7 @@
             this.txtPrezime.Name = "txtPrezime";
             this.txtPrezime.Size = new System.Drawing.Size(149, 20);
             this.txtPrezime.TabIndex = 5;
+            this.txtPrezime.Validating += new System.ComponentModel.CancelEventHandler(this.txtPrezime_Validating);
             // 
             // txtMail
             // 
@@ -103,6 +108,7 @@
             this.txtMail.Name = "txtMail";
             this.txtMail.Size = new System.Drawing.Size(149, 20);
             this.txtMail.TabIndex = 7;
+            this.txtMail.Validating += new System.ComponentModel.CancelEventHandler(this.txtMail_Validating);
             // 
             // label4
             // 
@@ -241,6 +247,7 @@
             this.txtBrojPasosa.Name = "txtBrojPasosa";
             this.txtBrojPasosa.Size = new System.Drawing.Size(149, 20);
             this.txtBrojPasosa.TabIndex = 17;
+            this.txtBrojPasosa.Validating += new System.ComponentModel.CancelEventHandler(this.txtBrojPasosa_Validating);
             // 
             // gbxDodatniPodaci
             // 
@@ -289,6 +296,7 @@
             this.cmbRoditelj.Name = "cmbRoditelj";
             this.cmbRoditelj.Size = new System.Drawing.Size(149, 21);
             this.cmbRoditelj.TabIndex = 29;
+            this.cmbRoditelj.Validating += new System.ComponentModel.CancelEventHandler(this.cmbRoditelj_Validating);
             // 
             // txtNazivSkole
             // 
@@ -312,6 +320,7 @@
             this.txtBrojOdjece.Name = "txtBrojOdjece";
             this.txtBrojOdjece.Size = new System.Drawing.Size(149, 20);
             this.txtBrojOdjece.TabIndex = 20;
+            this.txtBrojOdjece.Validating += new System.ComponentModel.CancelEventHandler(this.txtBrojOdjece_Validating);
             // 
             // label11
             // 
@@ -369,6 +378,10 @@
             this.chbAktivan.UseVisualStyleBackColor = true;
             this.chbAktivan.Visible = false;
             // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
             // frmPlesaciDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -391,6 +404,7 @@
             this.groupBox2.PerformLayout();
             this.gbxDodatniPodaci.ResumeLayout(false);
             this.gbxDodatniPodaci.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -429,5 +443,6 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.TextBox txtBrojObuce;
         private System.Windows.Forms.Button btnDodajRoditelja;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }

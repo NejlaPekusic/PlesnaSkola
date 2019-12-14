@@ -34,7 +34,7 @@ namespace PlesnaSkola.WebAPI.Services
                 if (request.IncludeClanovi)
                     query = query.Where(x => x.Roditelj != null || x.Plesac != null);
                 else if (request.IncludePlesaci)
-                    query = query.Where(x => x.Plesac != null);
+                    query = query.Where(x => x.Plesac != null).Include(x => x.Plesac.Grupa);
                 else if (request.IncludeAsistenti)
                     query = query.Where(x => x.Asistent != null);
                 else if (request.IncludeUposlenici)
@@ -45,7 +45,7 @@ namespace PlesnaSkola.WebAPI.Services
                     query = query.Where(x => x.Trener != null);
             }
 
-            if(request.GrupaId != 0)
+            if (request.GrupaId != 0)
             {
                 query = query.Where(x => x.Plesac.GrupaId == request.GrupaId);
             }
@@ -184,7 +184,13 @@ namespace PlesnaSkola.WebAPI.Services
 
         public Model.Korisnici Autentifikacija(string username, string pass)
         {
-            var korisnik = _context.Korisnici.FirstOrDefault(x => x.Username == username);
+            var korisnik = _context.Korisnici
+                .Include(x => x.Asistent)
+                .Include(x => x.Trener)
+                .Include(x => x.Voditelj)
+                .Include(x => x.Plesac)
+                .Include(x => x.Roditelj)
+                .FirstOrDefault(x => x.Username == username);
 
             if (korisnik != null)
             {

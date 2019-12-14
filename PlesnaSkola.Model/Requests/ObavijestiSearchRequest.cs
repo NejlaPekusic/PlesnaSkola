@@ -6,6 +6,6 @@ namespace PlesnaSkola.Model.Requests
 {
     public class ObavijestiSearchRequest
     {
-
+        public string Naslov { get; set; }
     }
 }

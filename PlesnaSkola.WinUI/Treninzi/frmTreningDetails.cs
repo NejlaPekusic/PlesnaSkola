@@ -143,7 +143,7 @@ namespace PlesnaSkola.WinUI.Treninzi
                 GrupaId = (cmbGrupa.SelectedItem as Model.Grupe).GrupaId,
                 TrenerId = (cmbTrener.SelectedItem as Model.Korisnici).KorisnikId,
                 Sala = (Sala)cmbSala.SelectedItem,
-                DatumOdrzavanja = dtpDatum.Value,
+                DatumOdrzavanja = dtpDatum.Value.Date,
                 SatnicaDo = dtpSatnicaDo.Value.TimeOfDay,
                 SatnicaOd = dtpSatnicaOd.Value.TimeOfDay,
                 Prisustva = clbPrisustvo.CheckedItems.Cast<Model.Korisnici>().Select(x => new Prisustva

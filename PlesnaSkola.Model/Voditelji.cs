@@ -10,5 +10,10 @@ namespace PlesnaSkola.Model
         public int Id { get; set; }
         public Korisnici_Basic Korisnik { get; set; }
         public string Telefon { get; set; }
+
+        public override string ToString()
+        {
+            return Korisnik.Ime + " " + Korisnik.Prezime;
+        }
     }
 }

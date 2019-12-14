@@ -254,6 +254,7 @@
             this.Name = "frmRoditeljiDetails";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Detalji člana";
+            this.Load += new System.EventHandler(this.frmRoditeljiDetails_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);

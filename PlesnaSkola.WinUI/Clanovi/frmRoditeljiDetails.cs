@@ -24,13 +24,16 @@ namespace PlesnaSkola.WinUI.Clanovi
         {
             InitializeComponent();
             _korisnikId = korisnikId;
+
+            chbAktivan.Visible = true;
+            btnDodaj.Text = "Snimi";
         }
 
         private async void btnDodaj_Click(object sender, EventArgs e)
         {
             var request = new Model.Requests.KorisniciInsertRequest
             {
-                Aktivan = true,
+                Aktivan = chbAktivan.Checked,
                 BrojPasosa = txtBrojPasosa.Text,
                 DatumRodjenja = dtpDatumRodjenja.Value.Date,
                 Ime = txtIme.Text,
@@ -42,11 +45,50 @@ namespace PlesnaSkola.WinUI.Clanovi
                 Roditelj = new Model.Roditelji()
             };
 
-            var entity = await _serviceKorisnici.Insert<Model.Korisnici>(request);
-            if(entity != null)
+
+            if (_korisnikId == 0)
             {
-                MessageBox.Show("Roditelj dodan.", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                DialogResult = DialogResult.OK;
+                var entity = await _serviceKorisnici.Insert<Model.Korisnici>(request);
+                if (entity != null)
+                {
+                    MessageBox.Show("Roditelj dodan.", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    DialogResult = DialogResult.OK;
+                }
+            }
+            else
+            {
+                var entity = await _serviceKorisnici.Update<Model.Korisnici>(_korisnikId, request);
+                if (entity != null)
+                {
+                    MessageBox.Show("Roditelj izmijenjen.", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    DialogResult = DialogResult.OK;
+                }
+            }
+        }
+
+        private async void frmRoditeljiDetails_Load(object sender, EventArgs e)
+        {
+            if (_korisnikId != 0)
+            {
+                await UcitajRoditelja();
+            }
+        }
+
+        private async Task UcitajRoditelja()
+        {
+            var entity = await _serviceKorisnici.GetById<Model.Korisnici>(_korisnikId);
+            if (entity != null)
+            {
+                txtIme.Text = entity.Ime;
+                txtPrezime.Text = entity.Prezime;
+                txtKorisnickoIme.Text = entity.Username;
+                txtMail.Text = entity.Mail;
+                txtBrojPasosa.Text = entity.BrojPasosa;
+                if (entity.DatumRodjenja.HasValue)
+                    dtpDatumRodjenja.Value = entity.DatumRodjenja.Value;
+
+                chbAktivan.Checked = entity.Aktivan ?? false;
+
             }
         }
     }

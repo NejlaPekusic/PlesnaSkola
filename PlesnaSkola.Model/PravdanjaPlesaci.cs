@@ -1,14 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.Text;
 
 namespace PlesnaSkola.Model
 {
-    public class Prisustva
+    public class PravdanjaPlesaci
     {
         public int Id { get; set; }
         public int PlesacId { get; set; }
-        public int TreningId { get; set; }
+        public int PravdanjeId { get; set; }
     }
 }

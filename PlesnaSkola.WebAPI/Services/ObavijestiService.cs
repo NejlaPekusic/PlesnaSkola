@@ -12,16 +12,23 @@ namespace PlesnaSkola.WebAPI.Services
     {
         private readonly PlesnaSkolaContext _context;
         private readonly IMapper _mapper;
+        private readonly IKorisniciService _korisniciService;
 
-        public ObavijestiService(PlesnaSkolaContext context, IMapper mapper)
+        public ObavijestiService(PlesnaSkolaContext context, IMapper mapper, IKorisniciService korisniciService)
         {
             _context = context;
             _mapper = mapper;
+            _korisniciService = korisniciService;
         }
 
         public List<Model.Obavijesti> Get(ObavijestiSearchRequest request)
         {
             var query = _context.Obavijesti.AsQueryable();
+
+            if(!string.IsNullOrEmpty(request.Naslov))
+            {
+                query = query.Where(x => x.Naslov.Contains(request.Naslov));
+            }
 
             var list = query.ToList();
 
@@ -38,6 +45,7 @@ namespace PlesnaSkola.WebAPI.Services
         public Model.Obavijesti Insert(ObavijestiInsertRequest request)
         {
             var entity = _mapper.Map<Models.Obavijesti>(request);
+            entity.KorisnikId = _korisniciService.GetPrijavljeniKorisnik().KorisnikId;
             _context.Obavijesti.Add(entity);
             _context.SaveChanges();
 

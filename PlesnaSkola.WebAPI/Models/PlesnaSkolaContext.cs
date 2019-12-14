@@ -26,6 +26,7 @@ namespace PlesnaSkola.WebAPI.Models
         public virtual DbSet<Uplate> Uplate { get; set; }
         public virtual DbSet<Voditelji> Voditelji { get; set; }
         public virtual DbSet<Prisustva> Prisustva { get; set; }
+        public virtual DbSet<PravdanjaPlesaci> PravdanjaPlesaci { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

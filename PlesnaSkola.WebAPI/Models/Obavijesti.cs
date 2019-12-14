@@ -14,6 +14,7 @@ namespace PlesnaSkola.WebAPI.Models
         public string Naslov { get; set; }
         public string Sadrzaj { get; set; }
         public byte[] Prilog { get; set; }
+        public string PrilogFileName { get; set; }
 
         public int KorisnikId { get; set; }
         public Korisnici Korisnik { get; set; }

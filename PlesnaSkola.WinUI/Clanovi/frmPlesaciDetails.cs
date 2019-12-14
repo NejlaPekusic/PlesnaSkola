@@ -4,7 +4,9 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net.Mail;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -119,6 +121,9 @@ namespace PlesnaSkola.WinUI.Clanovi
 
         private async void btnDodaj_Click(object sender, EventArgs e)
         {
+            if (!ValidateChildren())
+                return;
+
             int? RoditeljId = null;
             if (cmbRoditelj.SelectedIndex > 0)
             {
@@ -165,6 +170,121 @@ namespace PlesnaSkola.WinUI.Clanovi
                     MessageBox.Show("Plesač izmijenjen.", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     DialogResult = DialogResult.OK;
                 }
+            }
+        }
+
+        private void txtIme_Validating(object sender, CancelEventArgs e)
+        {
+            TextBox control = sender as TextBox;
+            if(string.IsNullOrEmpty(control.Text))
+            {
+                errorProvider1.SetError(control, Properties.Resources.Validation_Required);
+                e.Cancel = true;
+            }
+            else
+            {
+                errorProvider1.SetError(control, null);
+            }
+        }
+
+        private void txtPrezime_Validating(object sender, CancelEventArgs e)
+        {
+            TextBox control = sender as TextBox;
+            if (string.IsNullOrEmpty(control.Text))
+            {
+                errorProvider1.SetError(control, Properties.Resources.Validation_Required);
+                e.Cancel = true;
+            }
+            else
+            {
+                errorProvider1.SetError(control, null);
+            }
+        }
+
+        private void txtMail_Validating(object sender, CancelEventArgs e)
+        {
+            TextBox control = sender as TextBox;
+            if (string.IsNullOrEmpty(control.Text))
+            {
+                errorProvider1.SetError(control, Properties.Resources.Validation_Required);
+                e.Cancel = true;
+            }
+            else
+            {
+                try
+                {
+                    MailAddress mail = new MailAddress(control.Text);
+                    errorProvider1.SetError(control, null);
+                }
+                catch (Exception)
+                {
+                    errorProvider1.SetError(control, Properties.Resources.Validation_EmailInvalid);
+                    e.Cancel = true;
+                }
+
+            }
+        }
+
+        private void txtBrojPasosa_Validating(object sender, CancelEventArgs e)
+        {
+            TextBox control = sender as TextBox;
+            if (string.IsNullOrEmpty(control.Text))
+            {
+                errorProvider1.SetError(control, Properties.Resources.Validation_Required);
+                e.Cancel = true;
+            }
+            else
+            {
+                Regex expr = new Regex(@"[A-Z][0-9]{7}");
+                if(expr.IsMatch(control.Text))
+                {
+                    errorProvider1.SetError(control, null);
+                }
+                else
+                {
+                    errorProvider1.SetError(control, Properties.Resources.Validation_PassportInvalid);
+                    e.Cancel = true;
+                }
+
+
+            }
+        }
+
+        private void txtBrojOdjece_Validating(object sender, CancelEventArgs e)
+        {
+            TextBox control = sender as TextBox;
+            if (string.IsNullOrEmpty(control.Text))
+            {
+                errorProvider1.SetError(control, Properties.Resources.Validation_Required);
+                e.Cancel = true;
+            }
+            else if (!int.TryParse(control.Text, out int broj))
+            {
+                errorProvider1.SetError(control, Properties.Resources.Validation_Number);
+                e.Cancel = true;
+            }
+            else if (broj < 4 || broj > 44)
+            {
+                errorProvider1.SetError(control, "Unos mora biti u rasponu od 4 do 44.");
+                e.Cancel = true;
+            }
+            else
+            {
+                errorProvider1.SetError(control, null);
+            }
+        }
+
+        private void cmbRoditelj_Validating(object sender, CancelEventArgs e)
+        {
+            ComboBox control = sender as ComboBox;
+            if(control.SelectedIndex <= 0)
+            {
+                errorProvider1.SetError(control, Properties.Resources.Validation_Required);
+                e.Cancel = true;
+            }
+            else
+            {
+                errorProvider1.SetError(control, null);
             }
         }
     }
