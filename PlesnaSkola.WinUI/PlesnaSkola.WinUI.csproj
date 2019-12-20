@@ -146,6 +146,18 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Radionice\frmRadionice.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Radionice\frmRadionice.Designer.cs">
+      <DependentUpon>frmRadionice.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Radionice\frmRadionicaDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Radionice\frmRadionicaDetails.Designer.cs">
+      <DependentUpon>frmRadionicaDetails.cs</DependentUpon>
+    </Compile>
     <Compile Include="Treninzi\frmTreningDetails.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -222,6 +234,12 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Radionice\frmRadionice.resx">
+      <DependentUpon>frmRadionice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Radionice\frmRadionicaDetails.resx">
+      <DependentUpon>frmRadionicaDetails.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Treninzi\frmTreningDetails.resx">
       <DependentUpon>frmTreningDetails.cs</DependentUpon>
     </EmbeddedResource>

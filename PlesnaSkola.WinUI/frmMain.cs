@@ -113,5 +113,18 @@ namespace PlesnaSkola.WinUI
             var frm = new Pravdanja.frmPravdanjeDetails();
             frm.ShowDialog();
         }
+
+        private void prikažiRadioniceToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var frm = new Radionice.frmRadionice();
+            frm.MdiParent = this;
+            frm.Show();
+        }
+
+        private void dodajRadionicuToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var frm = new Radionice.frmRadionicaDetails();
+            frm.ShowDialog();
+        }
     }
 }

@@ -15,7 +15,6 @@ namespace PlesnaSkola.WebAPI.Models
         public DateTime DatumOdrzavanja { get; set; }
         public int BrojUcesnika { get; set; }
         public int AsistentId { get; set; }
-        public int RasporedId { get; set; }
 
         public Asistenti Asistent { get; set; }
     }

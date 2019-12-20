@@ -6,6 +6,6 @@ namespace PlesnaSkola.Model.Requests
 {
     public class RadioniceSearchRequest
     {
-
+        public string NazivRadionice { get; set; }
     }
 }

@@ -52,6 +52,9 @@
             this.pravdanjaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.prikažiPravdanjaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dodajPravdanjeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.radioniceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.prikažiRadioniceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dodajRadionicuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -65,7 +68,8 @@
             this.treninziToolStripMenuItem,
             this.toolStripMenuItem1,
             this.obavijestiToolStripMenuItem,
-            this.pravdanjaToolStripMenuItem});
+            this.pravdanjaToolStripMenuItem,
+            this.radioniceToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(800, 24);
@@ -246,6 +250,29 @@
             this.dodajPravdanjeToolStripMenuItem.Text = "Dodaj pravdanje";
             this.dodajPravdanjeToolStripMenuItem.Click += new System.EventHandler(this.dodajPravdanjeToolStripMenuItem_Click);
             // 
+            // radioniceToolStripMenuItem
+            // 
+            this.radioniceToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.prikažiRadioniceToolStripMenuItem,
+            this.dodajRadionicuToolStripMenuItem});
+            this.radioniceToolStripMenuItem.Name = "radioniceToolStripMenuItem";
+            this.radioniceToolStripMenuItem.Size = new System.Drawing.Size(71, 20);
+            this.radioniceToolStripMenuItem.Text = "Radionice";
+            // 
+            // prikažiRadioniceToolStripMenuItem
+            // 
+            this.prikažiRadioniceToolStripMenuItem.Name = "prikažiRadioniceToolStripMenuItem";
+            this.prikažiRadioniceToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.prikažiRadioniceToolStripMenuItem.Text = "Prikaži radionice";
+            this.prikažiRadioniceToolStripMenuItem.Click += new System.EventHandler(this.prikažiRadioniceToolStripMenuItem_Click);
+            // 
+            // dodajRadionicuToolStripMenuItem
+            // 
+            this.dodajRadionicuToolStripMenuItem.Name = "dodajRadionicuToolStripMenuItem";
+            this.dodajRadionicuToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.dodajRadionicuToolStripMenuItem.Text = "Dodaj radionicu";
+            this.dodajRadionicuToolStripMenuItem.Click += new System.EventHandler(this.dodajRadionicuToolStripMenuItem_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -290,5 +317,8 @@
         private System.Windows.Forms.ToolStripMenuItem pravdanjaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem prikažiPravdanjaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem dodajPravdanjeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem radioniceToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem prikažiRadioniceToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem dodajRadionicuToolStripMenuItem;
     }
 }
