@@ -100,5 +100,19 @@ namespace PlesnaSkola.WinUI.Obavijesti
 
             }
         }
+
+        private void txtNaslov_Validating(object sender, CancelEventArgs e)
+        {
+            TextBox control = sender as TextBox;
+            if (string.IsNullOrEmpty(control.Text))
+            {
+                errorProvider1.SetError(control, Properties.Resources.Validation_Required);
+                e.Cancel = true;
+            }
+            else
+            {
+                errorProvider1.SetError(control, null);
+            }
+        }
     }
 }

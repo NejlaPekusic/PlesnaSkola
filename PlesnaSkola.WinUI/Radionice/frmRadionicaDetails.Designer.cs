@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.btnDodaj = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -44,7 +45,9 @@
             this.dtpDatum = new System.Windows.Forms.DateTimePicker();
             this.cmbAsistent = new System.Windows.Forms.ComboBox();
             this.lblAsistent = new System.Windows.Forms.Label();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // btnDodaj
@@ -94,6 +97,7 @@
             this.txtNazivRadionice.Name = "txtNazivRadionice";
             this.txtNazivRadionice.Size = new System.Drawing.Size(149, 20);
             this.txtNazivRadionice.TabIndex = 42;
+            this.txtNazivRadionice.Validating += new System.ComponentModel.CancelEventHandler(this.txtNazivRadionice_Validating);
             // 
             // lblBrojUcesnika
             // 
@@ -110,6 +114,7 @@
             this.txtBrojUcesnika.Name = "txtBrojUcesnika";
             this.txtBrojUcesnika.Size = new System.Drawing.Size(65, 20);
             this.txtBrojUcesnika.TabIndex = 40;
+            this.txtBrojUcesnika.Validating += new System.ComponentModel.CancelEventHandler(this.txtBrojUcesnika_Validating);
             // 
             // lblMjesto
             // 
@@ -126,6 +131,7 @@
             this.txtMjestoOdrzavanja.Name = "txtMjestoOdrzavanja";
             this.txtMjestoOdrzavanja.Size = new System.Drawing.Size(149, 20);
             this.txtMjestoOdrzavanja.TabIndex = 38;
+            this.txtMjestoOdrzavanja.Validating += new System.ComponentModel.CancelEventHandler(this.txtMjestoOdrzavanja_Validating);
             // 
             // lblOpis
             // 
@@ -189,6 +195,7 @@
             this.cmbAsistent.Name = "cmbAsistent";
             this.cmbAsistent.Size = new System.Drawing.Size(149, 21);
             this.cmbAsistent.TabIndex = 29;
+            this.cmbAsistent.Validating += new System.ComponentModel.CancelEventHandler(this.cmbAsistent_Validating);
             // 
             // lblAsistent
             // 
@@ -198,6 +205,10 @@
             this.lblAsistent.Size = new System.Drawing.Size(44, 13);
             this.lblAsistent.TabIndex = 22;
             this.lblAsistent.Text = "Asistent";
+            // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
             // 
             // frmRadionicaDetails
             // 
@@ -213,6 +224,7 @@
             this.Text = "Detalji radionice";
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -234,5 +246,6 @@
         private System.Windows.Forms.TextBox txtBrojUcesnika;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtNazivRadionice;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }

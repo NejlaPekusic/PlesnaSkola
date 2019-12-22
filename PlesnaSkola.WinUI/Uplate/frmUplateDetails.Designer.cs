@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label2 = new System.Windows.Forms.Label();
             this.txtIznos = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -40,7 +41,9 @@
             this.cmbPlesaci = new System.Windows.Forms.ComboBox();
             this.lblOpis = new System.Windows.Forms.Label();
             this.txtOpis = new System.Windows.Forms.TextBox();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // label2
@@ -58,6 +61,7 @@
             this.txtIznos.Name = "txtIznos";
             this.txtIznos.Size = new System.Drawing.Size(149, 20);
             this.txtIznos.TabIndex = 3;
+            this.txtIznos.Validating += new System.ComponentModel.CancelEventHandler(this.txtIznos_Validating);
             // 
             // label4
             // 
@@ -124,6 +128,7 @@
             this.cmbVrstaUplate.Size = new System.Drawing.Size(149, 21);
             this.cmbVrstaUplate.TabIndex = 4;
             this.cmbVrstaUplate.SelectedIndexChanged += new System.EventHandler(this.cmbVrstaUplate_SelectedIndexChanged);
+            this.cmbVrstaUplate.Validating += new System.ComponentModel.CancelEventHandler(this.cmbVrstaUplate_Validating);
             // 
             // label1
             // 
@@ -141,6 +146,7 @@
             this.cmbPlesaci.Name = "cmbPlesaci";
             this.cmbPlesaci.Size = new System.Drawing.Size(149, 21);
             this.cmbPlesaci.TabIndex = 1;
+            this.cmbPlesaci.Validating += new System.ComponentModel.CancelEventHandler(this.cmbPlesaci_Validating);
             // 
             // lblOpis
             // 
@@ -161,6 +167,10 @@
             this.txtOpis.TabIndex = 5;
             this.txtOpis.Visible = false;
             // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
             // frmUplateDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -176,6 +186,7 @@
             this.Load += new System.EventHandler(this.frmUplateDetails_Load);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -193,5 +204,6 @@
         private System.Windows.Forms.ComboBox cmbPlesaci;
         private System.Windows.Forms.ComboBox cmbVrstaUplate;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }

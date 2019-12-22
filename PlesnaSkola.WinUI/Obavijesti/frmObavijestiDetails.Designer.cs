@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmObavijestiDetails));
             this.label2 = new System.Windows.Forms.Label();
             this.txtNaslov = new System.Windows.Forms.TextBox();
@@ -39,7 +40,9 @@
             this.btnOdaberi = new System.Windows.Forms.Button();
             this.label13 = new System.Windows.Forms.Label();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // label2
@@ -57,6 +60,7 @@
             this.txtNaslov.Name = "txtNaslov";
             this.txtNaslov.Size = new System.Drawing.Size(149, 20);
             this.txtNaslov.TabIndex = 4;
+            this.txtNaslov.Validating += new System.ComponentModel.CancelEventHandler(this.txtNaslov_Validating);
             // 
             // btnDodaj
             // 
@@ -133,6 +137,10 @@
             this.openFileDialog1.FileName = "openFileDialog1";
             this.openFileDialog1.Filter = resources.GetString("openFileDialog1.Filter");
             // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
             // frmObavijestiDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -148,6 +156,7 @@
             this.Load += new System.EventHandler(this.frmObavijestiDetails_Load);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -163,5 +172,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtSadrzaj;
         private System.Windows.Forms.Label lblFileName;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }

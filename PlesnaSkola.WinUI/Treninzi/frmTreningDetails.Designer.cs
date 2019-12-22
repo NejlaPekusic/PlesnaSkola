@@ -28,24 +28,27 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.btnDodaj = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.cmbTrener = new System.Windows.Forms.ComboBox();
-            this.label14 = new System.Windows.Forms.Label();
-            this.cmbGrupa = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.dtpDatum = new System.Windows.Forms.DateTimePicker();
-            this.label2 = new System.Windows.Forms.Label();
-            this.dtpSatnicaOd = new System.Windows.Forms.DateTimePicker();
-            this.label3 = new System.Windows.Forms.Label();
-            this.dtpSatnicaDo = new System.Windows.Forms.DateTimePicker();
-            this.label4 = new System.Windows.Forms.Label();
             this.cmbSala = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.dtpSatnicaDo = new System.Windows.Forms.DateTimePicker();
+            this.label3 = new System.Windows.Forms.Label();
+            this.dtpSatnicaOd = new System.Windows.Forms.DateTimePicker();
+            this.label2 = new System.Windows.Forms.Label();
+            this.dtpDatum = new System.Windows.Forms.DateTimePicker();
+            this.cmbGrupa = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.cmbTrener = new System.Windows.Forms.ComboBox();
+            this.label14 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.clbPrisustvo = new System.Windows.Forms.CheckedListBox();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // btnDodaj
@@ -79,78 +82,33 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Podaci o treningu";
             // 
-            // cmbTrener
+            // cmbSala
             // 
-            this.cmbTrener.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbTrener.FormattingEnabled = true;
-            this.cmbTrener.Location = new System.Drawing.Point(102, 54);
-            this.cmbTrener.Name = "cmbTrener";
-            this.cmbTrener.Size = new System.Drawing.Size(149, 21);
-            this.cmbTrener.TabIndex = 29;
+            this.cmbSala.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbSala.FormattingEnabled = true;
+            this.cmbSala.Location = new System.Drawing.Point(102, 150);
+            this.cmbSala.Name = "cmbSala";
+            this.cmbSala.Size = new System.Drawing.Size(149, 21);
+            this.cmbSala.TabIndex = 39;
+            this.cmbSala.Validating += new System.ComponentModel.CancelEventHandler(this.cmbSala_Validating);
             // 
-            // label14
+            // label5
             // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(45, 57);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(38, 13);
-            this.label14.TabIndex = 22;
-            this.label14.Text = "Trener";
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(55, 153);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(28, 13);
+            this.label5.TabIndex = 38;
+            this.label5.Text = "Sala";
             // 
-            // cmbGrupa
+            // label4
             // 
-            this.cmbGrupa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbGrupa.FormattingEnabled = true;
-            this.cmbGrupa.Location = new System.Drawing.Point(102, 22);
-            this.cmbGrupa.Name = "cmbGrupa";
-            this.cmbGrupa.Size = new System.Drawing.Size(149, 21);
-            this.cmbGrupa.TabIndex = 31;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(47, 25);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(36, 13);
-            this.label1.TabIndex = 30;
-            this.label1.Text = "Grupa";
-            // 
-            // dtpDatum
-            // 
-            this.dtpDatum.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDatum.Location = new System.Drawing.Point(102, 88);
-            this.dtpDatum.Name = "dtpDatum";
-            this.dtpDatum.Size = new System.Drawing.Size(149, 20);
-            this.dtpDatum.TabIndex = 32;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(45, 91);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(38, 13);
-            this.label2.TabIndex = 33;
-            this.label2.Text = "Datum";
-            // 
-            // dtpSatnicaOd
-            // 
-            this.dtpSatnicaOd.CustomFormat = "HH:mm";
-            this.dtpSatnicaOd.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpSatnicaOd.Location = new System.Drawing.Point(102, 118);
-            this.dtpSatnicaOd.Name = "dtpSatnicaOd";
-            this.dtpSatnicaOd.ShowUpDown = true;
-            this.dtpSatnicaOd.Size = new System.Drawing.Size(65, 20);
-            this.dtpSatnicaOd.TabIndex = 34;
-            this.dtpSatnicaOd.Value = new System.DateTime(2019, 12, 7, 0, 0, 0, 0);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(40, 121);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(43, 13);
-            this.label3.TabIndex = 35;
-            this.label3.Text = "Satnica";
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(169, 121);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(16, 13);
+            this.label4.TabIndex = 37;
+            this.label4.Text = " - ";
             // 
             // dtpSatnicaDo
             // 
@@ -163,32 +121,80 @@
             this.dtpSatnicaDo.TabIndex = 36;
             this.dtpSatnicaDo.Value = new System.DateTime(2019, 12, 7, 0, 0, 0, 0);
             // 
-            // label4
+            // label3
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(169, 121);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(16, 13);
-            this.label4.TabIndex = 37;
-            this.label4.Text = " - ";
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(40, 121);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(43, 13);
+            this.label3.TabIndex = 35;
+            this.label3.Text = "Satnica";
             // 
-            // cmbSala
+            // dtpSatnicaOd
             // 
-            this.cmbSala.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbSala.FormattingEnabled = true;
-            this.cmbSala.Location = new System.Drawing.Point(102, 150);
-            this.cmbSala.Name = "cmbSala";
-            this.cmbSala.Size = new System.Drawing.Size(149, 21);
-            this.cmbSala.TabIndex = 39;
+            this.dtpSatnicaOd.CustomFormat = "HH:mm";
+            this.dtpSatnicaOd.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpSatnicaOd.Location = new System.Drawing.Point(102, 118);
+            this.dtpSatnicaOd.Name = "dtpSatnicaOd";
+            this.dtpSatnicaOd.ShowUpDown = true;
+            this.dtpSatnicaOd.Size = new System.Drawing.Size(65, 20);
+            this.dtpSatnicaOd.TabIndex = 34;
+            this.dtpSatnicaOd.Value = new System.DateTime(2019, 12, 7, 0, 0, 0, 0);
             // 
-            // label5
+            // label2
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(55, 153);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(28, 13);
-            this.label5.TabIndex = 38;
-            this.label5.Text = "Sala";
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(45, 91);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(38, 13);
+            this.label2.TabIndex = 33;
+            this.label2.Text = "Datum";
+            // 
+            // dtpDatum
+            // 
+            this.dtpDatum.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpDatum.Location = new System.Drawing.Point(102, 88);
+            this.dtpDatum.Name = "dtpDatum";
+            this.dtpDatum.Size = new System.Drawing.Size(149, 20);
+            this.dtpDatum.TabIndex = 32;
+            // 
+            // cmbGrupa
+            // 
+            this.cmbGrupa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbGrupa.FormattingEnabled = true;
+            this.cmbGrupa.Location = new System.Drawing.Point(102, 22);
+            this.cmbGrupa.Name = "cmbGrupa";
+            this.cmbGrupa.Size = new System.Drawing.Size(149, 21);
+            this.cmbGrupa.TabIndex = 31;
+            this.cmbGrupa.Validating += new System.ComponentModel.CancelEventHandler(this.cmbGrupa_Validating);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(47, 25);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(36, 13);
+            this.label1.TabIndex = 30;
+            this.label1.Text = "Grupa";
+            // 
+            // cmbTrener
+            // 
+            this.cmbTrener.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbTrener.FormattingEnabled = true;
+            this.cmbTrener.Location = new System.Drawing.Point(102, 54);
+            this.cmbTrener.Name = "cmbTrener";
+            this.cmbTrener.Size = new System.Drawing.Size(149, 21);
+            this.cmbTrener.TabIndex = 29;
+            this.cmbTrener.Validating += new System.ComponentModel.CancelEventHandler(this.cmbTrener_Validating);
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(45, 57);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(38, 13);
+            this.label14.TabIndex = 22;
+            this.label14.Text = "Trener";
             // 
             // groupBox1
             // 
@@ -208,6 +214,10 @@
             this.clbPrisustvo.Size = new System.Drawing.Size(135, 154);
             this.clbPrisustvo.TabIndex = 0;
             // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
             // frmTreningDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -225,6 +235,7 @@
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -246,5 +257,6 @@
         private System.Windows.Forms.DateTimePicker dtpSatnicaOd;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.CheckedListBox clbPrisustvo;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }

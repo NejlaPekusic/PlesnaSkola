@@ -6,6 +6,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -115,6 +116,71 @@ namespace PlesnaSkola.WinUI.Radionice
             }
         }
 
-       
+        private void txtNazivRadionice_Validating(object sender, CancelEventArgs e)
+        {
+            TextBox control = sender as TextBox;
+            if (string.IsNullOrEmpty(control.Text))
+            {
+                errorProvider1.SetError(control, Properties.Resources.Validation_Required);
+                e.Cancel = true;
+            }
+            else
+            {
+                errorProvider1.SetError(control, null);
+            }
+        }
+
+        private void txtMjestoOdrzavanja_Validating(object sender, CancelEventArgs e)
+        {
+            TextBox control = sender as TextBox;
+            if (string.IsNullOrEmpty(control.Text))
+            {
+                errorProvider1.SetError(control, Properties.Resources.Validation_Required);
+                e.Cancel = true;
+            }
+            else
+            {
+                errorProvider1.SetError(control, null);
+            }
+        }
+
+        private void txtBrojUcesnika_Validating(object sender, CancelEventArgs e)
+        {
+            TextBox control = sender as TextBox;
+            if (string.IsNullOrEmpty(control.Text))
+            {
+                errorProvider1.SetError(control, Properties.Resources.Validation_Required);
+                e.Cancel = true;
+            }
+            else
+            {
+                Regex expr = new Regex(@"[0-9]");
+                if (expr.IsMatch(control.Text))
+                {
+                    errorProvider1.SetError(control, null);
+                }
+                else
+                {
+                    errorProvider1.SetError(control, Properties.Resources.Validation_Number);
+                    e.Cancel = true;
+                }
+
+
+            }
+        }
+
+        private void cmbAsistent_Validating(object sender, CancelEventArgs e)
+        {
+            ComboBox control = sender as ComboBox;
+            if (control.SelectedIndex <= 0)
+            {
+                errorProvider1.SetError(control, Properties.Resources.Validation_Required);
+                e.Cancel = true;
+            }
+            else
+            {
+                errorProvider1.SetError(control, null);
+            }
+        }
     }
 }

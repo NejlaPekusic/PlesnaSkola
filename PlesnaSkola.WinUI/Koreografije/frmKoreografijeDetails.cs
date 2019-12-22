@@ -165,5 +165,80 @@ namespace PlesnaSkola.WinUI.Koreografije
 
             }
         }
+
+        private void txtNaziv_Validating(object sender, CancelEventArgs e)
+        {
+            TextBox control = sender as TextBox;
+            if (string.IsNullOrEmpty(control.Text))
+            {
+                errorProvider1.SetError(control, Properties.Resources.Validation_Required);
+                e.Cancel = true;
+            }
+            else
+            {
+                errorProvider1.SetError(control, null);
+            }
+        }
+
+        private void cmbStil_Validating(object sender, CancelEventArgs e)
+        {
+            ComboBox control = sender as ComboBox;
+            if (control.SelectedIndex <= 0)
+            {
+                errorProvider1.SetError(control, Properties.Resources.Validation_Required);
+                e.Cancel = true;
+            }
+            else
+            {
+                errorProvider1.SetError(control, null);
+            }
+        }
+
+        private void cmbGrupa_Validating(object sender, CancelEventArgs e)
+        {
+            ComboBox control = sender as ComboBox;
+            if (control.SelectedIndex <= 0)
+            {
+                errorProvider1.SetError(control, Properties.Resources.Validation_Required);
+                e.Cancel = true;
+            }
+            else
+            {
+                errorProvider1.SetError(control, null);
+            }
+        }
+
+        private void cmbAsistenti_Validating(object sender, CancelEventArgs e)
+        {
+            ComboBox control = sender as ComboBox;
+            if (control.SelectedIndex <= 0)
+            {
+                errorProvider1.SetError(control, Properties.Resources.Validation_Required);
+                e.Cancel = true;
+            }
+            else
+            {
+                errorProvider1.SetError(control, null);
+            }
+        }
+
+        private void txtNazivPjesme_Validating(object sender, CancelEventArgs e)
+        {
+            TextBox control = sender as TextBox;
+            if (string.IsNullOrEmpty(control.Text))
+            {
+                errorProvider1.SetError(control, Properties.Resources.Validation_Required);
+                e.Cancel = true;
+            }
+            else
+            {
+                errorProvider1.SetError(control, null);
+            }
+        }
+
+        //private void dtpTrajanje_Validating(object sender, CancelEventArgs e)
+        //{
+
+        //}
     }
 }

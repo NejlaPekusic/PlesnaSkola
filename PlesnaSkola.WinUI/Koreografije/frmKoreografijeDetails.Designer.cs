@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.txtNaziv = new System.Windows.Forms.TextBox();
@@ -39,6 +40,7 @@
             this.cmbGrupa = new System.Windows.Forms.ComboBox();
             this.cmbStil = new System.Windows.Forms.ComboBox();
             this.gbxDodatniPodaci = new System.Windows.Forms.GroupBox();
+            this.lblFileName = new System.Windows.Forms.Label();
             this.btnOdaberi = new System.Windows.Forms.Button();
             this.dtpTrajanje = new System.Windows.Forms.DateTimePicker();
             this.txtNazivPjesme = new System.Windows.Forms.TextBox();
@@ -46,9 +48,10 @@
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.lblFileName = new System.Windows.Forms.Label();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.groupBox2.SuspendLayout();
             this.gbxDodatniPodaci.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // label2
@@ -75,6 +78,7 @@
             this.txtNaziv.Name = "txtNaziv";
             this.txtNaziv.Size = new System.Drawing.Size(149, 20);
             this.txtNaziv.TabIndex = 4;
+            this.txtNaziv.Validating += new System.ComponentModel.CancelEventHandler(this.txtNaziv_Validating);
             // 
             // label4
             // 
@@ -129,6 +133,7 @@
             this.cmbAsistenti.Name = "cmbAsistenti";
             this.cmbAsistenti.Size = new System.Drawing.Size(149, 21);
             this.cmbAsistenti.TabIndex = 33;
+            this.cmbAsistenti.Validating += new System.ComponentModel.CancelEventHandler(this.cmbAsistenti_Validating);
             // 
             // cmbGrupa
             // 
@@ -138,6 +143,7 @@
             this.cmbGrupa.Name = "cmbGrupa";
             this.cmbGrupa.Size = new System.Drawing.Size(149, 21);
             this.cmbGrupa.TabIndex = 32;
+            this.cmbGrupa.Validating += new System.ComponentModel.CancelEventHandler(this.cmbGrupa_Validating);
             // 
             // cmbStil
             // 
@@ -147,6 +153,7 @@
             this.cmbStil.Name = "cmbStil";
             this.cmbStil.Size = new System.Drawing.Size(149, 21);
             this.cmbStil.TabIndex = 31;
+            this.cmbStil.Validating += new System.ComponentModel.CancelEventHandler(this.cmbStil_Validating);
             // 
             // gbxDodatniPodaci
             // 
@@ -163,6 +170,14 @@
             this.gbxDodatniPodaci.TabIndex = 19;
             this.gbxDodatniPodaci.TabStop = false;
             this.gbxDodatniPodaci.Text = "Podaci o muzici";
+            // 
+            // lblFileName
+            // 
+            this.lblFileName.AutoSize = true;
+            this.lblFileName.Location = new System.Drawing.Point(184, 93);
+            this.lblFileName.Name = "lblFileName";
+            this.lblFileName.Size = new System.Drawing.Size(0, 13);
+            this.lblFileName.TabIndex = 31;
             // 
             // btnOdaberi
             // 
@@ -184,6 +199,7 @@
             this.dtpTrajanje.Size = new System.Drawing.Size(149, 20);
             this.dtpTrajanje.TabIndex = 29;
             this.dtpTrajanje.Value = new System.DateTime(2019, 12, 7, 0, 0, 0, 0);
+            //this.dtpTrajanje.Validating += new System.ComponentModel.CancelEventHandler(this.dtpTrajanje_Validating);
             // 
             // txtNazivPjesme
             // 
@@ -191,6 +207,7 @@
             this.txtNazivPjesme.Name = "txtNazivPjesme";
             this.txtNazivPjesme.Size = new System.Drawing.Size(149, 20);
             this.txtNazivPjesme.TabIndex = 20;
+            this.txtNazivPjesme.Validating += new System.ComponentModel.CancelEventHandler(this.txtNazivPjesme_Validating);
             // 
             // label11
             // 
@@ -223,13 +240,9 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
-            // lblFileName
+            // errorProvider1
             // 
-            this.lblFileName.AutoSize = true;
-            this.lblFileName.Location = new System.Drawing.Point(184, 93);
-            this.lblFileName.Name = "lblFileName";
-            this.lblFileName.Size = new System.Drawing.Size(0, 13);
-            this.lblFileName.TabIndex = 31;
+            this.errorProvider1.ContainerControl = this;
             // 
             // frmKoreografijeDetails
             // 
@@ -249,6 +262,7 @@
             this.groupBox2.PerformLayout();
             this.gbxDodatniPodaci.ResumeLayout(false);
             this.gbxDodatniPodaci.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -273,5 +287,6 @@
         private System.Windows.Forms.DateTimePicker dtpTrajanje;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.Label lblFileName;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }

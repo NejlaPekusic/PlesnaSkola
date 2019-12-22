@@ -28,13 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label2 = new System.Windows.Forms.Label();
             this.txtNaziv = new System.Windows.Forms.TextBox();
             this.btnDodaj = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.cmbTrener = new System.Windows.Forms.ComboBox();
             this.label14 = new System.Windows.Forms.Label();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // label2
@@ -52,6 +55,7 @@
             this.txtNaziv.Name = "txtNaziv";
             this.txtNaziv.Size = new System.Drawing.Size(149, 20);
             this.txtNaziv.TabIndex = 4;
+            this.txtNaziv.Validating += new System.ComponentModel.CancelEventHandler(this.txtNaziv_Validating);
             // 
             // btnDodaj
             // 
@@ -84,6 +88,7 @@
             this.cmbTrener.Name = "cmbTrener";
             this.cmbTrener.Size = new System.Drawing.Size(149, 21);
             this.cmbTrener.TabIndex = 29;
+            this.cmbTrener.Validating += new System.ComponentModel.CancelEventHandler(this.cmbTrener_Validating);
             // 
             // label14
             // 
@@ -93,6 +98,10 @@
             this.label14.Size = new System.Drawing.Size(38, 13);
             this.label14.TabIndex = 22;
             this.label14.Text = "Trener";
+            // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
             // 
             // frmGrupeDetails
             // 
@@ -109,6 +118,7 @@
             this.Load += new System.EventHandler(this.frmGrupeDetails_Load);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -120,5 +130,6 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.ComboBox cmbTrener;
         private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }
