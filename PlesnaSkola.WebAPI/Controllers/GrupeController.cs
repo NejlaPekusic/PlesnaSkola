@@ -24,12 +24,16 @@ namespace PlesnaSkola.WebAPI.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Voditelj,Trener")]
+
         public List<Model.Grupe> Get([FromQuery] Model.Requests.GrupeSearchRequest request)
         {
             return _service.Get(request);
         }
 
         [HttpGet("{Id}")]
+        [Authorize(Roles = "Voditelj,Trener")]
+
         public Model.Grupe GetById(int Id)
         {
             return _service.GetById(Id);

@@ -13,6 +13,7 @@ namespace PlesnaSkola.WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class KorisniciController : ControllerBase
     {
         private readonly IKorisniciService _service;
