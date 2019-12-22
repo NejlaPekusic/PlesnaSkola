@@ -26,5 +26,7 @@ namespace PlesnaSkola.WebAPI.Models
         public Plesaci Plesac { get; set; }
         public Treneri Trener { get; set; }
         public Voditelji Voditelj { get; set; }
+        public byte[] Slika { get; set; }
+
     }
 }

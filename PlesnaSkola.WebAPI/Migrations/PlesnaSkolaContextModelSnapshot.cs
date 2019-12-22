@@ -99,6 +99,8 @@ namespace PlesnaSkola.WebAPI.Migrations
 
                     b.Property<string>("Prezime");
 
+                    b.Property<byte[]>("Slika");
+
                     b.Property<string>("Username");
 
                     b.HasKey("KorisnikId");

@@ -46,7 +46,7 @@ namespace PlesnaSkola.WebAPI.Controllers
 
 
         [HttpPut("{Id}")]
-        [Authorize(Roles = "Voditelj")]
+        [Authorize(Roles = "Voditelj,Roditelj,Plesac")]
         public Model.Korisnici Update(int Id, [FromBody] Model.Requests.KorisniciUpdateRequest request)
         {
             return _service.Update(Id, request);

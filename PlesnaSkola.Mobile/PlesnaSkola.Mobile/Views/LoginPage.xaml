@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PlesnaSkola.Mobile.Views.LoginPage">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Orientation="Vertical">
+
+                <StackLayout VerticalOptions="Start" HorizontalOptions="Fill">
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
+                        <ContentView Padding="0,40,0,40" VerticalOptions="FillAndExpand">
+                            <Image Source="main_logo.png" VerticalOptions="Center" HeightRequest="265" />
+                        </ContentView>
+                    </StackLayout>
+                </StackLayout>
+
+                <StackLayout HorizontalOptions="FillAndExpand" Padding="10" VerticalOptions="StartAndExpand">
+
+                    <Entry Placeholder="Korisničko ime" Text="{Binding Username}"/>
+
+                    <Entry Placeholder="Lozinka" Text="{Binding Password}" IsPassword="True"/>
+
+                    <Button Command="{Binding LoginCommand}" HorizontalOptions="FillAndExpand" Text="Prijava"/>
+                    <Label IsVisible="{Binding IsBusy}" Text="..."></Label>
+                    
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

@@ -86,7 +86,8 @@ namespace PlesnaSkola.WebAPI.Services
         {
             var entity = _context.Korisnici.Where(x => x.KorisnikId == _prijavljeniKorisnik.KorisnikId)
                 .Include(x => x.Asistent)
-                .Include(x => x.Plesac)
+                .Include(x => x.Plesac.Roditelj.Korisnik)
+                .Include(x => x.Plesac.Grupa)
                 .Include(x => x.Voditelj)
                 .Include(x => x.Roditelj)
                 .Include(x => x.Trener)
@@ -146,6 +147,8 @@ namespace PlesnaSkola.WebAPI.Services
             entity.Mail = request.Mail;
             entity.BrojPasosa = request.BrojPasosa;
             entity.DatumRodjenja = request.DatumRodjenja;
+            if (request.Slika.Length > 0)
+                entity.Slika = request.Slika;
 
             if (request.Plesac != null)
             {

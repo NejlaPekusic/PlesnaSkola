@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:PlesnaSkola.Mobile.Converters"
+             x:Class="PlesnaSkola.Mobile.Views.UrediProfilPage"
+             Title="{Binding Title}">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:ImageConverter x:Key="imgConv"></local:ImageConverter>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+
+        <ScrollView>
+            <StackLayout Padding="10">
+                <StackLayout Orientation="Vertical">
+                    <Image x:Name="imageView" Source="{Binding Korisnik.Slika, Converter={StaticResource imgConv}}" HeightRequest="150"/>
+                    <ActivityIndicator x:Name="uploadIndicator" IsVisible="False" IsRunning="False" Color="DodgerBlue" />
+                    <Button x:Name="OdaberiSliku" Text="Odaberi sliku" Clicked="OdaberiSliku_Clicked" BackgroundColor="DodgerBlue" TextColor="White" />
+                    <Button x:Name="Uslikaj" Text="Uslikaj" Clicked="Uslikaj_Clicked" BackgroundColor="DodgerBlue" TextColor="White" />
+                </StackLayout>
+                <StackLayout Orientation="Vertical">
+                    <Label Text="Ime"/>
+                    <Entry Text="{Binding Korisnik.Ime}"/>
+                </StackLayout>
+                <StackLayout Orientation="Vertical">
+                    <Label Text="Prezime"/>
+                    <Entry Text="{Binding Korisnik.Prezime}"/>
+                </StackLayout>
+                <StackLayout Orientation="Vertical">
+                    <Label Text="Email adresa"/>
+                    <Entry Text="{Binding Korisnik.Mail}"/>
+                </StackLayout>
+                <StackLayout Orientation="Vertical">
+                    <Label Text="Korisničko ime"/>
+                    <Entry Text="{Binding Korisnik.Username}"/>
+                </StackLayout>
+                <StackLayout Orientation="Vertical">
+                    <Label Text="Nova lozinka"/>
+                    <Entry Text="{Binding Korisnik.Password}" IsPassword="True"/>
+                </StackLayout>
+                <StackLayout Orientation="Vertical">
+                    <Label Text="Potvrda lozinke"/>
+                    <Entry Text="{Binding Korisnik.PasswordConfirmation}" IsPassword="True"/>
+                </StackLayout>
+                <StackLayout Orientation="Vertical">
+                    <Label Text="Datum rođenja"/>
+                    <DatePicker Date="{Binding Korisnik.DatumRodjenja}"/>
+                </StackLayout>
+                <StackLayout Orientation="Vertical">
+                    <Label Text="Broj pasoša"/>
+                    <Entry Text="{Binding Korisnik.BrojPasosa}"/>
+                </StackLayout>
+                <StackLayout Orientation="Vertical">
+                    <Label Text="Broj odjeće"/>
+                    <Entry Text="{Binding Korisnik.Plesac.BrojOdjece}"/>
+                </StackLayout>
+                <StackLayout Orientation="Vertical">
+                    <Label Text="Broj obuće"/>
+                    <Entry Text="{Binding Korisnik.Plesac.BrojObuce}"/>
+                </StackLayout>
+                <StackLayout Orientation="Vertical">
+                    <Label Text="Naziv škole"/>
+                    <Entry Text="{Binding Korisnik.Plesac.NazivSkole}"/>
+                </StackLayout>
+
+                <Button x:Name="Snimi" Text="Snimi" Command="{Binding SnimiProfilCommand}"/>
+
+            </StackLayout>
+        </ScrollView>
+
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PlesnaSkola.Mobile.Views.ObavijestiPage"
+             Title="{Binding Title}">
+    <ContentPage.Content>
+        <StackLayout Padding="10">
+            <Label Text="Lista obavijesti" />
+
+
+            <ListView
+          ItemsSource="{Binding ObavijestiList}"
+                RowHeight="145"
+          VerticalOptions="FillAndExpand"
+               HasUnevenRows="True"
+                >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+
+                                <StackLayout Padding="10" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" >
+                                    <Image Source="notification-icon.png" VerticalOptions="Start" WidthRequest="64"  />
+                                </StackLayout>
+
+                                <Label FontSize="20" Grid.Row="0" Grid.Column="1" FontAttributes="Bold" Text="{Binding Naslov}"/>
+
+                                <Label FontSize="14"  Grid.Row="1" Grid.Column="1" Text="{Binding Sadrzaj}" VerticalTextAlignment="Start"/>
+                            </Grid>
+
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

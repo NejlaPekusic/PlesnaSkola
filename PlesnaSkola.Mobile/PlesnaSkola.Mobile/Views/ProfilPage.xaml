@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:PlesnaSkola.Mobile.Converters"
+             x:Class="PlesnaSkola.Mobile.Views.ProfilPage"
+             Title="{Binding Title}">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:ImageConverter x:Key="imgConv"></local:ImageConverter>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem x:Name="UrediProfilToolbarItem" Text="Uredi profil" Clicked="UrediProfilToolbarItem_Clicked" Icon="add.png"/>
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Content>
+        <StackLayout Padding="5">
+
+            <StackLayout Orientation="Horizontal" VerticalOptions="Center" Padding="0,10,0,0">
+                <Image Source="{Binding Korisnik.Slika, Converter={StaticResource imgConv}}" Aspect="AspectFit" HeightRequest="150"/>
+            </StackLayout>
+            
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <StackLayout Padding="0,0,0,0" Grid.Row="0" Grid.Column="0" VerticalOptions="FillAndExpand" HorizontalOptions="Fill" Orientation="Vertical">
+                    <StackLayout HorizontalOptions="StartAndExpand" Orientation="Vertical">
+                        <Label Margin="0,10,0,0" FontSize="14" FontAttributes="Bold" Text="Ime i prezime:"/>
+                        <Label Margin="0,10,0,0" FontSize="14" FontAttributes="Bold" Text="Datum rođenja:"/>
+                        <Label Margin="0,10,0,0" FontSize="14" FontAttributes="Bold" Text="Email adresa:"/>
+                        <Label Margin="0,10,0,0" FontSize="14" FontAttributes="Bold" Text="Broj pasoša:"/>
+                        <Label Margin="0,10,0,0" FontSize="14" FontAttributes="Bold" Text="Broj odjeće:"/>
+                        <Label Margin="0,10,0,0" FontSize="14" FontAttributes="Bold" Text="Broj obuće:"/>
+                        <Label Margin="0,10,0,0" FontSize="14" FontAttributes="Bold" Text="Naziv škole:"/>
+                        <Label Margin="0,10,0,0" FontSize="14" FontAttributes="Bold" Text="Grupa:"/>
+                        <Label Margin="0,10,0,0" FontSize="14" FontAttributes="Bold" Text="Roditelj:"/>
+                    </StackLayout>
+                </StackLayout>
+                <StackLayout Padding="0,0,0,0" Grid.Row="0" Grid.Column="1" VerticalOptions="FillAndExpand" HorizontalOptions="Fill" Orientation="Vertical">
+                    <StackLayout HorizontalOptions="StartAndExpand" Orientation="Vertical">
+                        <Label Margin="0,10,0,0" FontSize="14" Text="{Binding Korisnik.ImePrezime}"/>
+                        <Label Margin="0,10,0,0" FontSize="14" Text="{Binding Korisnik.DatumRodjenja, StringFormat='\{0:dd/MM/yy}'}"/>
+                        <Label Margin="0,10,0,0" FontSize="14" Text="{Binding Korisnik.Mail}"/>
+                        <Label Margin="0,10,0,0" FontSize="14" Text="{Binding Korisnik.BrojPasosa}"/>
+                        <Label Margin="0,10,0,0" FontSize="14" Text="{Binding Korisnik.Plesac.BrojOdjece}"/>
+                        <Label Margin="0,10,0,0" FontSize="14" Text="{Binding Korisnik.Plesac.BrojObuce}"/>
+                        <Label Margin="0,10,0,0" FontSize="14" Text="{Binding Korisnik.Plesac.NazivSkole}"/>
+                        <Label Margin="0,10,0,0" FontSize="14" Text="{Binding Korisnik.Plesac.Grupa.NazivGrupe}"/>
+                        <Label Margin="0,10,0,0" FontSize="14" Text="{Binding Korisnik.Plesac.Roditelj.Korisnik.ImePrezime}"/>
+                    </StackLayout>
+                </StackLayout>
+            </Grid>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

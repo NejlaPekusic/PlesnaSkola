@@ -18,5 +18,7 @@ namespace PlesnaSkola.Model
         public DateTime? DatumRodjenja { get; set; }
         public bool? Aktivan { get; set; }
         public string BrojPasosa { get; set; }
+
+        public string ImePrezime { get => Ime + " " + Prezime;  }
     }
 }

@@ -26,6 +26,8 @@ namespace PlesnaSkola.Model
         public Treneri Trener { get; set; }
         public Voditelji Voditelj { get; set; }
 
+        public byte[] Slika { get; set; }
+
         public override string ToString()
         {
             return ImePrezime;
