@@ -58,6 +58,9 @@ namespace PlesnaSkola.WinUI.Obavijesti
 
         private async void btnDodaj_Click(object sender, EventArgs e)
         {
+            if (!ValidateChildren())
+                return;
+
             var request = new Model.Requests.ObavijestiInsertRequest
             {
                 Naslov = txtNaslov.Text,

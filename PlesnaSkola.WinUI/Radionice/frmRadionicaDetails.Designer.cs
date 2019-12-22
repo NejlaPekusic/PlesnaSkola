@@ -58,6 +58,7 @@
             this.btnDodaj.TabIndex = 16;
             this.btnDodaj.Text = "Dodaj";
             this.btnDodaj.UseVisualStyleBackColor = true;
+            this.btnDodaj.Click += new System.EventHandler(this.btnDodaj_Click);
             // 
             // groupBox2
             // 
@@ -222,6 +223,7 @@
             this.Name = "frmRadionicaDetails";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Detalji radionice";
+            this.Load += new System.EventHandler(this.frmRadionicaDetails_Load);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();

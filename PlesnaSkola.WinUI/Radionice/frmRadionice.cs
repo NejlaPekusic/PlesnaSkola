@@ -14,6 +14,7 @@ namespace PlesnaSkola.WinUI.Radionice
     {
         private APIService _serviceRadionice = new APIService("Radionice");
 
+
         public frmRadionice()
         {
             InitializeComponent();
@@ -60,6 +61,7 @@ namespace PlesnaSkola.WinUI.Radionice
         {
             await UcitajDataGrid();
         }
+
         
     }
 }

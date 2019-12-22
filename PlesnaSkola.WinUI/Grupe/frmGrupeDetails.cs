@@ -79,6 +79,9 @@ namespace PlesnaSkola.WinUI.Grupe
        
         private async void btnDodaj_Click(object sender, EventArgs e)
         {
+            if (!ValidateChildren())
+                return;
+
             var request = new Model.Requests.GrupeInsertRequest
             {
                 NazivGrupe = txtNaziv.Text,

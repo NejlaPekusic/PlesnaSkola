@@ -106,6 +106,9 @@ namespace PlesnaSkola.WinUI.Pravdanja
        
         private async void btnDodaj_Click(object sender, EventArgs e)
         {
+            if (!ValidateChildren())
+                return;
+
             List<PravdanjaPlesaci> plesaci = new List<PravdanjaPlesaci>();
             foreach (TreeNode groupNode in trvPlesaci.Nodes)
             {

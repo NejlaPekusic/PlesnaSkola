@@ -72,6 +72,11 @@ namespace PlesnaSkola.WinUI.Radionice
 
                 dtpVrijeme.Value = DateTime.Now.Date.Add(entity.VrijemeOdrzavanja);
 
+                txtBrojUcesnika.Text = entity.BrojUcesnika.ToString();
+                txtMjestoOdrzavanja.Text = entity.MjestoOdrzavanja;
+                txtNazivRadionice.Text = entity.NazivRadionice;
+                txtOpis.Text = entity.Opis;
+
                 foreach (Model.Korisnici asistent in cmbAsistent.Items)
                 {
                     if (asistent.KorisnikId == entity.AsistentId)
@@ -85,6 +90,9 @@ namespace PlesnaSkola.WinUI.Radionice
 
         private async void btnDodaj_Click(object sender, EventArgs e)
         {
+            if (!ValidateChildren())
+                return;
+
             var request = new Model.Requests.RadioniceInsertRequest
             {
                 VrijemeOdrzavanja = dtpVrijeme.Value.TimeOfDay,
@@ -92,8 +100,9 @@ namespace PlesnaSkola.WinUI.Radionice
                 MjestoOdrzavanja = txtMjestoOdrzavanja.Text,
                 NazivRadionice = txtNazivRadionice.Text,
                 Opis = txtOpis.Text,
-                AsistentId = (cmbAsistent.SelectedItem as Model.Korisnici).KorisnikId
-                
+                AsistentId = (cmbAsistent.SelectedItem as Model.Korisnici).KorisnikId,
+                DatumOdrzavanja=dtpDatum.Value.Date
+             
             };
 
             if (_radionicaId == 0)
@@ -182,5 +191,7 @@ namespace PlesnaSkola.WinUI.Radionice
                 errorProvider1.SetError(control, null);
             }
         }
+
+       
     }
 }

@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 using PlesnaSkola.Model.Requests;
 using PlesnaSkola.WebAPI.Models;
 using System;
@@ -21,7 +22,7 @@ namespace PlesnaSkola.WebAPI.Services
 
         public List<Model.Radionice> Get(RadioniceSearchRequest request)
         {
-            var query = _context.Radionice.AsQueryable();
+            var query = _context.Radionice.AsQueryable().Include(x=>x.Asistent.Korisnik);
 
             var list = query.ToList();
 

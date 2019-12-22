@@ -118,6 +118,9 @@ namespace PlesnaSkola.WinUI.Koreografije
 
         private async void btnDodaj_Click(object sender, EventArgs e)
         {
+            if (!ValidateChildren())
+                return;
+
             var request = new Model.Requests.KoreografijeInsertRequest
             {
                 NazivKoreografije = txtNaziv.Text,

@@ -31,6 +31,9 @@
             this.btnDodajRadionicu = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgvRadionice = new System.Windows.Forms.DataGridView();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtPretraga = new System.Windows.Forms.TextBox();
+            this.btnPrikazi = new System.Windows.Forms.Button();
             this.RadionicaId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NazivRadionice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MjestoOdrzavanja = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -38,9 +41,6 @@
             this.VrijemeOdržavanja = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Opis = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Asistent = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtPretraga = new System.Windows.Forms.TextBox();
-            this.btnPrikazi = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRadionice)).BeginInit();
             this.SuspendLayout();
@@ -53,6 +53,7 @@
             this.btnDodajRadionicu.TabIndex = 11;
             this.btnDodajRadionicu.Text = "Dodaj radionicu";
             this.btnDodajRadionicu.UseVisualStyleBackColor = true;
+            this.btnDodajRadionicu.Click += new System.EventHandler(this.btnDodajRadionicu_Click);
             // 
             // groupBox1
             // 
@@ -88,6 +89,32 @@
             this.dgvRadionice.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvRadionice.Size = new System.Drawing.Size(769, 333);
             this.dgvRadionice.TabIndex = 0;
+            this.dgvRadionice.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvRadionice_CellDoubleClick);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(16, 13);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(83, 13);
+            this.label1.TabIndex = 13;
+            this.label1.Text = "Naziv radionice:";
+            // 
+            // txtPretraga
+            // 
+            this.txtPretraga.Location = new System.Drawing.Point(16, 34);
+            this.txtPretraga.Name = "txtPretraga";
+            this.txtPretraga.Size = new System.Drawing.Size(242, 20);
+            this.txtPretraga.TabIndex = 14;
+            // 
+            // btnPrikazi
+            // 
+            this.btnPrikazi.Location = new System.Drawing.Point(710, 34);
+            this.btnPrikazi.Name = "btnPrikazi";
+            this.btnPrikazi.Size = new System.Drawing.Size(75, 23);
+            this.btnPrikazi.TabIndex = 15;
+            this.btnPrikazi.Text = "Prikaži";
+            this.btnPrikazi.UseVisualStyleBackColor = true;
             // 
             // RadionicaId
             // 
@@ -123,7 +150,7 @@
             // 
             // VrijemeOdržavanja
             // 
-            this.VrijemeOdržavanja.DataPropertyName = "VrijemeOdržavanja";
+            this.VrijemeOdržavanja.DataPropertyName = "VrijemeOdrzavanja";
             this.VrijemeOdržavanja.HeaderText = "Vrijeme održavanja";
             this.VrijemeOdržavanja.Name = "VrijemeOdržavanja";
             this.VrijemeOdržavanja.ReadOnly = true;
@@ -143,31 +170,6 @@
             this.Asistent.Name = "Asistent";
             this.Asistent.ReadOnly = true;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(16, 13);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(83, 13);
-            this.label1.TabIndex = 13;
-            this.label1.Text = "Naziv radionice:";
-            // 
-            // txtPretraga
-            // 
-            this.txtPretraga.Location = new System.Drawing.Point(16, 34);
-            this.txtPretraga.Name = "txtPretraga";
-            this.txtPretraga.Size = new System.Drawing.Size(242, 20);
-            this.txtPretraga.TabIndex = 14;
-            // 
-            // btnPrikazi
-            // 
-            this.btnPrikazi.Location = new System.Drawing.Point(710, 34);
-            this.btnPrikazi.Name = "btnPrikazi";
-            this.btnPrikazi.Size = new System.Drawing.Size(75, 23);
-            this.btnPrikazi.TabIndex = 15;
-            this.btnPrikazi.Text = "Prikaži";
-            this.btnPrikazi.UseVisualStyleBackColor = true;
-            // 
             // frmRadionice
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -182,6 +184,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Radionice";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.frmRadionice_Load);
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvRadionice)).EndInit();
             this.ResumeLayout(false);
