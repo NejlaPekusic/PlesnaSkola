@@ -16,8 +16,9 @@ namespace PlesnaSkola.WebAPI.Models
         public string Opis { get; set; }
         public DateTime DatumOd { get; set; }
         public DateTime DatumDo { get; set; }
-        public DateTime DatumIzdavanja { get; set; }
-        public int VoditeljId { get; set; }
+        public DateTime? DatumZahtjeva { get; set; }
+        public DateTime? DatumIzdavanja { get; set; }
+        public int? VoditeljId { get; set; }
         public Voditelji Voditelj { get; set; }
         public IEnumerable<PravdanjaPlesaci> Plesaci { get; set; }
     }

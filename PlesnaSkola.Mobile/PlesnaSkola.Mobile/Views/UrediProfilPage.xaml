@@ -52,15 +52,15 @@
                     <Label Text="Broj pasoša"/>
                     <Entry Text="{Binding Korisnik.BrojPasosa}"/>
                 </StackLayout>
-                <StackLayout Orientation="Vertical">
+                <StackLayout IsVisible="{Binding IsPlesac}" Orientation="Vertical">
                     <Label Text="Broj odjeće"/>
                     <Entry Text="{Binding Korisnik.Plesac.BrojOdjece}"/>
                 </StackLayout>
-                <StackLayout Orientation="Vertical">
+                <StackLayout IsVisible="{Binding IsPlesac}" Orientation="Vertical">
                     <Label Text="Broj obuće"/>
                     <Entry Text="{Binding Korisnik.Plesac.BrojObuce}"/>
                 </StackLayout>
-                <StackLayout Orientation="Vertical">
+                <StackLayout IsVisible="{Binding IsPlesac}" Orientation="Vertical">
                     <Label Text="Naziv škole"/>
                     <Entry Text="{Binding Korisnik.Plesac.NazivSkole}"/>
                 </StackLayout>

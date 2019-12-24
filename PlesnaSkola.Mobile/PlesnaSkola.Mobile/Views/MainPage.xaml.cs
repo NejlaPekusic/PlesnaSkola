@@ -30,13 +30,22 @@ namespace PlesnaSkola.Mobile.Views
                         MenuPages.Add(id, new NavigationPage(new ObavijestiPage()));
                         break;
 
+                    case (int)MenuItemType.Pravdanja:
+                        MenuPages.Add(id, new NavigationPage(new PravdanjaPage()));
+                        break;
+                        
+
                     case (int)MenuItemType.Profil:
                         MenuPages.Add(id, new NavigationPage(new ProfilPage()));
                         break;
 
-                        //case (int)MenuItemType.Pravdanja:
-                        //    MenuPages.Add(id, new NavigationPage(new PravdanjaPage()));
-                        //    break;
+                    case (int)MenuItemType.Logout:
+                        APIService.PrijavljeniKorisnik = null;
+                        APIService.Username = null;
+                        APIService.Password = null;
+
+                        Application.Current.MainPage = new LoginPage();
+                        return;
                 }
             }
 

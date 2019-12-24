@@ -21,6 +21,13 @@ namespace PlesnaSkola.Mobile.ViewModels
             set { SetProperty(ref _korisnik, value); }
         }
 
+        private bool _IsPlesac = false;
+        public bool IsPlesac
+        {
+            get { return _IsPlesac; }
+            set { SetProperty(ref _IsPlesac, value); }
+        }
+
         public ICommand SnimiProfilCommand { get; set; }
 
 
@@ -45,6 +52,9 @@ namespace PlesnaSkola.Mobile.ViewModels
                 {
                     Korisnik.Slika = File.ReadAllBytes("xamarin_logo.png");
                 }
+                if (Korisnik.Plesac != null)
+                    IsPlesac = true;
+
                 Title = "Uredi Profil - " + Korisnik.Username;
             }
 

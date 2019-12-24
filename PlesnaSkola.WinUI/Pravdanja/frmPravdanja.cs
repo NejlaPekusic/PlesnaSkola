@@ -22,16 +22,29 @@ namespace PlesnaSkola.WinUI.Pravdanja
 
         private async Task UcitajDataGrid()
         {
-            var list = await _servicePravdanja.Get<List<Model.Pravdanja>>(null);
+            var request = new Model.Requests.PravdanjaSearchRequest
+            {
+                Filter = cmbFilter.SelectedIndex
+            };
+            var list = await _servicePravdanja.Get<List<Model.Pravdanja>>(request);
             dgvPravdanja.AutoGenerateColumns = false;
             dgvPravdanja.DataSource = list;
         }
 
         private async void frmPravdanja_Load(object sender, EventArgs e)
         {
-            await UcitajDataGrid();
+            UcitajFilterDropdown();
         }
 
+        private void UcitajFilterDropdown()
+        {
+            var list = new List<string>()
+            {
+                "Zahtjevi", "Izdano", "Sve"
+            };
+            cmbFilter.DataSource = list;
+            cmbFilter.SelectedIndex = 0;
+        }
 
         private async void dgvPravdanja_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -50,7 +63,8 @@ namespace PlesnaSkola.WinUI.Pravdanja
             await UcitajDataGrid();
         }
 
-        private async void cmbGrupe_SelectedIndexChanged(object sender, EventArgs e)
+
+        private async void cmbFilter_SelectedIndexChanged(object sender, EventArgs e)
         {
             await UcitajDataGrid();
         }

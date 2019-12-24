@@ -29,12 +29,20 @@ namespace PlesnaSkola.WebAPI.Services
         {
             var query = _context.Korisnici.AsQueryable();
 
+            if (request.IncludeDjeca)
+            {
+                query = query.Where(x => x.Plesac != null).Include(x => x.Plesac.Grupa);
+                query = query.Where(x => x.Plesac.RoditeljId == _prijavljeniKorisnik.KorisnikId);
+            }
+
             if (request.IncludeClanovi || request.IncludeUposlenici || request.IncludeRoditelji || request.IncludePlesaci || request.IncludeAsistenti || request.IncludeTreneri)
             {
                 if (request.IncludeClanovi)
                     query = query.Where(x => x.Roditelj != null || x.Plesac != null);
                 else if (request.IncludePlesaci)
+                {
                     query = query.Where(x => x.Plesac != null).Include(x => x.Plesac.Grupa);
+                }
                 else if (request.IncludeAsistenti)
                     query = query.Where(x => x.Asistent != null);
                 else if (request.IncludeUposlenici)
@@ -74,7 +82,8 @@ namespace PlesnaSkola.WebAPI.Services
         {
             var entity = _context.Korisnici.Where(x => x.KorisnikId == id)
                 .Include(x => x.Asistent)
-                .Include(x => x.Plesac)
+                .Include(x => x.Plesac.Roditelj.Korisnik)
+                .Include(x => x.Plesac.Grupa)
                 .Include(x => x.Voditelj)
                 .Include(x => x.Roditelj)
                 .Include(x => x.Trener)

@@ -14,5 +14,6 @@ namespace PlesnaSkola.Model.Requests
         public int GrupaId { get; set; }
         public string ImePrezime { get; set; }
         public bool IncludeAsistenti { get; set; }
+        public bool IncludeDjeca { get; set; }
     }
 }

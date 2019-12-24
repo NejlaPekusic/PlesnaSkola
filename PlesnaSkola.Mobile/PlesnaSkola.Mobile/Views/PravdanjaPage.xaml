@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PlesnaSkola.Mobile.Views.PravdanjaPage"
+             Title="{Binding Title}">
+
+    <ContentPage.Content>
+        
+        <StackLayout Padding="10">
+            <Label Text="Lista Pravdanja" />
+
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Izdano" VerticalTextAlignment="Center"/>
+                <Switch Toggled="Switch_Toggled"></Switch>
+                <Label Text="Zahtjevi" VerticalTextAlignment="Center"/>
+            </StackLayout>
+
+            <ListView
+          ItemsSource="{Binding PravdanjaList}"
+                RowHeight="145"
+          VerticalOptions="FillAndExpand"
+               HasUnevenRows="True"
+                >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+
+
+                                <StackLayout Orientation="Horizontal" Grid.Row="0" Grid.Column="0" IsVisible="{Binding IsZahtjev}">
+                                    <Label FontSize="16" FontAttributes="Bold" Text="Datum zahtjeva:"/>
+                                    <Label FontSize="16"  Text="{Binding DatumZahtjeva}"/>
+                                </StackLayout>
+
+                                <StackLayout Orientation="Horizontal" Grid.Row="0" Grid.Column="0" IsVisible="{Binding IsIzdano}">
+                                    <Label FontSize="16" FontAttributes="Bold" Text="Datum izdavanja:"/>
+                                    <Label FontSize="16"  Text="{Binding DatumIzdavanja}"/>
+                                </StackLayout>
+
+
+                                <StackLayout  Orientation="Horizontal" Grid.Row="1" Grid.Column="0">
+                                    <Label FontSize="16" FontAttributes="Bold" Text="Važenje:"/>
+                                    <Label FontSize="16" Text="{Binding DatumOdText}"/>
+                                    <Label FontSize="16" Text="-"/>
+                                    <Label FontSize="16" Text="{Binding DatumDoText}"/>
+                                </StackLayout>
+
+                                <StackLayout  Grid.Row="2" Grid.Column="0">
+                                    <Label FontSize="14" Text="{Binding Opis}" VerticalTextAlignment="Start"/>
+                                </StackLayout>
+
+                            </Grid>
+
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <Button Text="Podnesi zahtjev" Clicked="Button_Clicked"/>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

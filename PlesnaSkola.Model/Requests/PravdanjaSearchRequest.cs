@@ -6,6 +6,6 @@ namespace PlesnaSkola.Model.Requests
 {
     public class PravdanjaSearchRequest
     {
-
+        public int Filter { get; set; }
     }
 }

@@ -10,25 +10,46 @@ using Xamarin.Forms.Xaml;
 
 namespace PlesnaSkola.Mobile.Views
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class ProfilPage : ContentPage
-	{
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class ProfilPage : ContentPage
+    {
         private readonly ProfilViewModel VM;
 
-        public ProfilPage ()
-		{
-			InitializeComponent ();
-            BindingContext = VM = new ProfilViewModel();
-		}
+        public ProfilPage(int KorisnikId = 0)
+        {
+            InitializeComponent();
+            BindingContext = VM = new ProfilViewModel(KorisnikId);
+
+            if (KorisnikId == 0)
+            {
+                UrediProfilToolbarItem.Icon = ImageSource.FromFile("add.png") as FileImageSource;
+            }
+            else
+            {
+                UrediProfilToolbarItem.Icon = null;
+            }
+        }
 
         private async void UrediProfilToolbarItem_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new UrediProfilPage());
+            if (VM.Korisnik?.KorisnikId == APIService.PrijavljeniKorisnik.KorisnikId)
+                await Navigation.PushAsync(new UrediProfilPage());
+            else
+                await DisplayAlert("Greška", "Izmjene nisu dozvoljene.", "OK");
         }
         protected async override void OnAppearing()
         {
             base.OnAppearing();
             await VM.Init();
+        }
+
+        private async void ListView_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            if (e.Item != null)
+            {
+                Model.Korisnici korisnik = e.Item as Model.Korisnici;
+                await Navigation.PushAsync(new ProfilPage(korisnik.KorisnikId));
+            }
         }
     }
 }

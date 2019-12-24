@@ -28,7 +28,7 @@ namespace PlesnaSkola.WinUI.Pravdanja
             InitializeComponent();
             _PravdanjeId = grupaId;
 
-            btnDodaj.Text = "Snimi";
+            btnDodaj.Text = "Izdaj";
         }
 
         private async void frmPravdanjeDetails_Load(object sender, EventArgs e)

@@ -10,7 +10,7 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.ToolbarItems>
-        <ToolbarItem x:Name="UrediProfilToolbarItem" Text="Uredi profil" Clicked="UrediProfilToolbarItem_Clicked" Icon="add.png"/>
+        <ToolbarItem x:Name="UrediProfilToolbarItem" Text="Uredi profil" Clicked="UrediProfilToolbarItem_Clicked"/>
     </ContentPage.ToolbarItems>
 
     <ContentPage.Content>
@@ -35,11 +35,11 @@
                         <Label Margin="0,10,0,0" FontSize="14" FontAttributes="Bold" Text="Datum rođenja:"/>
                         <Label Margin="0,10,0,0" FontSize="14" FontAttributes="Bold" Text="Email adresa:"/>
                         <Label Margin="0,10,0,0" FontSize="14" FontAttributes="Bold" Text="Broj pasoša:"/>
-                        <Label Margin="0,10,0,0" FontSize="14" FontAttributes="Bold" Text="Broj odjeće:"/>
-                        <Label Margin="0,10,0,0" FontSize="14" FontAttributes="Bold" Text="Broj obuće:"/>
-                        <Label Margin="0,10,0,0" FontSize="14" FontAttributes="Bold" Text="Naziv škole:"/>
-                        <Label Margin="0,10,0,0" FontSize="14" FontAttributes="Bold" Text="Grupa:"/>
-                        <Label Margin="0,10,0,0" FontSize="14" FontAttributes="Bold" Text="Roditelj:"/>
+                        <Label IsVisible="{Binding IsPlesac}" Margin="0,10,0,0" FontSize="14" FontAttributes="Bold" Text="Broj odjeće:"/>
+                        <Label IsVisible="{Binding IsPlesac}" Margin="0,10,0,0" FontSize="14" FontAttributes="Bold" Text="Broj obuće:"/>
+                        <Label IsVisible="{Binding IsPlesac}" Margin="0,10,0,0" FontSize="14" FontAttributes="Bold" Text="Naziv škole:"/>
+                        <Label IsVisible="{Binding IsPlesac}" Margin="0,10,0,0" FontSize="14" FontAttributes="Bold" Text="Grupa:"/>
+                        <Label IsVisible="{Binding IsPlesac}" Margin="0,10,0,0" FontSize="14" FontAttributes="Bold" Text="Roditelj:"/>
                     </StackLayout>
                 </StackLayout>
                 <StackLayout Padding="0,0,0,0" Grid.Row="0" Grid.Column="1" VerticalOptions="FillAndExpand" HorizontalOptions="Fill" Orientation="Vertical">
@@ -48,14 +48,51 @@
                         <Label Margin="0,10,0,0" FontSize="14" Text="{Binding Korisnik.DatumRodjenja, StringFormat='\{0:dd/MM/yy}'}"/>
                         <Label Margin="0,10,0,0" FontSize="14" Text="{Binding Korisnik.Mail}"/>
                         <Label Margin="0,10,0,0" FontSize="14" Text="{Binding Korisnik.BrojPasosa}"/>
-                        <Label Margin="0,10,0,0" FontSize="14" Text="{Binding Korisnik.Plesac.BrojOdjece}"/>
-                        <Label Margin="0,10,0,0" FontSize="14" Text="{Binding Korisnik.Plesac.BrojObuce}"/>
-                        <Label Margin="0,10,0,0" FontSize="14" Text="{Binding Korisnik.Plesac.NazivSkole}"/>
-                        <Label Margin="0,10,0,0" FontSize="14" Text="{Binding Korisnik.Plesac.Grupa.NazivGrupe}"/>
-                        <Label Margin="0,10,0,0" FontSize="14" Text="{Binding Korisnik.Plesac.Roditelj.Korisnik.ImePrezime}"/>
+                        <Label IsVisible="{Binding IsPlesac}" Margin="0,10,0,0" FontSize="14" Text="{Binding Korisnik.Plesac.BrojOdjece}"/>
+                        <Label IsVisible="{Binding IsPlesac}" Margin="0,10,0,0" FontSize="14" Text="{Binding Korisnik.Plesac.BrojObuce}"/>
+                        <Label IsVisible="{Binding IsPlesac}" Margin="0,10,0,0" FontSize="14" Text="{Binding Korisnik.Plesac.NazivSkole}"/>
+                        <Label IsVisible="{Binding IsPlesac}" Margin="0,10,0,0" FontSize="14" Text="{Binding Korisnik.Plesac.Grupa.NazivGrupe}"/>
+                        <Label IsVisible="{Binding IsPlesac}" Margin="0,10,0,0" FontSize="14" Text="{Binding Korisnik.Plesac.Roditelj.Korisnik.ImePrezime}"/>
                     </StackLayout>
                 </StackLayout>
             </Grid>
+
+            <Label IsVisible="{Binding IsRoditelj}" Margin="0,10,0,0" FontSize="14" FontAttributes="Bold" Text="Djeca:"/>
+            <ListView
+          ItemsSource="{Binding DjecaList}"
+                RowHeight="70"
+          VerticalOptions="FillAndExpand"
+               IsVisible="{Binding IsRoditelj}"
+                ItemTapped="ListView_ItemTapped"
+                >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+
+                                <StackLayout Padding="10" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" >
+                                    <Image Source="{Binding Slika, Converter={StaticResource imgConv}}" VerticalOptions="Start" WidthRequest="64"  />
+                                </StackLayout>
+
+                                <Label FontSize="14" Grid.Row="0" Grid.Column="1" FontAttributes="Bold" Text="{Binding ImePrezime}"/>
+
+                                <Label FontSize="14"  Grid.Row="1" Grid.Column="1" Text="{Binding Plesac.Grupa.NazivGrupe}" VerticalTextAlignment="Start"/>
+                            </Grid>
+
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+
 
         </StackLayout>
     </ContentPage.Content>

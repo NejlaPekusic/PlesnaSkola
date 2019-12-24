@@ -41,7 +41,7 @@ namespace PlesnaSkola.WebAPI.Controllers
         }
 
         [HttpPost]
-        [Authorize(Roles = "Voditelj")]
+        [Authorize(Roles = "Voditelj,Plesac,Roditelj")]
 
         public Model.Pravdanja Insert([FromBody] Model.Requests.PravdanjaInsertRequest request)
         {
