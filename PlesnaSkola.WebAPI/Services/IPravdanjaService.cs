@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using PlesnaSkola.Model;
 
 namespace PlesnaSkola.WebAPI.Services
 {
@@ -11,5 +12,7 @@ namespace PlesnaSkola.WebAPI.Services
         Model.Pravdanja Insert(Model.Requests.PravdanjaInsertRequest request);
         Model.Pravdanja Update(int id, Model.Requests.PravdanjaInsertRequest request);
         Model.Pravdanja GetById(int id);
+        Model.Pravdanja GetNajnovijiZahtjev();
+        int GetBrojZahtjeva();
     }
 }

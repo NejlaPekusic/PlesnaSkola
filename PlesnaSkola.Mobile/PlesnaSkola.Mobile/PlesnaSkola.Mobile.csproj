@@ -23,6 +23,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Views\ZahtjevPage.xaml.cs">
+      <DependentUpon>ZahtjevPage.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\PravdanjaPage.xaml.cs">
       <DependentUpon>PravdanjaPage.xaml</DependentUpon>
     </Compile>

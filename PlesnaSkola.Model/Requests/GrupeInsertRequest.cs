@@ -8,5 +8,6 @@ namespace PlesnaSkola.Model.Requests
     {
         public string NazivGrupe { get; set; }
         public int TrenerId { get; set; }
+        public GrupaUzrast GrupaUzrast { get; set; }
     }
 }

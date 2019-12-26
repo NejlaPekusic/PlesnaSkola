@@ -8,6 +8,7 @@ namespace PlesnaSkola.Model
     {
         public int Id { get; set; }
         public int PlesacId { get; set; }
+        public Plesaci Plesac { get; set; }
         public int PravdanjeId { get; set; }
     }
 }

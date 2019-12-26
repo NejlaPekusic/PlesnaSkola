@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
@@ -6,30 +7,25 @@ using System.Threading.Tasks;
 
 namespace PlesnaSkola.Mobile.ViewModels
 {
-    public class PravdanjaViewModel : BaseViewModel
+    public class ObavijestiViewModel : BaseViewModel
     {
-        private readonly APIService _servicePravdanja = new APIService("Pravdanja");
+        private readonly APIService _serviceObavijesti = new APIService("Obavijesti");
 
-        public ObservableCollection<Model.Pravdanja> PravdanjaList { get; set; } = new ObservableCollection<Model.Pravdanja>();
+        public ObservableCollection<Model.Obavijesti> ObavijestiList { get; set; } = new ObservableCollection<Model.Obavijesti>();
 
-        public PravdanjaViewModel()
+        public ObavijestiViewModel()
         {
-            Title = "Pravdanja";
+            Title = "Obavijesti";
         }
 
-        public async Task LoadData(bool PrikaziZahtjeve = false)
+        public async Task LoadData()
         {
-            var list = await _servicePravdanja.Get<List<Model.Pravdanja>>(null);
+            var list = await _serviceObavijesti.Get<List<Model.Obavijesti>>(null);
 
-            PravdanjaList.Clear();
+            ObavijestiList.Clear();
             foreach (var item in list)
             {
-                if((PrikaziZahtjeve == true && item.DatumZahtjeva != null && item.DatumIzdavanja is null) ||
-                    (PrikaziZahtjeve == false && item.DatumIzdavanja != null))
-                {
-                    PravdanjaList.Add(item);
-                }
-                
+                ObavijestiList.Add(item);
             }
 
         }

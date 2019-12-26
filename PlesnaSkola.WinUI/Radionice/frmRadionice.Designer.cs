@@ -31,9 +31,6 @@
             this.btnDodajRadionicu = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgvRadionice = new System.Windows.Forms.DataGridView();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtPretraga = new System.Windows.Forms.TextBox();
-            this.btnPrikazi = new System.Windows.Forms.Button();
             this.RadionicaId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NazivRadionice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MjestoOdrzavanja = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -41,6 +38,8 @@
             this.VrijemeOdržavanja = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Opis = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Asistent = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtPretraga = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRadionice)).BeginInit();
             this.SuspendLayout();
@@ -90,31 +89,6 @@
             this.dgvRadionice.Size = new System.Drawing.Size(769, 333);
             this.dgvRadionice.TabIndex = 0;
             this.dgvRadionice.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvRadionice_CellDoubleClick);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(16, 13);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(83, 13);
-            this.label1.TabIndex = 13;
-            this.label1.Text = "Naziv radionice:";
-            // 
-            // txtPretraga
-            // 
-            this.txtPretraga.Location = new System.Drawing.Point(16, 34);
-            this.txtPretraga.Name = "txtPretraga";
-            this.txtPretraga.Size = new System.Drawing.Size(242, 20);
-            this.txtPretraga.TabIndex = 14;
-            // 
-            // btnPrikazi
-            // 
-            this.btnPrikazi.Location = new System.Drawing.Point(710, 34);
-            this.btnPrikazi.Name = "btnPrikazi";
-            this.btnPrikazi.Size = new System.Drawing.Size(75, 23);
-            this.btnPrikazi.TabIndex = 15;
-            this.btnPrikazi.Text = "Prikaži";
-            this.btnPrikazi.UseVisualStyleBackColor = true;
             // 
             // RadionicaId
             // 
@@ -170,12 +144,27 @@
             this.Asistent.Name = "Asistent";
             this.Asistent.ReadOnly = true;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(16, 13);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(83, 13);
+            this.label1.TabIndex = 13;
+            this.label1.Text = "Naziv radionice:";
+            // 
+            // txtPretraga
+            // 
+            this.txtPretraga.Location = new System.Drawing.Point(16, 34);
+            this.txtPretraga.Name = "txtPretraga";
+            this.txtPretraga.Size = new System.Drawing.Size(242, 20);
+            this.txtPretraga.TabIndex = 14;
+            // 
             // frmRadionice
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 478);
-            this.Controls.Add(this.btnPrikazi);
             this.Controls.Add(this.txtPretraga);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnDodajRadionicu);
@@ -198,7 +187,6 @@
         private System.Windows.Forms.DataGridView dgvRadionice;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtPretraga;
-        private System.Windows.Forms.Button btnPrikazi;
         private System.Windows.Forms.DataGridViewTextBoxColumn RadionicaId;
         private System.Windows.Forms.DataGridViewTextBoxColumn NazivRadionice;
         private System.Windows.Forms.DataGridViewTextBoxColumn MjestoOdrzavanja;

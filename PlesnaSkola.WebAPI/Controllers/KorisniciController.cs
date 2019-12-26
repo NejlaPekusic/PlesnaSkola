@@ -24,14 +24,14 @@ namespace PlesnaSkola.WebAPI.Controllers
         }
 
         [HttpGet]
-        [Authorize(Roles = "Voditelj,Trener,Roditelj")]
+        [Authorize(Roles = "Voditelj,Trener,Roditelj,Asistent")]
         public List<Model.Korisnici> Get([FromQuery] Model.Requests.KorisniciSearchRequest request)
         {
             return _service.Get(request);
         }
 
         [HttpGet("{Id}")]
-        [Authorize(Roles = "Voditelj,Trener,Roditelj")]
+        [Authorize(Roles = "Voditelj,Trener,Roditelj,Plesac,Asistent")]
         public Model.Korisnici GetById(int Id)
         {
             return _service.GetById(Id);

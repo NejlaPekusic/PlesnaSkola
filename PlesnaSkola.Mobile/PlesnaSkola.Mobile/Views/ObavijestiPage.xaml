@@ -10,7 +10,6 @@
 
             <ListView
           ItemsSource="{Binding ObavijestiList}"
-                RowHeight="145"
           VerticalOptions="FillAndExpand"
                HasUnevenRows="True"
                 >

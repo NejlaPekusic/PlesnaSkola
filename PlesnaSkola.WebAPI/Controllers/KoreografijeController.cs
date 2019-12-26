@@ -24,7 +24,7 @@ namespace PlesnaSkola.WebAPI.Controllers
         }
 
         [HttpGet]
-        [Authorize(Roles = "Voditelj,Trener")]
+        [Authorize(Roles = "Voditelj,Trener,Asistent")]
 
         public List<Model.Koreografije> Get([FromQuery] Model.Requests.KoreografijeSearchRequest request)
         {
@@ -32,7 +32,7 @@ namespace PlesnaSkola.WebAPI.Controllers
         }
 
         [HttpGet("{Id}")]
-        [Authorize(Roles = "Voditelj,Trener")]
+        [Authorize(Roles = "Voditelj,Trener,Asistent")]
 
         public Model.Koreografije GetById(int Id)
         {
@@ -40,7 +40,7 @@ namespace PlesnaSkola.WebAPI.Controllers
         }
 
         [HttpPost]
-        [Authorize(Roles = "Voditelj,Trener")]
+        [Authorize(Roles = "Voditelj,Trener,Asistent")]
 
         public Model.Koreografije Insert([FromBody] Model.Requests.KoreografijeInsertRequest request)
         {
@@ -49,7 +49,7 @@ namespace PlesnaSkola.WebAPI.Controllers
 
 
         [HttpPut("{Id}")]
-        [Authorize(Roles = "Voditelj,Trener")]
+        [Authorize(Roles = "Voditelj,Trener,Asistent")]
 
         public Model.Koreografije Update(int Id, [FromBody] Model.Requests.KoreografijeInsertRequest request)
         {

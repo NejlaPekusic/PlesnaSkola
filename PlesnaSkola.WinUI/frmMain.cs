@@ -12,9 +12,36 @@ namespace PlesnaSkola.WinUI
 {
     public partial class frmMain : Form
     {
+        private static Timer myTimer = new Timer();
+        private readonly APIService _servicePravdanja = new APIService("Pravdanja");
+        private DateTime DatumNajnovijegZahtjeva = DateTime.Now;
+
         public frmMain()
         {
             InitializeComponent();
+
+            if (APIService.PrijavljeniKorisnik.Voditelj != null)
+            {
+                myTimer.Tick += new EventHandler(TimerEventProcessor);
+                myTimer.Interval = 5000;
+                myTimer.Start();
+            }
+        }
+
+        private async void TimerEventProcessor(object sender, EventArgs e)
+        {
+            myTimer.Stop();
+
+            var zahtjev = await _servicePravdanja.Get<Model.Pravdanja>(null, "GetNajnovijiZahtjev");
+            if (zahtjev.DatumZahtjeva > DatumNajnovijegZahtjeva)
+            {
+                DatumNajnovijegZahtjeva = zahtjev.DatumZahtjeva.Value;
+
+                notifyIcon1.ShowBalloonTip(10);
+                notifyIcon1.Tag = zahtjev;
+            }
+
+            myTimer.Enabled = true;
         }
 
         private void prikažiČlanoveToolStripMenuItem_Click(object sender, EventArgs e)
@@ -125,6 +152,77 @@ namespace PlesnaSkola.WinUI
         {
             var frm = new Radionice.frmRadionicaDetails();
             frm.ShowDialog();
+        }
+
+
+        private void notifyIcon1_BalloonTipClicked(object sender, EventArgs e)
+        {
+            if (notifyIcon1.Tag is Model.Pravdanja entity)
+            {
+                var frm = new Pravdanja.frmPravdanjeDetails(entity.PravdanjeId);
+                frm.ShowDialog();
+            }
+        }
+
+        private void notifyIcon2_BalloonTipClicked(object sender, EventArgs e)
+        {
+            var frm = new Pravdanja.frmPravdanja();
+            frm.MdiParent = this;
+            frm.Show();
+        }
+
+        private async void frmMain_Load(object sender, EventArgs e)
+        {
+            UpdateDostupneMenije();
+
+            if (APIService.PrijavljeniKorisnik.Voditelj != null)
+            {
+                int brojZahtjeva = await _servicePravdanja.Get<int>(null, "GetBrojZahtjeva");
+                if (brojZahtjeva > 0)
+                {
+                    notifyIcon2.BalloonTipText = "Imate " + brojZahtjeva + " zahtjeva na čekanju. Kliknite ovdje da ih pregledate.";
+                    notifyIcon2.ShowBalloonTip(10);
+                }
+            }
+        }
+
+        private void UpdateDostupneMenije()
+        {
+            var IsVoditelj = APIService.PrijavljeniKorisnik.Voditelj != null;
+            var IsTrener = APIService.PrijavljeniKorisnik.Trener != null;
+            var IsAsistent = APIService.PrijavljeniKorisnik.Asistent != null;
+
+            članoviToolStripMenuItem.Visible = IsVoditelj;
+            uplateToolStripMenuItem.Visible = IsVoditelj;
+            grupeToolStripMenuItem.Visible = IsVoditelj || IsTrener;
+            treninziToolStripMenuItem.Visible = IsVoditelj || IsTrener;
+            pravdanjaToolStripMenuItem.Visible = IsVoditelj;
+            radioniceToolStripMenuItem.Visible = IsVoditelj || IsAsistent;
+
+            if (IsVoditelj)
+                myTimer.Enabled = true;
+
+        }
+
+        private void logoutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            myTimer.Stop();
+
+            foreach (var child in this.MdiChildren)
+            {
+                child.Close();
+            }
+
+            var frm = new frmLogin();
+            if(frm.ShowDialog() == DialogResult.OK)
+            {
+                UpdateDostupneMenije();
+            }
+            else
+            {
+                Close();
+            }
         }
     }
 }

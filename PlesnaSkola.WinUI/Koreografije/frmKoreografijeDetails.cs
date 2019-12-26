@@ -62,6 +62,7 @@ namespace PlesnaSkola.WinUI.Koreografije
                 IncludeAsistenti = true
             };
             var listAsistenti = await _serviceKorisnici.Get<List<Model.Korisnici>>(request);
+            listAsistenti.Insert(0, new Korisnici { KorisnikId = 0, Ime = "Odaberite" });
             cmbAsistenti.DataSource = listAsistenti;
             cmbAsistenti.DisplayMember = "ImePrezime";
             cmbAsistenti.ValueMember = "KorisnikId";
@@ -71,6 +72,8 @@ namespace PlesnaSkola.WinUI.Koreografije
         private async Task LoadGrupeCmb()
         {
             var listGrupe = await _serviceGrupe.Get<List<Model.Grupe>>(null);
+            listGrupe.Insert(0, new Model.Grupe { GrupaId = 0, NazivGrupe = "Odaberite" });
+
             cmbGrupa.DataSource = listGrupe;
             cmbGrupa.DisplayMember = "NazivGrupe";
             cmbGrupa.ValueMember = "GrupaId";

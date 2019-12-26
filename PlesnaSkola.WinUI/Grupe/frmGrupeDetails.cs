@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PlesnaSkola.Model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -40,10 +41,22 @@ namespace PlesnaSkola.WinUI.Grupe
 
         private async Task LoadComboboxes()
         {
-
+            LoadUzrastiCmb();
             await LoadTreneriCmb();
         }
 
+        private void LoadUzrastiCmb()
+        {
+            List<string> listaUzrasta = new List<string>();
+            listaUzrasta.Add("Odaberite");
+
+            foreach (var uzrast in Enum.GetValues(typeof(GrupaUzrast)))
+            {
+                listaUzrasta.Add(uzrast.DescriptionAttr());
+            }
+
+            cmbUzrasti.DataSource = listaUzrasta;
+        }
 
         private async Task LoadTreneriCmb()
         {
@@ -73,6 +86,8 @@ namespace PlesnaSkola.WinUI.Grupe
                         cmbTrener.SelectedItem = trener;
                     }
                 }
+
+                cmbUzrasti.SelectedIndex = (int)entity.GrupaUzrast;
             }
         }
 
@@ -85,7 +100,8 @@ namespace PlesnaSkola.WinUI.Grupe
             var request = new Model.Requests.GrupeInsertRequest
             {
                 NazivGrupe = txtNaziv.Text,
-                TrenerId = (cmbTrener.SelectedItem as Model.Korisnici).KorisnikId
+                TrenerId = (cmbTrener.SelectedItem as Model.Korisnici).KorisnikId,
+                GrupaUzrast = (GrupaUzrast)cmbUzrasti.SelectedIndex
             };
 
             if (_grupaId == 0)
@@ -133,6 +149,20 @@ namespace PlesnaSkola.WinUI.Grupe
             else
             {
                 errorProvider1.SetError(control, null);
+            }
+        }
+
+        private void cmbUzrasti_Validating(object sender, CancelEventArgs e)
+        {
+            if(cmbUzrasti.SelectedIndex < (int)GrupaUzrast.OD_3_DO_5 || cmbUzrasti.SelectedIndex > (int)GrupaUzrast.PREKO_15)
+            {
+
+                errorProvider1.SetError(cmbUzrasti, Properties.Resources.Validation_Required);
+                e.Cancel = true;
+            }
+            else
+            {
+                errorProvider1.SetError(cmbUzrasti, null);
             }
         }
     }

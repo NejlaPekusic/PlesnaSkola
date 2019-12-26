@@ -23,7 +23,10 @@ namespace PlesnaSkola.WebAPI.Services
         public List<Model.Radionice> Get(RadioniceSearchRequest request)
         {
             var query = _context.Radionice.AsQueryable().Include(x=>x.Asistent.Korisnik);
-
+            if (!string.IsNullOrEmpty(request.NazivRadionice))
+            {
+                query = query.Where(x => x.NazivRadionice.Contains(request.NazivRadionice));
+            }
             var list = query.ToList();
 
             return _mapper.Map<List<Model.Radionice>>(list);

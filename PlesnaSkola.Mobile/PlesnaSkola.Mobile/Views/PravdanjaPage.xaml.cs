@@ -10,9 +10,9 @@ using Xamarin.Forms.Xaml;
 
 namespace PlesnaSkola.Mobile.Views
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class PravdanjaPage : ContentPage
-	{
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class PravdanjaPage : ContentPage
+    {
         private readonly PravdanjaViewModel VM;
 
         public PravdanjaPage()
@@ -30,12 +30,24 @@ namespace PlesnaSkola.Mobile.Views
 
         private async void Switch_Toggled(object sender, ToggledEventArgs e)
         {
-            await VM.LoadData(e.Value);
+            await VM.LoadData();
         }
 
-        private void Button_Clicked(object sender, EventArgs e)
+        private async void Button_Clicked(object sender, EventArgs e)
         {
-
+            if (APIService.PrijavljeniKorisnik.Plesac != null)
+                await Navigation.PushAsync(new ZahtjevPage(APIService.PrijavljeniKorisnik.KorisnikId));
+            else if (APIService.PrijavljeniKorisnik.Roditelj != null)
+            {
+                Model.Korisnici OdabranoDijete = VM.OdabranoDijete;
+                if(OdabranoDijete == null)
+                {
+                    await DisplayAlert("Greška", "Dijete nije odabrano.", "OK");
+                    return;
+                }
+                
+                await Navigation.PushAsync(new ZahtjevPage(OdabranoDijete.KorisnikId));
+            }
         }
     }
 }

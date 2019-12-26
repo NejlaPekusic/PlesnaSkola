@@ -40,6 +40,25 @@ namespace PlesnaSkola.WebAPI.Controllers
             return _service.GetById(Id);
         }
 
+
+        [HttpGet("GetNajnovijiZahtjev")]
+        [Authorize(Roles = "Voditelj")]
+
+        public Model.Pravdanja GetNajnovijiZahtjev()
+        {
+            return _service.GetNajnovijiZahtjev();
+        }
+
+
+        [HttpGet("GetBrojZahtjeva")]
+        [Authorize(Roles = "Voditelj")]
+
+        public int GetBrojZahtjeva()
+        {
+            return _service.GetBrojZahtjeva();
+        }
+
+
         [HttpPost]
         [Authorize(Roles = "Voditelj,Plesac,Roditelj")]
 

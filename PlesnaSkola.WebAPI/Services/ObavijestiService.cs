@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 using PlesnaSkola.Model.Requests;
 using PlesnaSkola.WebAPI.Models;
 using System;
@@ -24,6 +25,8 @@ namespace PlesnaSkola.WebAPI.Services
         public List<Model.Obavijesti> Get(ObavijestiSearchRequest request)
         {
             var query = _context.Obavijesti.AsQueryable();
+
+            query = query.Include(x => x.Korisnik);
 
             if(!string.IsNullOrEmpty(request.Naslov))
             {

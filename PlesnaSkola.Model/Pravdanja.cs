@@ -22,5 +22,23 @@ namespace PlesnaSkola.Model
 
         public Voditelji Voditelj { get; set; }
         public List<PravdanjaPlesaci> Plesaci { get; set; }
+
+        public string ImenaPlesaca
+        {
+            get
+            {
+                if (Plesaci is null)
+                    return "??";
+
+                string imena = "";
+                foreach (var pravdanjePlesac in Plesaci)
+                {
+                    if (imena != "")
+                        imena += "\n";
+                    imena += pravdanjePlesac?.Plesac?.Korisnik?.ImePrezime;
+                }
+                return imena;
+            }
+        }
     }
 }

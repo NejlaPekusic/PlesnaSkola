@@ -36,6 +36,8 @@
             this.cmbTrener = new System.Windows.Forms.ComboBox();
             this.label14 = new System.Windows.Forms.Label();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.cmbUzrasti = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
@@ -59,7 +61,7 @@
             // 
             // btnDodaj
             // 
-            this.btnDodaj.Location = new System.Drawing.Point(114, 114);
+            this.btnDodaj.Location = new System.Drawing.Point(114, 155);
             this.btnDodaj.Name = "btnDodaj";
             this.btnDodaj.Size = new System.Drawing.Size(75, 23);
             this.btnDodaj.TabIndex = 16;
@@ -69,13 +71,15 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.cmbUzrasti);
+            this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Controls.Add(this.cmbTrener);
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.label14);
             this.groupBox2.Controls.Add(this.txtNaziv);
             this.groupBox2.Location = new System.Drawing.Point(12, 11);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(265, 90);
+            this.groupBox2.Size = new System.Drawing.Size(265, 133);
             this.groupBox2.TabIndex = 18;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Podaci o grupi";
@@ -103,11 +107,30 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
+            // cmbUzrasti
+            // 
+            this.cmbUzrasti.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbUzrasti.FormattingEnabled = true;
+            this.cmbUzrasti.Location = new System.Drawing.Point(102, 90);
+            this.cmbUzrasti.Name = "cmbUzrasti";
+            this.cmbUzrasti.Size = new System.Drawing.Size(149, 21);
+            this.cmbUzrasti.TabIndex = 31;
+            this.cmbUzrasti.Validating += new System.ComponentModel.CancelEventHandler(this.cmbUzrasti_Validating);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(45, 93);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(37, 13);
+            this.label1.TabIndex = 30;
+            this.label1.Text = "Uzrast";
+            // 
             // frmGrupeDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(293, 149);
+            this.ClientSize = new System.Drawing.Size(293, 190);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.btnDodaj);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -131,5 +154,7 @@
         private System.Windows.Forms.ComboBox cmbTrener;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.ComboBox cmbUzrasti;
+        private System.Windows.Forms.Label label1;
     }
 }

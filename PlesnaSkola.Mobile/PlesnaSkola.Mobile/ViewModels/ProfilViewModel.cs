@@ -11,6 +11,9 @@ namespace PlesnaSkola.Mobile.ViewModels
     class ProfilViewModel : BaseViewModel
     {
         private readonly APIService _serviceKorisnici = new APIService("Korisnici");
+
+        #region bindable properties
+
         private readonly int _korisnikId;
         private Model.Korisnici _korisnik;
         public Model.Korisnici Korisnik
@@ -34,6 +37,8 @@ namespace PlesnaSkola.Mobile.ViewModels
             get { return _IsRoditelj; }
             set { SetProperty(ref _IsRoditelj, value); }
         }
+
+        #endregion
 
         public ProfilViewModel(int korisnikId)
         {

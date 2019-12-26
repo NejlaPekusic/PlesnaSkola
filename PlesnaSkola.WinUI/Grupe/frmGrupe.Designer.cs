@@ -39,6 +39,7 @@
             this.Trener = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Plesaci = new System.Windows.Forms.DataGridViewButtonColumn();
             this.BrojClanova = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Uzrast = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvGrupe)).BeginInit();
             this.SuspendLayout();
@@ -101,7 +102,8 @@
             this.NazivGrupe,
             this.Trener,
             this.Plesaci,
-            this.BrojClanova});
+            this.BrojClanova,
+            this.Uzrast});
             this.dgvGrupe.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvGrupe.Location = new System.Drawing.Point(3, 16);
             this.dgvGrupe.MultiSelect = false;
@@ -155,6 +157,13 @@
             this.BrojClanova.Name = "BrojClanova";
             this.BrojClanova.ReadOnly = true;
             // 
+            // Uzrast
+            // 
+            this.Uzrast.DataPropertyName = "Uzrast";
+            this.Uzrast.HeaderText = "Uzrast";
+            this.Uzrast.Name = "Uzrast";
+            this.Uzrast.ReadOnly = true;
+            // 
             // frmGrupe
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -190,5 +199,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Trener;
         private System.Windows.Forms.DataGridViewButtonColumn Plesaci;
         private System.Windows.Forms.DataGridViewTextBoxColumn BrojClanova;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Uzrast;
     }
 }

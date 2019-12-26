@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Microsoft.EntityFrameworkCore;
+using PlesnaSkola.Model;
 using PlesnaSkola.Model.Requests;
 using PlesnaSkola.WebAPI.Models;
 using System;
@@ -52,6 +53,8 @@ namespace PlesnaSkola.WebAPI.Services
                 query = query.Where(x => x.Plesaci.Any(y => y.PlesacId == PlesacId));
             }
 
+            query = query.Include("Plesaci.Plesac.Korisnik");
+
             var list = query.ToList();
 
             return _mapper.Map<List<Model.Pravdanja>>(list);
@@ -72,7 +75,7 @@ namespace PlesnaSkola.WebAPI.Services
                 entity.VoditeljId = _korisniciService.GetPrijavljeniKorisnik().KorisnikId;
                 entity.DatumIzdavanja = DateTime.Now;
             }
-            else if(_korisniciService.GetPrijavljeniKorisnik().Roditelj != null || _korisniciService.GetPrijavljeniKorisnik().Plesac != null)
+            else if (_korisniciService.GetPrijavljeniKorisnik().Roditelj != null || _korisniciService.GetPrijavljeniKorisnik().Plesac != null)
             {
                 entity.DatumZahtjeva = DateTime.Now;
             }
@@ -86,7 +89,7 @@ namespace PlesnaSkola.WebAPI.Services
         {
             var entity = _context.Pravdanja.Find(id);
 
-            if(entity.DatumIzdavanja is null)
+            if (entity.DatumIzdavanja is null)
             {
                 entity.DatumIzdavanja = DateTime.Now;
                 entity.VoditeljId = _korisniciService.GetPrijavljeniKorisnik().KorisnikId;
@@ -106,6 +109,23 @@ namespace PlesnaSkola.WebAPI.Services
             _context.SaveChanges();
 
             return _mapper.Map<Model.Pravdanja>(entity);
+        }
+
+
+        public Model.Pravdanja GetNajnovijiZahtjev()
+        {
+            var entity = _context.Pravdanja
+                .Where(x => x.DatumZahtjeva != null && x.DatumIzdavanja == null)
+                .OrderByDescending(x => x.DatumZahtjeva)
+                .FirstOrDefault();
+
+            return _mapper.Map<Model.Pravdanja>(entity);
+        }
+
+        public int GetBrojZahtjeva()
+        {
+            return _context.Pravdanja
+                .Count(x => x.DatumZahtjeva != null && x.DatumIzdavanja == null);
         }
     }
 }

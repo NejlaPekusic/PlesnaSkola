@@ -190,7 +190,7 @@
             // 
             // btnDodaj
             // 
-            this.btnDodaj.Location = new System.Drawing.Point(107, 376);
+            this.btnDodaj.Location = new System.Drawing.Point(107, 365);
             this.btnDodaj.Name = "btnDodaj";
             this.btnDodaj.Size = new System.Drawing.Size(75, 23);
             this.btnDodaj.TabIndex = 16;
@@ -206,9 +206,9 @@
             this.groupBox1.Controls.Add(this.txtLozinka);
             this.groupBox1.Controls.Add(this.txtPotvrdaLozinke);
             this.groupBox1.Controls.Add(this.label7);
-            this.groupBox1.Location = new System.Drawing.Point(12, 223);
+            this.groupBox1.Location = new System.Drawing.Point(12, 210);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(265, 142);
+            this.groupBox1.Size = new System.Drawing.Size(276, 142);
             this.groupBox1.TabIndex = 17;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Podaci za prijavu";
@@ -227,7 +227,7 @@
             this.groupBox2.Controls.Add(this.txtMail);
             this.groupBox2.Location = new System.Drawing.Point(12, 13);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(265, 197);
+            this.groupBox2.Size = new System.Drawing.Size(276, 197);
             this.groupBox2.TabIndex = 18;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Lični podaci";
@@ -264,7 +264,7 @@
             this.gbxDodatniPodaci.Controls.Add(this.txtBrojObuce);
             this.gbxDodatniPodaci.Location = new System.Drawing.Point(294, 13);
             this.gbxDodatniPodaci.Name = "gbxDodatniPodaci";
-            this.gbxDodatniPodaci.Size = new System.Drawing.Size(265, 236);
+            this.gbxDodatniPodaci.Size = new System.Drawing.Size(275, 229);
             this.gbxDodatniPodaci.TabIndex = 19;
             this.gbxDodatniPodaci.TabStop = false;
             this.gbxDodatniPodaci.Text = "Dodatni podaci";
@@ -364,13 +364,14 @@
             this.txtBrojObuce.Name = "txtBrojObuce";
             this.txtBrojObuce.Size = new System.Drawing.Size(149, 20);
             this.txtBrojObuce.TabIndex = 21;
+            this.txtBrojObuce.Validating += new System.ComponentModel.CancelEventHandler(this.txtBrojObuce_Validating);
             // 
             // chbAktivan
             // 
             this.chbAktivan.AutoSize = true;
             this.chbAktivan.Checked = true;
             this.chbAktivan.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chbAktivan.Location = new System.Drawing.Point(215, 380);
+            this.chbAktivan.Location = new System.Drawing.Point(215, 370);
             this.chbAktivan.Name = "chbAktivan";
             this.chbAktivan.Size = new System.Drawing.Size(62, 17);
             this.chbAktivan.TabIndex = 20;
@@ -386,7 +387,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(571, 420);
+            this.ClientSize = new System.Drawing.Size(571, 398);
             this.Controls.Add(this.chbAktivan);
             this.Controls.Add(this.gbxDodatniPodaci);
             this.Controls.Add(this.groupBox2);

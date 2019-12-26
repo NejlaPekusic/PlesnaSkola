@@ -277,9 +277,44 @@ namespace PlesnaSkola.WinUI.Clanovi
         private void cmbRoditelj_Validating(object sender, CancelEventArgs e)
         {
             ComboBox control = sender as ComboBox;
+
+            var today = DateTime.Today;
+            var age = today.Year - dtpDatumRodjenja.Value.Year;
+            if (dtpDatumRodjenja.Value.Date > today.AddYears(-age)) age--;
+
+            if (age >= 18)
+            {
+                errorProvider1.SetError(control, null);
+                return;
+            }
+
             if(control.SelectedIndex <= 0)
             {
                 errorProvider1.SetError(control, Properties.Resources.Validation_Required);
+                e.Cancel = true;
+            }
+            else
+            {
+                errorProvider1.SetError(control, null);
+            }
+        }
+
+        private void txtBrojObuce_Validating(object sender, CancelEventArgs e)
+        {
+            TextBox control = sender as TextBox;
+            if (string.IsNullOrEmpty(control.Text))
+            {
+                errorProvider1.SetError(control, Properties.Resources.Validation_Required);
+                e.Cancel = true;
+            }
+            else if (!int.TryParse(control.Text, out int broj))
+            {
+                errorProvider1.SetError(control, Properties.Resources.Validation_Number);
+                e.Cancel = true;
+            }
+            else if (broj < 20 || broj > 50)
+            {
+                errorProvider1.SetError(control, "Unos nije validan.");
                 e.Cancel = true;
             }
             else
