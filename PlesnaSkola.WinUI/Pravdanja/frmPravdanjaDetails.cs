@@ -29,6 +29,7 @@ namespace PlesnaSkola.WinUI.Pravdanja
             _PravdanjeId = grupaId;
 
             btnDodaj.Text = "Izdaj";
+            btnDodajPrintaj.Text = "Izdaj i printaj";
         }
 
         private async void frmPravdanjeDetails_Load(object sender, EventArgs e)
@@ -163,6 +164,55 @@ namespace PlesnaSkola.WinUI.Pravdanja
             }
         }
 
-        
+        private async void btnDodajPrintaj_Click(object sender, EventArgs e)
+        {
+            if (!ValidateChildren())
+                return;
+
+            List<PravdanjaPlesaci> plesaci = new List<PravdanjaPlesaci>();
+            foreach (TreeNode groupNode in trvPlesaci.Nodes)
+            {
+                foreach (TreeNode plesacNode in groupNode.Nodes)
+                {
+                    if (plesacNode.Checked)
+                    {
+                        plesaci.Add(new PravdanjaPlesaci
+                        {
+                            PlesacId = (plesacNode.Tag as Korisnici).Plesac.Id
+                        });
+                    }
+                }
+            }
+
+            var request = new Model.Requests.PravdanjaInsertRequest
+            {
+                DatumDo = dtpDo.Value.Date,
+                DatumOd = dtpOd.Value.Date,
+                Opis = txtOpis.Text,
+                Plesaci = plesaci
+            };
+
+            if (_PravdanjeId == 0)
+            {
+                var entity = await _servicePravdanja.Insert<Model.Pravdanja>(request);
+
+                if (entity != null)
+                {
+                    MessageBox.Show("Pravdanje dodano.", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Tag = entity;
+                    DialogResult = DialogResult.Yes;
+                }
+            }
+            else
+            {
+                var entity = await _servicePravdanja.Update<Model.Pravdanja>(_PravdanjeId, request);
+                if (entity != null)
+                {
+                    MessageBox.Show("Pravdanje izmijenjeno.", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Tag = entity;
+                    DialogResult = DialogResult.Yes;
+                }
+            }
+        }
     }
 }

@@ -17,6 +17,7 @@ namespace PlesnaSkola.WinUI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            SqlServerTypes.Utilities.LoadNativeAssemblies(AppDomain.CurrentDomain.BaseDirectory);
 
             var loginForm = new frmLogin();
             if(loginForm.ShowDialog() == DialogResult.OK)

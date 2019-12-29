@@ -40,6 +40,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.btnDodajPrintaj = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
@@ -47,9 +48,9 @@
             // 
             // btnDodaj
             // 
-            this.btnDodaj.Location = new System.Drawing.Point(421, 192);
+            this.btnDodaj.Location = new System.Drawing.Point(409, 192);
             this.btnDodaj.Name = "btnDodaj";
-            this.btnDodaj.Size = new System.Drawing.Size(75, 23);
+            this.btnDodaj.Size = new System.Drawing.Size(87, 23);
             this.btnDodaj.TabIndex = 16;
             this.btnDodaj.Text = "Dodaj";
             this.btnDodaj.UseVisualStyleBackColor = true;
@@ -144,11 +145,22 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
+            // btnDodajPrintaj
+            // 
+            this.btnDodajPrintaj.Location = new System.Drawing.Point(298, 192);
+            this.btnDodajPrintaj.Name = "btnDodajPrintaj";
+            this.btnDodajPrintaj.Size = new System.Drawing.Size(92, 23);
+            this.btnDodajPrintaj.TabIndex = 41;
+            this.btnDodajPrintaj.Text = "Dodaj i printaj";
+            this.btnDodajPrintaj.UseVisualStyleBackColor = true;
+            this.btnDodajPrintaj.Click += new System.EventHandler(this.btnDodajPrintaj_Click);
+            // 
             // frmPravdanjeDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(513, 225);
+            this.Controls.Add(this.btnDodajPrintaj);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.btnDodaj);
@@ -178,5 +190,6 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.TextBox txtOpis;
         private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.Button btnDodajPrintaj;
     }
 }

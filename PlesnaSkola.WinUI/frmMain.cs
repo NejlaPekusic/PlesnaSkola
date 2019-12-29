@@ -33,12 +33,20 @@ namespace PlesnaSkola.WinUI
             myTimer.Stop();
 
             var zahtjev = await _servicePravdanja.Get<Model.Pravdanja>(null, "GetNajnovijiZahtjev");
-            if (zahtjev.DatumZahtjeva > DatumNajnovijegZahtjeva)
+            if (zahtjev != null && zahtjev.DatumZahtjeva > DatumNajnovijegZahtjeva)
             {
                 DatumNajnovijegZahtjeva = zahtjev.DatumZahtjeva.Value;
 
                 notifyIcon1.ShowBalloonTip(10);
                 notifyIcon1.Tag = zahtjev;
+
+                foreach (var child in this.MdiChildren)
+                {
+                    if(child is Pravdanja.frmPravdanja forma)
+                    {
+                        forma.UcitajDataGrid();
+                    }
+                }
             }
 
             myTimer.Enabled = true;

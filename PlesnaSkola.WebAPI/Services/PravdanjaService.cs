@@ -54,6 +54,7 @@ namespace PlesnaSkola.WebAPI.Services
             }
 
             query = query.Include("Plesaci.Plesac.Korisnik");
+            query = query.OrderByDescending(x => x.PravdanjeId);
 
             var list = query.ToList();
 

@@ -20,7 +20,7 @@ namespace PlesnaSkola.WinUI.Pravdanja
             InitializeComponent();
         }
 
-        private async Task UcitajDataGrid()
+        public async Task UcitajDataGrid()
         {
             var request = new Model.Requests.PravdanjaSearchRequest
             {
@@ -50,7 +50,15 @@ namespace PlesnaSkola.WinUI.Pravdanja
         {
             int PravdanjeId = int.Parse(dgvPravdanja.SelectedRows[0].Cells["PravdanjeId"].Value.ToString());
             var frm = new frmPravdanjeDetails(PravdanjeId);
-            frm.ShowDialog();
+
+            if (frm.ShowDialog() == DialogResult.Yes)
+            {
+                if (frm.Tag is Model.Pravdanja pravdanje)
+                {
+                    var frmPrint = new frmPravdanjePrint(pravdanje);
+                    frmPrint.ShowDialog();
+                }
+            }
 
             await UcitajDataGrid();
         }
@@ -58,7 +66,15 @@ namespace PlesnaSkola.WinUI.Pravdanja
         private async void btnDodajPravdanje_Click(object sender, EventArgs e)
         {
             var frm = new frmPravdanjeDetails();
-            frm.ShowDialog();
+
+            if (frm.ShowDialog() == DialogResult.Yes)
+            {
+                if(frm.Tag is Model.Pravdanja pravdanje)
+                {
+                    var frmPrint = new frmPravdanjePrint(pravdanje);
+                    frmPrint.ShowDialog();
+                }
+            }
 
             await UcitajDataGrid();
         }
