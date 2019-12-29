@@ -19,6 +19,7 @@ namespace PlesnaSkola.Model
 
         public bool IsZahtjev { get => DatumZahtjeva != null && DatumIzdavanja is null; }
         public bool IsIzdano { get => !(DatumIzdavanja is null); }
+        public string OpisCustom { get => "Pravdanje se izdaje u svrhu " + Opis + "."; }
 
         public Voditelji Voditelj { get; set; }
         public List<PravdanjaPlesaci> Plesaci { get; set; }

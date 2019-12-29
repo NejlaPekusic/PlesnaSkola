@@ -48,7 +48,7 @@
             // 
             // btnDodaj
             // 
-            this.btnDodaj.Location = new System.Drawing.Point(409, 192);
+            this.btnDodaj.Location = new System.Drawing.Point(373, 192);
             this.btnDodaj.Name = "btnDodaj";
             this.btnDodaj.Size = new System.Drawing.Size(87, 23);
             this.btnDodaj.TabIndex = 16;
@@ -59,9 +59,9 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.trvPlesaci);
-            this.groupBox1.Location = new System.Drawing.Point(292, 12);
+            this.groupBox1.Location = new System.Drawing.Point(247, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(204, 174);
+            this.groupBox1.Size = new System.Drawing.Size(213, 174);
             this.groupBox1.TabIndex = 40;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Plesači";
@@ -78,7 +78,7 @@
             // dtpDo
             // 
             this.dtpDo.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDo.Location = new System.Drawing.Point(102, 59);
+            this.dtpDo.Location = new System.Drawing.Point(67, 59);
             this.dtpDo.Name = "dtpDo";
             this.dtpDo.Size = new System.Drawing.Size(149, 20);
             this.dtpDo.TabIndex = 32;
@@ -86,7 +86,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(45, 62);
+            this.label2.Location = new System.Drawing.Point(10, 62);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(21, 13);
             this.label2.TabIndex = 33;
@@ -102,23 +102,23 @@
             this.groupBox2.Controls.Add(this.label14);
             this.groupBox2.Location = new System.Drawing.Point(12, 11);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(265, 175);
+            this.groupBox2.Size = new System.Drawing.Size(229, 175);
             this.groupBox2.TabIndex = 18;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Podaci o pravdanju";
             // 
             // txtOpis
             // 
-            this.txtOpis.Location = new System.Drawing.Point(102, 97);
+            this.txtOpis.Location = new System.Drawing.Point(12, 116);
             this.txtOpis.Multiline = true;
             this.txtOpis.Name = "txtOpis";
-            this.txtOpis.Size = new System.Drawing.Size(149, 69);
+            this.txtOpis.Size = new System.Drawing.Size(204, 50);
             this.txtOpis.TabIndex = 35;
             // 
             // dtpOd
             // 
             this.dtpOd.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpOd.Location = new System.Drawing.Point(102, 22);
+            this.dtpOd.Location = new System.Drawing.Point(67, 22);
             this.dtpOd.Name = "dtpOd";
             this.dtpOd.Size = new System.Drawing.Size(149, 20);
             this.dtpOd.TabIndex = 34;
@@ -126,16 +126,16 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(38, 97);
+            this.label1.Location = new System.Drawing.Point(10, 97);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(28, 13);
+            this.label1.Size = new System.Drawing.Size(137, 13);
             this.label1.TabIndex = 30;
-            this.label1.Text = "Opis";
+            this.label1.Text = "Pravdanje se izdaje u svrhu";
             // 
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(45, 28);
+            this.label14.Location = new System.Drawing.Point(10, 28);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(21, 13);
             this.label14.TabIndex = 22;
@@ -147,7 +147,7 @@
             // 
             // btnDodajPrintaj
             // 
-            this.btnDodajPrintaj.Location = new System.Drawing.Point(298, 192);
+            this.btnDodajPrintaj.Location = new System.Drawing.Point(262, 192);
             this.btnDodajPrintaj.Name = "btnDodajPrintaj";
             this.btnDodajPrintaj.Size = new System.Drawing.Size(92, 23);
             this.btnDodajPrintaj.TabIndex = 41;
@@ -159,7 +159,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(513, 225);
+            this.ClientSize = new System.Drawing.Size(474, 225);
             this.Controls.Add(this.btnDodajPrintaj);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox2);

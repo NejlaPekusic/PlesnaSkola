@@ -60,7 +60,7 @@
                                 </StackLayout>
 
                                 <StackLayout  Grid.Row="3" Grid.Column="0">
-                                    <Label FontSize="14" Text="{Binding Opis}" VerticalTextAlignment="Start"/>
+                                    <Label FontSize="14" Text="{Binding OpisCustom}" VerticalTextAlignment="Start"/>
                                 </StackLayout>
 
                             </Grid>
