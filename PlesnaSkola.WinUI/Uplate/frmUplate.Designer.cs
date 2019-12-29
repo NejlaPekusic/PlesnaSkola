@@ -33,12 +33,12 @@
             this.btnPrikazi = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgvUplate = new System.Windows.Forms.DataGridView();
-            this.btnDodajUplatu = new System.Windows.Forms.Button();
             this.UplataId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ImePrezime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IznosUplate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DatumUplate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.VrstaUplate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnDodajUplatu = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUplate)).BeginInit();
             this.SuspendLayout();
@@ -58,6 +58,7 @@
             this.txtPretraga.Name = "txtPretraga";
             this.txtPretraga.Size = new System.Drawing.Size(242, 20);
             this.txtPretraga.TabIndex = 5;
+            this.txtPretraga.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtPretraga_KeyUp);
             // 
             // btnPrikazi
             // 
@@ -103,16 +104,6 @@
             this.dgvUplate.TabIndex = 0;
             this.dgvUplate.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvUplate_CellDoubleClick);
             // 
-            // btnDodajUplatu
-            // 
-            this.btnDodajUplatu.Location = new System.Drawing.Point(15, 444);
-            this.btnDodajUplatu.Name = "btnDodajUplatu";
-            this.btnDodajUplatu.Size = new System.Drawing.Size(75, 23);
-            this.btnDodajUplatu.TabIndex = 8;
-            this.btnDodajUplatu.Text = "Dodaj uplatu";
-            this.btnDodajUplatu.UseVisualStyleBackColor = true;
-            this.btnDodajUplatu.Click += new System.EventHandler(this.btnDodajUplatu_Click);
-            // 
             // UplataId
             // 
             this.UplataId.DataPropertyName = "UplataId";
@@ -149,6 +140,16 @@
             this.VrstaUplate.HeaderText = "Vrsta uplate";
             this.VrstaUplate.Name = "VrstaUplate";
             this.VrstaUplate.ReadOnly = true;
+            // 
+            // btnDodajUplatu
+            // 
+            this.btnDodajUplatu.Location = new System.Drawing.Point(15, 444);
+            this.btnDodajUplatu.Name = "btnDodajUplatu";
+            this.btnDodajUplatu.Size = new System.Drawing.Size(75, 23);
+            this.btnDodajUplatu.TabIndex = 8;
+            this.btnDodajUplatu.Text = "Dodaj uplatu";
+            this.btnDodajUplatu.UseVisualStyleBackColor = true;
+            this.btnDodajUplatu.Click += new System.EventHandler(this.btnDodajUplatu_Click);
             // 
             // frmUplate
             // 

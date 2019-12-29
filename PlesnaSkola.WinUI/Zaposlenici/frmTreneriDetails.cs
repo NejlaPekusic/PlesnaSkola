@@ -1,35 +1,44 @@
-﻿using PlesnaSkola.WinUI.Helper;
+﻿using PlesnaSkola.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace PlesnaSkola.WinUI.Clanovi
+namespace PlesnaSkola.WinUI.Zaposlenici
 {
-    public partial class frmRoditeljiDetails : Form
+    public partial class frmTreneriDetails : Form
     {
         private APIService _serviceKorisnici = new APIService("Korisnici");
         private int _korisnikId;
-        private byte[] Slika = new byte[0];
 
-        public frmRoditeljiDetails()
+        public frmTreneriDetails()
         {
             InitializeComponent();
         }
 
-        public frmRoditeljiDetails(int korisnikId)
+        public frmTreneriDetails(int korisnikId)
         {
             InitializeComponent();
             _korisnikId = korisnikId;
 
             chbAktivan.Visible = true;
             btnDodaj.Text = "Snimi";
+        }
+        private void LoadComboboxes()
+        {
+            LoadFunkcijaCmb();
+            
+        }
+
+        private void LoadFunkcijaCmb()
+        {
+            var list = Enum.GetValues(typeof(Funkcija));
+            cmbFunkcija.DataSource = list;
         }
 
         private async void btnDodaj_Click(object sender, EventArgs e)
@@ -48,17 +57,20 @@ namespace PlesnaSkola.WinUI.Clanovi
                 Password = txtLozinka.Text,
                 PasswordConfirmation = txtPotvrdaLozinke.Text,
                 Username = txtKorisnickoIme.Text,
-                Slika = this.Slika,
-                Roditelj = new Model.Roditelji()
-            };
+                Trener = new Model.Treneri()
+                {
+                    Funkcija= (Funkcija)cmbFunkcija.SelectedItem,
+                    Licenca=txtLicenca.Text
+                }
 
+            };
 
             if (_korisnikId == 0)
             {
                 var entity = await _serviceKorisnici.Insert<Model.Korisnici>(request);
                 if (entity != null)
                 {
-                    MessageBox.Show("Roditelj dodan.", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Trener dodan.", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     DialogResult = DialogResult.OK;
                 }
             }
@@ -67,21 +79,25 @@ namespace PlesnaSkola.WinUI.Clanovi
                 var entity = await _serviceKorisnici.Update<Model.Korisnici>(_korisnikId, request);
                 if (entity != null)
                 {
-                    MessageBox.Show("Roditelj izmijenjen.", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Trener izmijenjen.", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     DialogResult = DialogResult.OK;
                 }
             }
         }
 
-        private async void frmRoditeljiDetails_Load(object sender, EventArgs e)
+        private async void frmTreneriDetails_Load(object sender, EventArgs e)
         {
+            LoadComboboxes();
+
             if (_korisnikId != 0)
             {
-                await UcitajRoditelja();
+                await UcitajTrenera();
             }
+            
+            
         }
 
-        private async Task UcitajRoditelja()
+        private async Task UcitajTrenera()
         {
             var entity = await _serviceKorisnici.GetById<Model.Korisnici>(_korisnikId);
             if (entity != null)
@@ -95,36 +111,18 @@ namespace PlesnaSkola.WinUI.Clanovi
                     dtpDatumRodjenja.Value = entity.DatumRodjenja.Value;
 
                 chbAktivan.Checked = entity.Aktivan ?? false;
+                txtLicenca.Text = entity.Trener.Licenca;
 
-                this.Slika = entity.Slika;
-                if (this.Slika.Length > 0)
+                foreach (Funkcija funkcija in cmbFunkcija.Items)
                 {
-                    MemoryStream ms = new MemoryStream(entity.Slika);
-                    pbSlika.Image = Image.FromStream(ms);
+                    if (funkcija == entity.Trener.Funkcija)
+                    {
+                        cmbFunkcija.SelectedItem = funkcija;
+                    }
                 }
-                else
-                {
-                    MemoryStream ms = new MemoryStream(SlikaHelper.getDefaultSlika());
-                    pbSlika.Image = Image.FromStream(ms);
-                }
-
 
             }
         }
 
-        private void btnOdaberi_Click(object sender, EventArgs e)
-        {
-            var result = openFileDialog1.ShowDialog();
-
-            if (result == DialogResult.OK)
-            {
-                var fileName = openFileDialog1.FileName;
-
-                Slika = File.ReadAllBytes(fileName);
-                var stream = new MemoryStream(Slika);
-                pbSlika.Image = Image.FromStream(stream);
-
-            }
-        }
     }
 }

@@ -61,6 +61,16 @@ namespace PlesnaSkola.WinUI.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap default_pic {
+            get {
+                object obj = ResourceManager.GetObject("default_pic", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Email adresa nije u ispravnom formatu..
         /// </summary>
         internal static string Validation_EmailInvalid {

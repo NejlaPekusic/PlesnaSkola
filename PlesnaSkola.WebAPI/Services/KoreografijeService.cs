@@ -25,7 +25,10 @@ namespace PlesnaSkola.WebAPI.Services
         public List<Model.Koreografije> Get(KoreografijeSearchRequest request)
         {
             var query = _context.Koreografije.AsQueryable();
-
+            if (!string.IsNullOrEmpty(request.NazivKoreografije))
+            {
+                query = query.Where(x => x.NazivKoreografije.Contains(request.NazivKoreografije));
+            }
             var list = query.ToList();
 
             return _mapper.Map<List<Model.Koreografije>>(list);

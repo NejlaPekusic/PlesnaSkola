@@ -159,6 +159,7 @@
             this.txtPretraga.Name = "txtPretraga";
             this.txtPretraga.Size = new System.Drawing.Size(242, 20);
             this.txtPretraga.TabIndex = 14;
+            this.txtPretraga.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtPretraga_KeyUp);
             // 
             // frmRadionice
             // 

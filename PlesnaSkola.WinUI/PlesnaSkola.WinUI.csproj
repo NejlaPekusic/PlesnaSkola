@@ -108,6 +108,7 @@
     <Compile Include="Grupe\frmGrupeDetails.Designer.cs">
       <DependentUpon>frmGrupeDetails.cs</DependentUpon>
     </Compile>
+    <Compile Include="Helper\SlikaHelper.cs" />
     <Compile Include="Koreografije\frmKoreografije.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -182,6 +183,30 @@
     <Compile Include="Uplate\frmUplate.Designer.cs">
       <DependentUpon>frmUplate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Zaposlenici\frmAsistentiDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Zaposlenici\frmAsistentiDetails.Designer.cs">
+      <DependentUpon>frmAsistentiDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Zaposlenici\frmTreneriDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Zaposlenici\frmTreneriDetails.Designer.cs">
+      <DependentUpon>frmTreneriDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Zaposlenici\frmVoditeljiDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Zaposlenici\frmVoditeljiDetails.Designer.cs">
+      <DependentUpon>frmVoditeljiDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Zaposlenici\frmZaposlenici.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Zaposlenici\frmZaposlenici.Designer.cs">
+      <DependentUpon>frmZaposlenici.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Clanovi\frmClanovi.resx">
       <DependentUpon>frmClanovi.cs</DependentUpon>
     </EmbeddedResource>
@@ -252,6 +277,18 @@
     <EmbeddedResource Include="Uplate\frmUplate.resx">
       <DependentUpon>frmUplate.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Zaposlenici\frmAsistentiDetails.resx">
+      <DependentUpon>frmAsistentiDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Zaposlenici\frmTreneriDetails.resx">
+      <DependentUpon>frmTreneriDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Zaposlenici\frmVoditeljiDetails.resx">
+      <DependentUpon>frmVoditeljiDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Zaposlenici\frmZaposlenici.resx">
+      <DependentUpon>frmZaposlenici.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>PublicSettingsSingleFileGenerator</Generator>
@@ -272,6 +309,8 @@
       <Name>PlesnaSkola.Model</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="default-pic.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

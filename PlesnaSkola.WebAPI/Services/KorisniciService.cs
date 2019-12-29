@@ -35,14 +35,12 @@ namespace PlesnaSkola.WebAPI.Services
                 query = query.Where(x => x.Plesac.RoditeljId == _prijavljeniKorisnik.KorisnikId);
             }
 
-            if (request.IncludeClanovi || request.IncludeUposlenici || request.IncludeRoditelji || request.IncludePlesaci || request.IncludeAsistenti || request.IncludeTreneri)
+            if (request.IncludeClanovi || request.IncludeUposlenici || request.IncludeRoditelji || request.IncludePlesaci || request.IncludeAsistenti || request.IncludeTreneri || request.IncludeVoditelji)
             {
                 if (request.IncludeClanovi)
                     query = query.Where(x => x.Roditelj != null || x.Plesac != null);
                 else if (request.IncludePlesaci)
-                {
                     query = query.Where(x => x.Plesac != null).Include(x => x.Plesac.Grupa);
-                }
                 else if (request.IncludeAsistenti)
                     query = query.Where(x => x.Asistent != null);
                 else if (request.IncludeUposlenici)
@@ -51,6 +49,8 @@ namespace PlesnaSkola.WebAPI.Services
                     query = query.Where(x => x.Roditelj != null);
                 else if (request.IncludeTreneri)
                     query = query.Where(x => x.Trener != null);
+                else if (request.IncludeVoditelji)
+                    query = query.Where(x => x.Voditelj != null);
             }
 
             if (request.GrupaId != 0)
@@ -156,7 +156,7 @@ namespace PlesnaSkola.WebAPI.Services
             entity.Mail = request.Mail;
             entity.BrojPasosa = request.BrojPasosa;
             entity.DatumRodjenja = request.DatumRodjenja;
-            if (request.Slika.Length > 0)
+            if (request.Slika?.Length > 0)
                 entity.Slika = request.Slika;
 
             if (request.Plesac != null)

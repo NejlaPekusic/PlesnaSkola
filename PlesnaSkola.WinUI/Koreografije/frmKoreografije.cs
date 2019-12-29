@@ -57,5 +57,11 @@ namespace PlesnaSkola.WinUI.Koreografije
             frm.ShowDialog();
             await UcitajDataGrid();
         }
+
+        private async void txtPretraga_KeyUp(object sender, KeyEventArgs e)
+        {
+            await UcitajDataGrid();
+
+        }
     }
 }

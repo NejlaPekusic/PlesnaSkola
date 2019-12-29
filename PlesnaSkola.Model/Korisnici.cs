@@ -32,5 +32,23 @@ namespace PlesnaSkola.Model
         {
             return ImePrezime;
         }
+
+
+        public string Uloga { get
+            {
+                if (Asistent != null)
+                    return "Asistent";
+                if (Trener != null)
+                    return "Trener";
+                if (Voditelj != null)
+                    return "Voditelj";
+                if (Plesac != null)
+                    return "Plesač";
+                if (Roditelj != null)
+                    return "Roditelj";
+                return "Nepoznato";
+            }
+
+        }
     }
 }

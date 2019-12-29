@@ -33,10 +33,10 @@
             this.btnPrikazi = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgvKoreografije = new System.Windows.Forms.DataGridView();
-            this.btnDodajUplatu = new System.Windows.Forms.Button();
             this.KoreografijaId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NazivKoreografije = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Stil = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnDodajUplatu = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvKoreografije)).BeginInit();
             this.SuspendLayout();
@@ -56,6 +56,7 @@
             this.txtPretraga.Name = "txtPretraga";
             this.txtPretraga.Size = new System.Drawing.Size(242, 20);
             this.txtPretraga.TabIndex = 5;
+            this.txtPretraga.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtPretraga_KeyUp);
             // 
             // btnPrikazi
             // 
@@ -99,16 +100,6 @@
             this.dgvKoreografije.TabIndex = 0;
             this.dgvKoreografije.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvKoreografije_CellDoubleClick);
             // 
-            // btnDodajUplatu
-            // 
-            this.btnDodajUplatu.Location = new System.Drawing.Point(15, 444);
-            this.btnDodajUplatu.Name = "btnDodajUplatu";
-            this.btnDodajUplatu.Size = new System.Drawing.Size(108, 23);
-            this.btnDodajUplatu.TabIndex = 8;
-            this.btnDodajUplatu.Text = "Dodaj koreografiju";
-            this.btnDodajUplatu.UseVisualStyleBackColor = true;
-            this.btnDodajUplatu.Click += new System.EventHandler(this.btnDodajKoreografiju_Click);
-            // 
             // KoreografijaId
             // 
             this.KoreografijaId.DataPropertyName = "KoreografijaId";
@@ -131,6 +122,16 @@
             this.Stil.HeaderText = "Stil";
             this.Stil.Name = "Stil";
             this.Stil.ReadOnly = true;
+            // 
+            // btnDodajUplatu
+            // 
+            this.btnDodajUplatu.Location = new System.Drawing.Point(15, 444);
+            this.btnDodajUplatu.Name = "btnDodajUplatu";
+            this.btnDodajUplatu.Size = new System.Drawing.Size(108, 23);
+            this.btnDodajUplatu.TabIndex = 8;
+            this.btnDodajUplatu.Text = "Dodaj koreografiju";
+            this.btnDodajUplatu.UseVisualStyleBackColor = true;
+            this.btnDodajUplatu.Click += new System.EventHandler(this.btnDodajKoreografiju_Click);
             // 
             // frmKoreografije
             // 

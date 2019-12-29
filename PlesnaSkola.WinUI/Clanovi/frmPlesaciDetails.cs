@@ -1,8 +1,10 @@
-﻿using System;
+﻿using PlesnaSkola.WinUI.Helper;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Net.Mail;
 using System.Text;
@@ -17,6 +19,7 @@ namespace PlesnaSkola.WinUI.Clanovi
         private APIService _serviceKorisnici = new APIService("Korisnici");
         private APIService _serviceGrupe = new APIService("Grupe");
         private int _korisnikId;
+        private byte[] Slika = new byte[0];
 
         public frmPlesaciDetails()
         {
@@ -41,9 +44,7 @@ namespace PlesnaSkola.WinUI.Clanovi
                 await UcitajPlesaca();
             }
         }
-
-
-
+        
         private async Task LoadComboboxes()
         {
             await LoadRoditeljiCmb();
@@ -92,6 +93,18 @@ namespace PlesnaSkola.WinUI.Clanovi
 
                 chbAktivan.Checked = entity.Aktivan ?? false;
 
+                this.Slika = entity.Slika;
+                if (this.Slika.Length > 0)
+                {
+                    MemoryStream ms = new MemoryStream(entity.Slika);
+                    pbSlika.Image = Image.FromStream(ms);
+                }
+                else
+                {
+                    MemoryStream ms = new MemoryStream(SlikaHelper.getDefaultSlika());
+                    pbSlika.Image = Image.FromStream(ms);
+                }
+
                 foreach (Model.Grupe grupa in cmbGrupa.Items)
                 {
                     if(grupa.GrupaId == entity.Plesac.GrupaId)
@@ -104,6 +117,7 @@ namespace PlesnaSkola.WinUI.Clanovi
                 {
                     if(roditelj.KorisnikId == entity.Plesac.RoditeljId)
                     {
+                        
                         cmbRoditelj.SelectedItem = roditelj;
                     }
                 }
@@ -143,6 +157,7 @@ namespace PlesnaSkola.WinUI.Clanovi
                 Password = txtLozinka.Text,
                 PasswordConfirmation = txtPotvrdaLozinke.Text,
                 Username = txtKorisnickoIme.Text,
+                Slika = this.Slika,
                 Plesac = new Model.Plesaci()
                 {
                     BrojObuce = int.Parse(txtBrojObuce.Text),
@@ -320,6 +335,20 @@ namespace PlesnaSkola.WinUI.Clanovi
             else
             {
                 errorProvider1.SetError(control, null);
+            }
+        }
+
+        private void btnOdaberi_Click(object sender, EventArgs e)
+        {
+            var result = openFileDialog1.ShowDialog();
+
+            if (result == DialogResult.OK)
+            {
+                var fileName = openFileDialog1.FileName;
+
+                Slika = File.ReadAllBytes(fileName);
+                var stream = new MemoryStream(Slika);
+                pbSlika.Image = Image.FromStream(stream);
             }
         }
     }

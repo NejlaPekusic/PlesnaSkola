@@ -10,7 +10,8 @@ namespace PlesnaSkola.Model
         public int Id { get; set; }
         public Korisnici_Basic Korisnik { get; set; }
         public string Licenca { get; set; }
-        public string Funkcija { get; set; }
+        public Funkcija Funkcija { get; set; }
+        public string NazivFunkcije => Funkcija.ToString();
 
         public override string ToString()
         {
@@ -18,4 +19,6 @@ namespace PlesnaSkola.Model
         }
 
     }
+    public enum Funkcija { Koreograf, Kondicioni, Tehnički }
+
 }

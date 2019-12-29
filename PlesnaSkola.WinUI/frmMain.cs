@@ -224,5 +224,30 @@ namespace PlesnaSkola.WinUI
                 Close();
             }
         }
+
+        private void prikažiZaposlenikeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var frm = new Zaposlenici.frmZaposlenici();
+            frm.MdiParent = this;
+            frm.Show();
+        }
+
+        private void voditeljToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var frm = new Zaposlenici.frmVoditeljiDetails();
+            frm.ShowDialog();
+        }
+
+        private void trenerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var frm = new Zaposlenici.frmTreneriDetails();
+            frm.ShowDialog();
+        }
+
+        private void asistentToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var frm = new Zaposlenici.frmAsistentiDetails();
+            frm.ShowDialog();
+        }
     }
 }

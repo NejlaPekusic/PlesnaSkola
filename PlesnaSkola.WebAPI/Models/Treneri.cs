@@ -17,8 +17,10 @@ namespace PlesnaSkola.WebAPI.Models
         public int Id { get; set; }
         public Korisnici Korisnik { get; set; }
         public string Licenca { get; set; }
-        public string Funkcija { get; set; }
+        public Funkcija Funkcija { get; set; }
         
         public ICollection<Treninzi> Treninzi { get; set; }
     }
+    public enum Funkcija { Koreograf, Kondicioni, Tehnički }
+
 }
