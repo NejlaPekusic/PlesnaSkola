@@ -45,6 +45,7 @@
             this.dtpDatumRodjenja = new System.Windows.Forms.DateTimePicker();
             this.btnDodaj = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.chbAktivan = new System.Windows.Forms.CheckBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnOdaberi = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -52,6 +53,8 @@
             this.label9 = new System.Windows.Forms.Label();
             this.txtBrojPasosa = new System.Windows.Forms.TextBox();
             this.gbxDodatniPodaci = new System.Windows.Forms.GroupBox();
+            this.lblGrupaNePostoji = new System.Windows.Forms.Label();
+            this.btnDodajGrupu = new System.Windows.Forms.Button();
             this.btnDodajRoditelja = new System.Windows.Forms.Button();
             this.cmbGrupa = new System.Windows.Forms.ComboBox();
             this.cmbRoditelj = new System.Windows.Forms.ComboBox();
@@ -63,7 +66,6 @@
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.txtBrojObuce = new System.Windows.Forms.TextBox();
-            this.chbAktivan = new System.Windows.Forms.CheckBox();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.groupBox1.SuspendLayout();
@@ -76,7 +78,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(55, 191);
+            this.label2.Location = new System.Drawing.Point(55, 232);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(24, 13);
             this.label2.TabIndex = 2;
@@ -85,7 +87,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(37, 226);
+            this.label3.Location = new System.Drawing.Point(37, 267);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(44, 13);
             this.label3.TabIndex = 3;
@@ -93,7 +95,7 @@
             // 
             // txtIme
             // 
-            this.txtIme.Location = new System.Drawing.Point(100, 188);
+            this.txtIme.Location = new System.Drawing.Point(100, 229);
             this.txtIme.Name = "txtIme";
             this.txtIme.Size = new System.Drawing.Size(149, 20);
             this.txtIme.TabIndex = 4;
@@ -101,7 +103,7 @@
             // 
             // txtPrezime
             // 
-            this.txtPrezime.Location = new System.Drawing.Point(100, 223);
+            this.txtPrezime.Location = new System.Drawing.Point(100, 264);
             this.txtPrezime.Name = "txtPrezime";
             this.txtPrezime.Size = new System.Drawing.Size(149, 20);
             this.txtPrezime.TabIndex = 5;
@@ -109,7 +111,7 @@
             // 
             // txtMail
             // 
-            this.txtMail.Location = new System.Drawing.Point(100, 293);
+            this.txtMail.Location = new System.Drawing.Point(100, 334);
             this.txtMail.Name = "txtMail";
             this.txtMail.Size = new System.Drawing.Size(149, 20);
             this.txtMail.TabIndex = 7;
@@ -118,7 +120,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(55, 296);
+            this.label4.Location = new System.Drawing.Point(55, 337);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(26, 13);
             this.label4.TabIndex = 6;
@@ -177,7 +179,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(6, 261);
+            this.label8.Location = new System.Drawing.Point(6, 302);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(77, 13);
             this.label8.TabIndex = 14;
@@ -186,16 +188,18 @@
             // dtpDatumRodjenja
             // 
             this.dtpDatumRodjenja.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDatumRodjenja.Location = new System.Drawing.Point(100, 258);
+            this.dtpDatumRodjenja.Location = new System.Drawing.Point(100, 299);
             this.dtpDatumRodjenja.MaxDate = new System.DateTime(2050, 12, 31, 0, 0, 0, 0);
             this.dtpDatumRodjenja.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
             this.dtpDatumRodjenja.Name = "dtpDatumRodjenja";
             this.dtpDatumRodjenja.Size = new System.Drawing.Size(149, 20);
             this.dtpDatumRodjenja.TabIndex = 15;
+            this.dtpDatumRodjenja.ValueChanged += new System.EventHandler(this.dtpDatumRodjenja_ValueChanged);
+            this.dtpDatumRodjenja.Validating += new System.ComponentModel.CancelEventHandler(this.dtpDatumRodjenja_Validating);
             // 
             // btnDodaj
             // 
-            this.btnDodaj.Location = new System.Drawing.Point(204, 386);
+            this.btnDodaj.Location = new System.Drawing.Point(254, 424);
             this.btnDodaj.Name = "btnDodaj";
             this.btnDodaj.Size = new System.Drawing.Size(75, 23);
             this.btnDodaj.TabIndex = 16;
@@ -205,18 +209,32 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.chbAktivan);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.txtKorisnickoIme);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.txtLozinka);
             this.groupBox1.Controls.Add(this.txtPotvrdaLozinke);
             this.groupBox1.Controls.Add(this.label7);
-            this.groupBox1.Location = new System.Drawing.Point(294, 248);
+            this.groupBox1.Location = new System.Drawing.Point(294, 246);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(276, 131);
+            this.groupBox1.Size = new System.Drawing.Size(276, 172);
             this.groupBox1.TabIndex = 17;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Podaci za prijavu";
+            // 
+            // chbAktivan
+            // 
+            this.chbAktivan.AutoSize = true;
+            this.chbAktivan.Checked = true;
+            this.chbAktivan.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chbAktivan.Location = new System.Drawing.Point(102, 135);
+            this.chbAktivan.Name = "chbAktivan";
+            this.chbAktivan.Size = new System.Drawing.Size(62, 17);
+            this.chbAktivan.TabIndex = 20;
+            this.chbAktivan.Text = "Aktivan";
+            this.chbAktivan.UseVisualStyleBackColor = true;
+            this.chbAktivan.Visible = false;
             // 
             // groupBox2
             // 
@@ -233,16 +251,16 @@
             this.groupBox2.Controls.Add(this.label8);
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.txtMail);
-            this.groupBox2.Location = new System.Drawing.Point(12, 12);
+            this.groupBox2.Location = new System.Drawing.Point(12, 13);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(276, 367);
+            this.groupBox2.Size = new System.Drawing.Size(276, 405);
             this.groupBox2.TabIndex = 18;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Lični podaci";
             // 
             // btnOdaberi
             // 
-            this.btnOdaberi.Location = new System.Drawing.Point(10, 149);
+            this.btnOdaberi.Location = new System.Drawing.Point(99, 178);
             this.btnOdaberi.Name = "btnOdaberi";
             this.btnOdaberi.Size = new System.Drawing.Size(75, 23);
             this.btnOdaberi.TabIndex = 23;
@@ -273,7 +291,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(21, 331);
+            this.label9.Location = new System.Drawing.Point(21, 372);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(62, 13);
             this.label9.TabIndex = 16;
@@ -281,7 +299,7 @@
             // 
             // txtBrojPasosa
             // 
-            this.txtBrojPasosa.Location = new System.Drawing.Point(100, 328);
+            this.txtBrojPasosa.Location = new System.Drawing.Point(100, 369);
             this.txtBrojPasosa.Name = "txtBrojPasosa";
             this.txtBrojPasosa.Size = new System.Drawing.Size(149, 20);
             this.txtBrojPasosa.TabIndex = 17;
@@ -289,6 +307,8 @@
             // 
             // gbxDodatniPodaci
             // 
+            this.gbxDodatniPodaci.Controls.Add(this.lblGrupaNePostoji);
+            this.gbxDodatniPodaci.Controls.Add(this.btnDodajGrupu);
             this.gbxDodatniPodaci.Controls.Add(this.btnDodajRoditelja);
             this.gbxDodatniPodaci.Controls.Add(this.cmbGrupa);
             this.gbxDodatniPodaci.Controls.Add(this.cmbRoditelj);
@@ -302,18 +322,38 @@
             this.gbxDodatniPodaci.Controls.Add(this.txtBrojObuce);
             this.gbxDodatniPodaci.Location = new System.Drawing.Point(294, 13);
             this.gbxDodatniPodaci.Name = "gbxDodatniPodaci";
-            this.gbxDodatniPodaci.Size = new System.Drawing.Size(275, 229);
+            this.gbxDodatniPodaci.Size = new System.Drawing.Size(275, 227);
             this.gbxDodatniPodaci.TabIndex = 19;
             this.gbxDodatniPodaci.TabStop = false;
             this.gbxDodatniPodaci.Text = "Dodatni podaci";
             // 
+            // lblGrupaNePostoji
+            // 
+            this.lblGrupaNePostoji.AutoSize = true;
+            this.lblGrupaNePostoji.Location = new System.Drawing.Point(99, 200);
+            this.lblGrupaNePostoji.Name = "lblGrupaNePostoji";
+            this.lblGrupaNePostoji.Size = new System.Drawing.Size(155, 13);
+            this.lblGrupaNePostoji.TabIndex = 33;
+            this.lblGrupaNePostoji.Text = "Grupa za ovaj uzrast ne postoji.";
+            this.lblGrupaNePostoji.Visible = false;
+            // 
+            // btnDodajGrupu
+            // 
+            this.btnDodajGrupu.Location = new System.Drawing.Point(229, 164);
+            this.btnDodajGrupu.Name = "btnDodajGrupu";
+            this.btnDodajGrupu.Size = new System.Drawing.Size(23, 23);
+            this.btnDodajGrupu.TabIndex = 32;
+            this.btnDodajGrupu.Text = "+";
+            this.btnDodajGrupu.UseVisualStyleBackColor = true;
+            this.btnDodajGrupu.Click += new System.EventHandler(this.btnDodajGrupu_Click);
+            // 
             // btnDodajRoditelja
             // 
-            this.btnDodajRoditelja.Location = new System.Drawing.Point(154, 196);
+            this.btnDodajRoditelja.Location = new System.Drawing.Point(229, 126);
             this.btnDodajRoditelja.Name = "btnDodajRoditelja";
-            this.btnDodajRoditelja.Size = new System.Drawing.Size(97, 23);
+            this.btnDodajRoditelja.Size = new System.Drawing.Size(23, 23);
             this.btnDodajRoditelja.TabIndex = 31;
-            this.btnDodajRoditelja.Text = "Dodaj roditelja";
+            this.btnDodajRoditelja.Text = "+";
             this.btnDodajRoditelja.UseVisualStyleBackColor = true;
             this.btnDodajRoditelja.Click += new System.EventHandler(this.btnDodajRoditelja_Click);
             // 
@@ -321,18 +361,21 @@
             // 
             this.cmbGrupa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbGrupa.FormattingEnabled = true;
-            this.cmbGrupa.Location = new System.Drawing.Point(102, 126);
+            this.errorProvider1.SetIconPadding(this.cmbGrupa, 30);
+            this.cmbGrupa.Location = new System.Drawing.Point(102, 165);
             this.cmbGrupa.Name = "cmbGrupa";
-            this.cmbGrupa.Size = new System.Drawing.Size(149, 21);
+            this.cmbGrupa.Size = new System.Drawing.Size(121, 21);
             this.cmbGrupa.TabIndex = 30;
+            this.cmbGrupa.Validating += new System.ComponentModel.CancelEventHandler(this.cmbGrupa_Validating);
             // 
             // cmbRoditelj
             // 
             this.cmbRoditelj.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbRoditelj.FormattingEnabled = true;
-            this.cmbRoditelj.Location = new System.Drawing.Point(102, 161);
+            this.errorProvider1.SetIconPadding(this.cmbRoditelj, 30);
+            this.cmbRoditelj.Location = new System.Drawing.Point(102, 127);
             this.cmbRoditelj.Name = "cmbRoditelj";
-            this.cmbRoditelj.Size = new System.Drawing.Size(149, 21);
+            this.cmbRoditelj.Size = new System.Drawing.Size(121, 21);
             this.cmbRoditelj.TabIndex = 29;
             this.cmbRoditelj.Validating += new System.ComponentModel.CancelEventHandler(this.cmbRoditelj_Validating);
             // 
@@ -346,7 +389,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(47, 129);
+            this.label10.Location = new System.Drawing.Point(47, 168);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(36, 13);
             this.label10.TabIndex = 26;
@@ -372,7 +415,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(41, 164);
+            this.label14.Location = new System.Drawing.Point(41, 130);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(42, 13);
             this.label14.TabIndex = 22;
@@ -404,19 +447,6 @@
             this.txtBrojObuce.TabIndex = 21;
             this.txtBrojObuce.Validating += new System.ComponentModel.CancelEventHandler(this.txtBrojObuce_Validating);
             // 
-            // chbAktivan
-            // 
-            this.chbAktivan.AutoSize = true;
-            this.chbAktivan.Checked = true;
-            this.chbAktivan.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chbAktivan.Location = new System.Drawing.Point(314, 392);
-            this.chbAktivan.Name = "chbAktivan";
-            this.chbAktivan.Size = new System.Drawing.Size(62, 17);
-            this.chbAktivan.TabIndex = 20;
-            this.chbAktivan.Text = "Aktivan";
-            this.chbAktivan.UseVisualStyleBackColor = true;
-            this.chbAktivan.Visible = false;
-            // 
             // errorProvider1
             // 
             this.errorProvider1.ContainerControl = this;
@@ -430,8 +460,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(571, 421);
-            this.Controls.Add(this.chbAktivan);
+            this.ClientSize = new System.Drawing.Size(571, 459);
             this.Controls.Add(this.gbxDodatniPodaci);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -451,7 +480,6 @@
             this.gbxDodatniPodaci.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -493,5 +521,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pbSlika;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.Label lblGrupaNePostoji;
+        private System.Windows.Forms.Button btnDodajGrupu;
     }
 }

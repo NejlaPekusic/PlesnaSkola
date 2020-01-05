@@ -71,6 +71,16 @@ namespace PlesnaSkola.WinUI.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap flash_logo {
+            get {
+                object obj = ResourceManager.GetObject("flash logo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Email adresa nije u ispravnom formatu..
         /// </summary>
         internal static string Validation_EmailInvalid {
@@ -103,6 +113,24 @@ namespace PlesnaSkola.WinUI.Properties {
         internal static string Validation_Required {
             get {
                 return ResourceManager.GetString("Validation_Required", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dijete nema dovoljno godina za upis..
+        /// </summary>
+        internal static string Validation_UzrastClana {
+            get {
+                return ResourceManager.GetString("Validation_UzrastClana", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Uzrast grupe nije odgovarajući..
+        /// </summary>
+        internal static string Validation_UzrastGrupe {
+            get {
+                return ResourceManager.GetString("Validation_UzrastGrupe", resourceCulture);
             }
         }
     }

@@ -14,10 +14,37 @@ namespace PlesnaSkola.Model
         public int BrojClanova { get; set; }
         public GrupaUzrast GrupaUzrast { get; set; }
         public string Uzrast { get => GrupaUzrast.DescriptionAttr(); }
+        public string NazivGrupeIUzrast
+        {
+            get {
+                if (NazivGrupe == "Odaberite")
+                    return NazivGrupe;
+
+                return NazivGrupe + " (" + Uzrast + " / Čl: " + BrojClanova + ")";
+            }
+        }
+
+        public string Aktivna { get => BrojClanova >= 4 ? "DA" : "NE"; }
 
         public override string ToString()
         {
             return NazivGrupe;
+        }
+
+        public static GrupaUzrast? GetUzrast(int godine)
+        {
+            if (godine >= 3 && godine <= 5)
+                return GrupaUzrast.OD_3_DO_5;
+            if (godine >= 6 && godine <= 8)
+                return GrupaUzrast.OD_6_DO_8;
+            if (godine >= 9 && godine <= 11)
+                return GrupaUzrast.OD_9_DO_11;
+            if (godine >= 12 && godine <= 15)
+                return GrupaUzrast.OD_12_DO_15;
+            if (godine >= 16)
+                return GrupaUzrast.OD_16;
+
+            return null;
         }
     }
     public enum GrupaUzrast
@@ -30,7 +57,11 @@ namespace PlesnaSkola.Model
         OD_9_DO_11 = 3,
         [Description("12 - 15")]
         OD_12_DO_15 = 4,
-        [Description("15 +")]
-        PREKO_15 = 5 
+        [Description("16 +")]
+        OD_16 = 5
     }
+
+
+
+
 }

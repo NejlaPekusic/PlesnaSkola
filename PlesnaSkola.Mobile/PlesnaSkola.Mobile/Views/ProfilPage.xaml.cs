@@ -22,7 +22,7 @@ namespace PlesnaSkola.Mobile.Views
 
             if (KorisnikId == 0)
             {
-                UrediProfilToolbarItem.Icon = ImageSource.FromFile("add.png") as FileImageSource;
+                UrediProfilToolbarItem.Icon = ImageSource.FromFile("edit.png") as FileImageSource;
             }
             else
             {

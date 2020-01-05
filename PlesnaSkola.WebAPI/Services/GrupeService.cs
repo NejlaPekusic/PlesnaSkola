@@ -29,6 +29,15 @@ namespace PlesnaSkola.WebAPI.Services
             {
                 query = query.Where(x => x.NazivGrupe.Contains(request.NazivGrupe));
             }
+            
+            if(request.Status == 1)
+            {
+                query = query.Where(x => x.Plesaci.Count() >= 4);
+            }
+            else if(request.Status == 2)
+            {
+                query = query.Where(x => x.Plesaci.Count() < 4);
+            }
 
             var list = query.ToList();
 

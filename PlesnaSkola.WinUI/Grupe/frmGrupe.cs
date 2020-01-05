@@ -23,7 +23,8 @@ namespace PlesnaSkola.WinUI.Grupe
         {
             var request = new Model.Requests.GrupeSearchRequest
             {
-                NazivGrupe = txtPretraga.Text
+                NazivGrupe = txtPretraga.Text,
+                Status = cmbStatus.SelectedIndex
             };
 
             var list = await _serviceGrupe.Get<List<Model.Grupe>>(request);
@@ -36,7 +37,17 @@ namespace PlesnaSkola.WinUI.Grupe
             await UcitajDataGrid();
 
         }
+        private void UcitajStatuse()
+        {
+            var list = new List<string>
+            {
+                "Sve",
+                "Aktivne",
+                "Neaktivne"
+            };
 
+            cmbStatus.DataSource = list;
+        }
         private void dgvGrupe_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.ColumnIndex == 3)
@@ -49,6 +60,7 @@ namespace PlesnaSkola.WinUI.Grupe
 
         private async void frmGrupe_Load(object sender, EventArgs e)
         {
+            UcitajStatuse();
             await UcitajDataGrid();
         }
 
@@ -73,6 +85,11 @@ namespace PlesnaSkola.WinUI.Grupe
         {
             await UcitajDataGrid();
 
+        }
+
+        private async void cmbStatus_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            await UcitajDataGrid();
         }
     }
 }

@@ -154,7 +154,7 @@ namespace PlesnaSkola.WinUI.Grupe
 
         private void cmbUzrasti_Validating(object sender, CancelEventArgs e)
         {
-            if(cmbUzrasti.SelectedIndex < (int)GrupaUzrast.OD_3_DO_5 || cmbUzrasti.SelectedIndex > (int)GrupaUzrast.PREKO_15)
+            if(cmbUzrasti.SelectedIndex < (int)GrupaUzrast.OD_3_DO_5 || cmbUzrasti.SelectedIndex > (int)GrupaUzrast.OD_16)
             {
 
                 errorProvider1.SetError(cmbUzrasti, Properties.Resources.Validation_Required);

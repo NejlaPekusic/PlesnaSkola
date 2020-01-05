@@ -65,7 +65,9 @@
             this.logoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.notifyIcon2 = new System.Windows.Forms.NotifyIcon(this.components);
+            this.pbLogo = new System.Windows.Forms.PictureBox();
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -130,7 +132,7 @@
             // prikažiZaposlenikeToolStripMenuItem
             // 
             this.prikažiZaposlenikeToolStripMenuItem.Name = "prikažiZaposlenikeToolStripMenuItem";
-            this.prikažiZaposlenikeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.prikažiZaposlenikeToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.prikažiZaposlenikeToolStripMenuItem.Text = "Prikaži zaposlenike";
             this.prikažiZaposlenikeToolStripMenuItem.Click += new System.EventHandler(this.prikažiZaposlenikeToolStripMenuItem_Click);
             // 
@@ -141,27 +143,27 @@
             this.trenerToolStripMenuItem,
             this.asistentToolStripMenuItem});
             this.dodajZaposlenikaToolStripMenuItem.Name = "dodajZaposlenikaToolStripMenuItem";
-            this.dodajZaposlenikaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.dodajZaposlenikaToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.dodajZaposlenikaToolStripMenuItem.Text = "Dodaj zaposlenika";
             // 
             // voditeljToolStripMenuItem
             // 
             this.voditeljToolStripMenuItem.Name = "voditeljToolStripMenuItem";
-            this.voditeljToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.voditeljToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
             this.voditeljToolStripMenuItem.Text = "Voditelj";
             this.voditeljToolStripMenuItem.Click += new System.EventHandler(this.voditeljToolStripMenuItem_Click);
             // 
             // trenerToolStripMenuItem
             // 
             this.trenerToolStripMenuItem.Name = "trenerToolStripMenuItem";
-            this.trenerToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.trenerToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
             this.trenerToolStripMenuItem.Text = "Trener";
             this.trenerToolStripMenuItem.Click += new System.EventHandler(this.trenerToolStripMenuItem_Click);
             // 
             // asistentToolStripMenuItem
             // 
             this.asistentToolStripMenuItem.Name = "asistentToolStripMenuItem";
-            this.asistentToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.asistentToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
             this.asistentToolStripMenuItem.Text = "Asistent";
             this.asistentToolStripMenuItem.Click += new System.EventHandler(this.asistentToolStripMenuItem_Click);
             // 
@@ -194,20 +196,20 @@
             this.prikažiKoregrafijeToolStripMenuItem,
             this.dodajKoreografiuToolStripMenuItem});
             this.koreografijaToolStripMenuItem.Name = "koreografijaToolStripMenuItem";
-            this.koreografijaToolStripMenuItem.Size = new System.Drawing.Size(83, 20);
+            this.koreografijaToolStripMenuItem.Size = new System.Drawing.Size(122, 20);
             this.koreografijaToolStripMenuItem.Text = "Koreografija";
             // 
             // prikažiKoregrafijeToolStripMenuItem
             // 
             this.prikažiKoregrafijeToolStripMenuItem.Name = "prikažiKoregrafijeToolStripMenuItem";
-            this.prikažiKoregrafijeToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.prikažiKoregrafijeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.prikažiKoregrafijeToolStripMenuItem.Text = "Prikaži koregrafije";
             this.prikažiKoregrafijeToolStripMenuItem.Click += new System.EventHandler(this.prikažiKoregrafijeToolStripMenuItem_Click);
             // 
             // dodajKoreografiuToolStripMenuItem
             // 
             this.dodajKoreografiuToolStripMenuItem.Name = "dodajKoreografiuToolStripMenuItem";
-            this.dodajKoreografiuToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.dodajKoreografiuToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.dodajKoreografiuToolStripMenuItem.Text = "Dodaj koreografiju";
             this.dodajKoreografiuToolStripMenuItem.Click += new System.EventHandler(this.dodajKoreografiuToolStripMenuItem_Click);
             // 
@@ -292,14 +294,14 @@
             // prikažiPravdanjaToolStripMenuItem
             // 
             this.prikažiPravdanjaToolStripMenuItem.Name = "prikažiPravdanjaToolStripMenuItem";
-            this.prikažiPravdanjaToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
+            this.prikažiPravdanjaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.prikažiPravdanjaToolStripMenuItem.Text = "Prikaži pravdanja";
             this.prikažiPravdanjaToolStripMenuItem.Click += new System.EventHandler(this.prikažiPravdanjaToolStripMenuItem_Click);
             // 
             // dodajPravdanjeToolStripMenuItem
             // 
             this.dodajPravdanjeToolStripMenuItem.Name = "dodajPravdanjeToolStripMenuItem";
-            this.dodajPravdanjeToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
+            this.dodajPravdanjeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.dodajPravdanjeToolStripMenuItem.Text = "Dodaj pravdanje";
             this.dodajPravdanjeToolStripMenuItem.Click += new System.EventHandler(this.dodajPravdanjeToolStripMenuItem_Click);
             // 
@@ -352,20 +354,34 @@
             this.notifyIcon2.Visible = true;
             this.notifyIcon2.BalloonTipClicked += new System.EventHandler(this.notifyIcon2_BalloonTipClicked);
             // 
+            // pbLogo
+            // 
+            this.pbLogo.BackColor = System.Drawing.Color.White;
+            this.pbLogo.BackgroundImage = global::PlesnaSkola.WinUI.Properties.Resources.flash_logo;
+            this.pbLogo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pbLogo.Location = new System.Drawing.Point(0, 25);
+            this.pbLogo.Name = "pbLogo";
+            this.pbLogo.Size = new System.Drawing.Size(800, 477);
+            this.pbLogo.TabIndex = 2;
+            this.pbLogo.TabStop = false;
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 501);
+            this.Controls.Add(this.pbLogo);
             this.Controls.Add(this.menuStrip1);
-            this.IsMdiContainer = true;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
             this.Name = "frmMain";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Plesna škola";
-            this.Load += new System.EventHandler(this.frmMain_Load);
+            this.MdiChildActivate += new System.EventHandler(this.frmMain_MdiChildActivate);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -408,5 +424,6 @@
         private System.Windows.Forms.ToolStripMenuItem voditeljToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem trenerToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem asistentToolStripMenuItem;
+        private System.Windows.Forms.PictureBox pbLogo;
     }
 }

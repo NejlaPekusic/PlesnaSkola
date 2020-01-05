@@ -9,7 +9,7 @@
                 <StackLayout VerticalOptions="Start" HorizontalOptions="Fill">
                     <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
                         <ContentView Padding="0,40,0,40" VerticalOptions="FillAndExpand">
-                            <Image Source="main_logo.png" VerticalOptions="Center" HeightRequest="265" />
+                            <Image Source="flashlogo.jpg" VerticalOptions="Center" HeightRequest="265" />
                         </ContentView>
                     </StackLayout>
                 </StackLayout>

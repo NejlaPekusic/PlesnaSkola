@@ -32,7 +32,7 @@
 
                                 <Label FontSize="20" Grid.Row="0" Grid.Column="1" FontAttributes="Bold" Text="{Binding Naslov}"/>
 
-                                <Label FontSize="14"  Grid.Row="1" Grid.Column="1" Text="{Binding Sadrzaj}" VerticalTextAlignment="Start"/>
+                                <Label FontSize="14"  Grid.Row="1" Grid.Column="1" Text="{Binding Sazetak}" VerticalTextAlignment="Start"/>
                             </Grid>
 
                         </ViewCell>

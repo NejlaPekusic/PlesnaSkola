@@ -28,6 +28,5 @@ namespace PlesnaSkola.Mobile.Views
             await VM.LoadData();
         }
 
-  
     }
 }

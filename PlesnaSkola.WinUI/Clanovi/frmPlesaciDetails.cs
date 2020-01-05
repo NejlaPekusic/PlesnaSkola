@@ -1,4 +1,5 @@
 ﻿using PlesnaSkola.WinUI.Helper;
+using PlesnaSkola.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -18,6 +19,7 @@ namespace PlesnaSkola.WinUI.Clanovi
     {
         private APIService _serviceKorisnici = new APIService("Korisnici");
         private APIService _serviceGrupe = new APIService("Grupe");
+        private APIService _servicePreporuka = new APIService("Preporuka");
         private int _korisnikId;
         private byte[] Slika = new byte[0];
 
@@ -44,7 +46,7 @@ namespace PlesnaSkola.WinUI.Clanovi
                 await UcitajPlesaca();
             }
         }
-        
+
         private async Task LoadComboboxes()
         {
             await LoadRoditeljiCmb();
@@ -55,8 +57,9 @@ namespace PlesnaSkola.WinUI.Clanovi
         private async Task LoadGrupeCmb()
         {
             var listGrupe = await _serviceGrupe.Get<List<Model.Grupe>>(null);
+            listGrupe.Insert(0, new Model.Grupe { NazivGrupe = "Odaberite" });
             cmbGrupa.DataSource = listGrupe;
-            cmbGrupa.DisplayMember = "NazivGrupe";
+            cmbGrupa.DisplayMember = "NazivGrupeIUzrast";
             cmbGrupa.ValueMember = "GrupaId";
         }
 
@@ -67,7 +70,7 @@ namespace PlesnaSkola.WinUI.Clanovi
                 IncludeRoditelji = true
             };
             var listRoditelji = await _serviceKorisnici.Get<List<Model.Korisnici>>(requestRoditelji);
-            listRoditelji.Insert(0, new Model.Korisnici { KorisnikId = 0, Ime = "", Prezime = "" });
+            listRoditelji.Insert(0, new Model.Korisnici { KorisnikId = 0, Ime = "Odaberite", Prezime = "" });
 
             cmbRoditelj.DataSource = listRoditelji;
             cmbRoditelj.DisplayMember = "ImePrezime";
@@ -107,7 +110,7 @@ namespace PlesnaSkola.WinUI.Clanovi
 
                 foreach (Model.Grupe grupa in cmbGrupa.Items)
                 {
-                    if(grupa.GrupaId == entity.Plesac.GrupaId)
+                    if (grupa.GrupaId == entity.Plesac.GrupaId)
                     {
                         cmbGrupa.SelectedItem = grupa;
                     }
@@ -115,9 +118,9 @@ namespace PlesnaSkola.WinUI.Clanovi
 
                 foreach (Model.Korisnici roditelj in cmbRoditelj.Items)
                 {
-                    if(roditelj.KorisnikId == entity.Plesac.RoditeljId)
+                    if (roditelj.KorisnikId == entity.Plesac.RoditeljId)
                     {
-                        
+
                         cmbRoditelj.SelectedItem = roditelj;
                     }
                 }
@@ -137,6 +140,12 @@ namespace PlesnaSkola.WinUI.Clanovi
         {
             if (!ValidateChildren())
                 return;
+
+            if(cmbGrupa.SelectedIndex <= 0)
+            {
+                MessageBox.Show("Greška", "Odabir grupe je obavezan.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
             int? RoditeljId = null;
             if (cmbRoditelj.SelectedIndex > 0)
@@ -168,7 +177,7 @@ namespace PlesnaSkola.WinUI.Clanovi
                 }
             };
 
-            if(_korisnikId == 0)
+            if (_korisnikId == 0)
             {
                 var entity = await _serviceKorisnici.Insert<Model.Korisnici>(request);
                 if (entity != null)
@@ -191,7 +200,7 @@ namespace PlesnaSkola.WinUI.Clanovi
         private void txtIme_Validating(object sender, CancelEventArgs e)
         {
             TextBox control = sender as TextBox;
-            if(string.IsNullOrEmpty(control.Text))
+            if (string.IsNullOrEmpty(control.Text))
             {
                 errorProvider1.SetError(control, Properties.Resources.Validation_Required);
                 e.Cancel = true;
@@ -251,7 +260,7 @@ namespace PlesnaSkola.WinUI.Clanovi
             else
             {
                 Regex expr = new Regex(@"[A-Z][0-9]{7}");
-                if(expr.IsMatch(control.Text))
+                if (expr.IsMatch(control.Text))
                 {
                     errorProvider1.SetError(control, null);
                 }
@@ -293,9 +302,7 @@ namespace PlesnaSkola.WinUI.Clanovi
         {
             ComboBox control = sender as ComboBox;
 
-            var today = DateTime.Today;
-            var age = today.Year - dtpDatumRodjenja.Value.Year;
-            if (dtpDatumRodjenja.Value.Date > today.AddYears(-age)) age--;
+            var age = dtpDatumRodjenja.Value.GetAge();
 
             if (age >= 18)
             {
@@ -303,7 +310,7 @@ namespace PlesnaSkola.WinUI.Clanovi
                 return;
             }
 
-            if(control.SelectedIndex <= 0)
+            if (control.SelectedIndex <= 0)
             {
                 errorProvider1.SetError(control, Properties.Resources.Validation_Required);
                 e.Cancel = true;
@@ -349,6 +356,101 @@ namespace PlesnaSkola.WinUI.Clanovi
                 Slika = File.ReadAllBytes(fileName);
                 var stream = new MemoryStream(Slika);
                 pbSlika.Image = Image.FromStream(stream);
+            }
+        }
+
+        private async void dtpDatumRodjenja_ValueChanged(object sender, EventArgs e)
+        {
+
+
+            var request = new Model.Requests.PreporukaRequest
+            {
+                DatumRodjenja = dtpDatumRodjenja.Value.Date
+            };
+
+            var preporucena_grupa = await _servicePreporuka.Get<Model.Grupe>(request);
+            if (preporucena_grupa != null)
+            {
+                lblGrupaNePostoji.Visible = false;
+
+                foreach (Model.Grupe grupa in cmbGrupa.Items)
+                {
+                    if (grupa.GrupaId == preporucena_grupa.GrupaId)
+                    {
+                        cmbGrupa.SelectedItem = grupa;
+                        break;
+                    }
+                }
+            }
+            else
+            {
+                cmbGrupa.SelectedIndex = 0;
+                lblGrupaNePostoji.Visible = true;
+
+            }
+        }
+
+        private void cmbGrupa_Validating(object sender, CancelEventArgs e)
+        {
+            ComboBox control = sender as ComboBox;
+
+            var age = dtpDatumRodjenja.Value.GetAge();
+            var uzrast_clana = Model.Grupe.GetUzrast(age);
+
+            if (control.SelectedIndex <= 0)
+            {
+                if(lblGrupaNePostoji.Visible || uzrast_clana == null)
+                {
+                    errorProvider1.SetError(control, null);
+                }
+                else
+                {
+                    errorProvider1.SetError(control, Properties.Resources.Validation_Required);
+                    e.Cancel = true;
+                }
+                return;
+            }
+
+            if (uzrast_clana != null)
+            {
+                var uzrast_grupe = (control.SelectedItem as Model.Grupe).GrupaUzrast;
+
+                if (uzrast_clana != uzrast_grupe)
+                {
+                    errorProvider1.SetError(control, Properties.Resources.Validation_UzrastGrupe);
+                    e.Cancel = true;
+                    return;
+                }
+            }
+
+            errorProvider1.SetError(control, null);
+        }
+
+        private void dtpDatumRodjenja_Validating(object sender, CancelEventArgs e)
+        {
+            var control = sender as DateTimePicker;
+
+            var age = control.Value.GetAge();
+            var uzrast_clana = Model.Grupe.GetUzrast(age);
+
+            if (uzrast_clana == null)
+            {
+                errorProvider1.SetError(control, Properties.Resources.Validation_UzrastClana);
+                e.Cancel = true;
+            }
+            else
+            {
+                errorProvider1.SetError(control, null);
+            }
+        }
+
+        private async void btnDodajGrupu_Click(object sender, EventArgs e)
+        {
+            var frm = new Grupe.frmGrupeDetails();
+            if (frm.ShowDialog() == DialogResult.OK)
+            {
+                await LoadGrupeCmb();
+                cmbGrupa.SelectedIndex = cmbGrupa.Items.Count - 1;
             }
         }
     }

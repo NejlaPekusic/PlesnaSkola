@@ -36,7 +36,7 @@ namespace PlesnaSkola.WebAPI.Models
         OD_9_DO_11 = 3,
         [Description("12 - 15")]
         OD_12_DO_15 = 4,
-        [Description("15 +")]
-        PREKO_15 = 5
+        [Description("16 +")]
+        OD_16 = 5
     }
 }

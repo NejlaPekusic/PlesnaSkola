@@ -39,7 +39,10 @@
             this.Trener = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Plesaci = new System.Windows.Forms.DataGridViewButtonColumn();
             this.BrojClanova = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Aktivna = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Uzrast = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label2 = new System.Windows.Forms.Label();
+            this.cmbStatus = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvGrupe)).BeginInit();
             this.SuspendLayout();
@@ -104,6 +107,7 @@
             this.Trener,
             this.Plesaci,
             this.BrojClanova,
+            this.Aktivna,
             this.Uzrast});
             this.dgvGrupe.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvGrupe.Location = new System.Drawing.Point(3, 16);
@@ -153,10 +157,23 @@
             // 
             // BrojClanova
             // 
+            this.BrojClanova.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.BrojClanova.DataPropertyName = "BrojClanova";
             this.BrojClanova.HeaderText = "Broj članova";
             this.BrojClanova.Name = "BrojClanova";
             this.BrojClanova.ReadOnly = true;
+            this.BrojClanova.Width = 91;
+            // 
+            // Aktivna
+            // 
+            this.Aktivna.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.Aktivna.DataPropertyName = "Aktivna";
+            this.Aktivna.HeaderText = "Aktivna";
+            this.Aktivna.Name = "Aktivna";
+            this.Aktivna.ReadOnly = true;
+            this.Aktivna.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Aktivna.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Aktivna.Width = 49;
             // 
             // Uzrast
             // 
@@ -165,11 +182,31 @@
             this.Uzrast.Name = "Uzrast";
             this.Uzrast.ReadOnly = true;
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(272, 10);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(40, 13);
+            this.label2.TabIndex = 13;
+            this.label2.Text = "Status:";
+            // 
+            // cmbStatus
+            // 
+            this.cmbStatus.FormattingEnabled = true;
+            this.cmbStatus.Location = new System.Drawing.Point(275, 33);
+            this.cmbStatus.Name = "cmbStatus";
+            this.cmbStatus.Size = new System.Drawing.Size(121, 21);
+            this.cmbStatus.TabIndex = 12;
+            this.cmbStatus.SelectedIndexChanged += new System.EventHandler(this.cmbStatus_SelectedIndexChanged);
+            // 
             // frmGrupe
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 478);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.cmbStatus);
             this.Controls.Add(this.btnDodajGrupu);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label1);
@@ -200,6 +237,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Trener;
         private System.Windows.Forms.DataGridViewButtonColumn Plesaci;
         private System.Windows.Forms.DataGridViewTextBoxColumn BrojClanova;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Aktivna;
         private System.Windows.Forms.DataGridViewTextBoxColumn Uzrast;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox cmbStatus;
     }
 }

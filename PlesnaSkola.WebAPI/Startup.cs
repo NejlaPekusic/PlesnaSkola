@@ -60,6 +60,7 @@ namespace PlesnaSkola.WebAPI
             services.AddScoped<ITreninziService, TreninziService>();
             services.AddScoped<IGrupeService, GrupeService>();
             services.AddScoped<IKoreografijeService, KoreografijeService>();
+            services.AddScoped<IPreporukaService, PreporukaService>();
 
             services.AddSwaggerGen(c =>
             {
