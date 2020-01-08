@@ -108,7 +108,6 @@ namespace PlesnaSkola.WinUI.Clanovi
                     pbSlika.Image = Image.FromStream(ms);
                 }
 
-
             }
         }
 

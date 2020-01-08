@@ -1,9 +1,11 @@
 ﻿using PlesnaSkola.Model;
+using PlesnaSkola.WinUI.Helper;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,6 +17,8 @@ namespace PlesnaSkola.WinUI.Zaposlenici
     {
         private APIService _serviceKorisnici = new APIService("Korisnici");
         private int _korisnikId;
+        private byte[] Slika = new byte[0];
+
 
         public frmTreneriDetails()
         {
@@ -54,6 +58,7 @@ namespace PlesnaSkola.WinUI.Zaposlenici
                 Ime = txtIme.Text,
                 Prezime = txtPrezime.Text,
                 Mail = txtMail.Text,
+                Slika = this.Slika,
                 Password = txtLozinka.Text,
                 PasswordConfirmation = txtPotvrdaLozinke.Text,
                 Username = txtKorisnickoIme.Text,
@@ -121,8 +126,34 @@ namespace PlesnaSkola.WinUI.Zaposlenici
                     }
                 }
 
+                this.Slika = entity.Slika;
+                if (this.Slika.Length > 0)
+                {
+                    MemoryStream ms = new MemoryStream(entity.Slika);
+                    pbSlika.Image = Image.FromStream(ms);
+                }
+                else
+                {
+                    MemoryStream ms = new MemoryStream(SlikaHelper.getDefaultSlika());
+                    pbSlika.Image = Image.FromStream(ms);
+                }
+
             }
         }
 
+        private void btnOdaberi_Click(object sender, EventArgs e)
+        {
+            var result = openFileDialog1.ShowDialog();
+
+            if (result == DialogResult.OK)
+            {
+                var fileName = openFileDialog1.FileName;
+
+                Slika = File.ReadAllBytes(fileName);
+                var stream = new MemoryStream(Slika);
+                pbSlika.Image = Image.FromStream(stream);
+
+            }
+        }
     }
 }
