@@ -23,7 +23,9 @@ namespace PlesnaSkola.WinUI.Koreografije
         {
             var request = new Model.Requests.KoreografijeSearchRequest
             {
-                NazivKoreografije = txtPretraga.Text
+                NazivKoreografije = txtPretraga.Text,
+                Stil = cmbStil.SelectedIndex
+
             };
 
             var list = await _serviceKoreografije.Get<List<Model.Koreografije>>(request);
@@ -38,7 +40,27 @@ namespace PlesnaSkola.WinUI.Koreografije
 
         private async void frmKoreografije_Load(object sender, EventArgs e)
         {
+            UcitajStilove();
             await UcitajDataGrid();
+        }
+
+        private void UcitajStilove()
+        {
+            var list = new List<string>
+            {
+                "Svi",
+                "Jazz",
+                "Show",
+                "Acro",
+                "Contemporary",
+                "Lyrical",
+                "Street",
+                "HipHop",
+                "Freestyle",
+                "Open",
+            };
+
+            cmbStil.DataSource = list;
         }
 
         private async void btnDodajKoreografiju_Click(object sender, EventArgs e)
@@ -61,7 +83,11 @@ namespace PlesnaSkola.WinUI.Koreografije
         private async void txtPretraga_KeyUp(object sender, KeyEventArgs e)
         {
             await UcitajDataGrid();
+        }
 
+        private async void cmbStil_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            await UcitajDataGrid();
         }
     }
 }

@@ -189,7 +189,7 @@
             // cmbUloga
             // 
             this.cmbUloga.FormattingEnabled = true;
-            this.cmbUloga.Location = new System.Drawing.Point(280, 33);
+            this.cmbUloga.Location = new System.Drawing.Point(281, 33);
             this.cmbUloga.Name = "cmbUloga";
             this.cmbUloga.Size = new System.Drawing.Size(121, 21);
             this.cmbUloga.TabIndex = 7;
@@ -198,7 +198,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(277, 10);
+            this.label2.Location = new System.Drawing.Point(278, 10);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(38, 13);
             this.label2.TabIndex = 8;

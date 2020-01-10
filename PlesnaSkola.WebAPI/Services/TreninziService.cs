@@ -30,6 +30,19 @@ namespace PlesnaSkola.WebAPI.Services
                 query = query.Where(x => x.GrupaId == request.GrupaId);
             }
 
+            if (request.Sala == 1)
+            {
+                query = query.Where(x => x.Sala == Sala.Sala_1);
+            }
+            else if (request.Sala == 2)
+            {
+                query = query.Where(x => x.Sala == Sala.Sala_2);
+            }
+            else if (request.Sala == 3)
+            {
+                query = query.Where(x => x.Sala == Sala.Sala_3);
+            }
+
             var list = query.ToList();
 
             return _mapper.Map<List<Model.Treninzi>>(list);

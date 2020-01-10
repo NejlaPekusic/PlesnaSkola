@@ -7,5 +7,6 @@ namespace PlesnaSkola.Model.Requests
     public class TreninziSearchRequest
     {
         public int GrupaId { get; set; }
+        public int Sala { get; set; }
     }
 }

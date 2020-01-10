@@ -30,7 +30,6 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.txtPretraga = new System.Windows.Forms.TextBox();
-            this.btnPrikazi = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgvUplate = new System.Windows.Forms.DataGridView();
             this.UplataId = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -39,6 +38,8 @@
             this.DatumUplate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.VrstaUplate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnDodajUplatu = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.cmbVrsteUplata = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUplate)).BeginInit();
             this.SuspendLayout();
@@ -59,16 +60,6 @@
             this.txtPretraga.Size = new System.Drawing.Size(242, 20);
             this.txtPretraga.TabIndex = 5;
             this.txtPretraga.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtPretraga_KeyUp);
-            // 
-            // btnPrikazi
-            // 
-            this.btnPrikazi.Location = new System.Drawing.Point(710, 34);
-            this.btnPrikazi.Name = "btnPrikazi";
-            this.btnPrikazi.Size = new System.Drawing.Size(75, 23);
-            this.btnPrikazi.TabIndex = 4;
-            this.btnPrikazi.Text = "Prikaži";
-            this.btnPrikazi.UseVisualStyleBackColor = true;
-            this.btnPrikazi.Click += new System.EventHandler(this.btnPrikazi_Click);
             // 
             // groupBox1
             // 
@@ -151,16 +142,35 @@
             this.btnDodajUplatu.UseVisualStyleBackColor = true;
             this.btnDodajUplatu.Click += new System.EventHandler(this.btnDodajUplatu_Click);
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(278, 10);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(66, 13);
+            this.label2.TabIndex = 10;
+            this.label2.Text = "Vrsta uplate:";
+            // 
+            // cmbVrsteUplata
+            // 
+            this.cmbVrsteUplata.FormattingEnabled = true;
+            this.cmbVrsteUplata.Location = new System.Drawing.Point(281, 33);
+            this.cmbVrsteUplata.Name = "cmbVrsteUplata";
+            this.cmbVrsteUplata.Size = new System.Drawing.Size(121, 21);
+            this.cmbVrsteUplata.TabIndex = 9;
+            this.cmbVrsteUplata.SelectedIndexChanged += new System.EventHandler(this.cmbVrsteUplata_SelectedIndexChanged);
+            // 
             // frmUplate
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 478);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.cmbVrsteUplata);
             this.Controls.Add(this.btnDodajUplatu);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtPretraga);
-            this.Controls.Add(this.btnPrikazi);
             this.Name = "frmUplate";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Uplate";
@@ -177,7 +187,6 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtPretraga;
-        private System.Windows.Forms.Button btnPrikazi;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.DataGridView dgvUplate;
         private System.Windows.Forms.Button btnDodajUplatu;
@@ -186,5 +195,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn IznosUplate;
         private System.Windows.Forms.DataGridViewTextBoxColumn DatumUplate;
         private System.Windows.Forms.DataGridViewTextBoxColumn VrstaUplate;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox cmbVrsteUplata;
     }
 }

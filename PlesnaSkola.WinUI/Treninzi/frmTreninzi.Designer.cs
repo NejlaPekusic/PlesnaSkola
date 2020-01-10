@@ -185,5 +185,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Sala;
         private System.Windows.Forms.ComboBox cmbGrupe;
         private System.Windows.Forms.Label label1;
+       
     }
 }

@@ -37,6 +37,8 @@
             this.NazivKoreografije = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Stil = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnDodajUplatu = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.cmbStil = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvKoreografije)).BeginInit();
             this.SuspendLayout();
@@ -133,11 +135,31 @@
             this.btnDodajUplatu.UseVisualStyleBackColor = true;
             this.btnDodajUplatu.Click += new System.EventHandler(this.btnDodajKoreografiju_Click);
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(272, 10);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(24, 13);
+            this.label2.TabIndex = 15;
+            this.label2.Text = "Stil:";
+            // 
+            // cmbStil
+            // 
+            this.cmbStil.FormattingEnabled = true;
+            this.cmbStil.Location = new System.Drawing.Point(275, 33);
+            this.cmbStil.Name = "cmbStil";
+            this.cmbStil.Size = new System.Drawing.Size(121, 21);
+            this.cmbStil.TabIndex = 14;
+            this.cmbStil.SelectedIndexChanged += new System.EventHandler(this.cmbStil_SelectedIndexChanged);
+            // 
             // frmKoreografije
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 478);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.cmbStil);
             this.Controls.Add(this.btnDodajUplatu);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label1);
@@ -166,5 +188,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn KoreografijaId;
         private System.Windows.Forms.DataGridViewTextBoxColumn NazivKoreografije;
         private System.Windows.Forms.DataGridViewTextBoxColumn Stil;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox cmbStil;
     }
 }

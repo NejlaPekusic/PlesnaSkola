@@ -40,6 +40,35 @@ namespace PlesnaSkola.WebAPI.Services
                     || (x.Plesac.Korisnik.Prezime + " " + x.Plesac.Korisnik.Ime).Contains(request.ImePrezime));
             }
 
+            if (request.VrstaUplate == 1)
+            {
+                query = query.Where(x => x.VrstaUplate == VrstaUplate.Članarina);
+            }
+            else if (request.VrstaUplate == 2)
+            {
+                query = query.Where(x => x.VrstaUplate == VrstaUplate.Upisnina);
+            }
+            else if (request.VrstaUplate == 3)
+            {
+                query = query.Where(x => x.VrstaUplate == VrstaUplate.Kostim);
+            }
+            else if (request.VrstaUplate == 4)
+            {
+                query = query.Where(x => x.VrstaUplate == VrstaUplate.Kotizacija);
+            }
+            else if (request.VrstaUplate == 5)
+            {
+                query = query.Where(x => x.VrstaUplate == VrstaUplate.Prevoz);
+            }
+            else if (request.VrstaUplate == 6)
+            {
+                query = query.Where(x => x.VrstaUplate == VrstaUplate.Smještaj);
+            }
+            else if (request.VrstaUplate == 7)
+            {
+                query = query.Where(x => x.VrstaUplate == VrstaUplate.Ostalo);
+            }
+
             var list = query.ToList();
 
             return _mapper.Map<List<Model.Uplate>>(list);

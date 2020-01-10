@@ -24,12 +24,32 @@ namespace PlesnaSkola.WinUI.Uplate
             var request = new Model.Requests.UplateSearchRequest
             {
                 IncludeClanovi = true,
-                ImePrezime = txtPretraga.Text
+                ImePrezime = txtPretraga.Text,
+                VrstaUplate=cmbVrsteUplata.SelectedIndex
             };
-
+            
             var list = await _serviceUplate.Get<List<Model.Uplate>>(request);
             dgvUplate.AutoGenerateColumns = false;
             dgvUplate.DataSource = list;
+        }
+
+        private void UcitajVrsteUplata()
+        {
+            var list = new List<string>
+            {
+                "Sve",
+                "Članarina",
+                "Upisnina",
+                "Kostim",
+                "Kotizacija",
+                "Prevoz",
+                "Smještaj",
+                "Ostalo"
+            };
+
+            cmbVrsteUplata.DataSource = list;
+            cmbVrsteUplata.SelectedIndex = 0;
+
         }
 
         private async void btnPrikazi_Click(object sender, EventArgs e)
@@ -39,12 +59,13 @@ namespace PlesnaSkola.WinUI.Uplate
 
         private async void frmUplate_Load(object sender, EventArgs e)
         {
+            UcitajVrsteUplata();
             await UcitajDataGrid();
         }
 
         private async void btnDodajUplatu_Click(object sender, EventArgs e)
         {
-            var frm = new Uplate.frmUplateDetails();
+            var frm = new frmUplateDetails();
             frm.ShowDialog();
 
             await UcitajDataGrid();
@@ -63,6 +84,11 @@ namespace PlesnaSkola.WinUI.Uplate
         {
             await UcitajDataGrid();
 
+        }
+
+        private async void cmbVrsteUplata_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            await UcitajDataGrid();
         }
     }
 }

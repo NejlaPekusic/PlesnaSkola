@@ -29,6 +29,44 @@ namespace PlesnaSkola.WebAPI.Services
             {
                 query = query.Where(x => x.NazivKoreografije.Contains(request.NazivKoreografije));
             }
+
+            if (request.Stil == 1)
+            {
+                query = query.Where(x => x.Stil == Stil.Jazz);
+            }
+            else if (request.Stil == 2)
+            {
+                query = query.Where(x => x.Stil == Stil.Show);
+            }
+            else if (request.Stil == 3)
+            {
+                query = query.Where(x => x.Stil == Stil.Acro);
+            }
+            else if (request.Stil == 4)
+            {
+                query = query.Where(x => x.Stil == Stil.Contemporary);
+            }
+            else if (request.Stil == 5)
+            {
+                query = query.Where(x => x.Stil == Stil.Lyrical);
+            }
+            else if (request.Stil == 6)
+            {
+                query = query.Where(x => x.Stil == Stil.Street);
+            }
+            else if (request.Stil == 7)
+            {
+                query = query.Where(x => x.Stil == Stil.HipHop);
+            }
+            else if (request.Stil == 8)
+            {
+                query = query.Where(x => x.Stil == Stil.Freestyle);
+            }
+            else if (request.Stil == 9)
+            {
+                query = query.Where(x => x.Stil == Stil.Open);
+            }
+
             var list = query.ToList();
 
             return _mapper.Map<List<Model.Koreografije>>(list);

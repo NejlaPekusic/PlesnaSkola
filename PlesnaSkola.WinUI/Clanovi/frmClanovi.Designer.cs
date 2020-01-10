@@ -36,10 +36,11 @@
             this.DatumRodjenja = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BrojPasosa = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Aktivan = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.btnPrikazi = new System.Windows.Forms.Button();
             this.txtPretraga = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnDodajClana = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.cmbFilter = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvClanovi)).BeginInit();
             this.SuspendLayout();
@@ -127,22 +128,13 @@
             this.Aktivan.ReadOnly = true;
             this.Aktivan.TrueValue = "1";
             // 
-            // btnPrikazi
-            // 
-            this.btnPrikazi.Location = new System.Drawing.Point(710, 34);
-            this.btnPrikazi.Name = "btnPrikazi";
-            this.btnPrikazi.Size = new System.Drawing.Size(75, 23);
-            this.btnPrikazi.TabIndex = 1;
-            this.btnPrikazi.Text = "Prikaži";
-            this.btnPrikazi.UseVisualStyleBackColor = true;
-            this.btnPrikazi.Click += new System.EventHandler(this.btnPrikazi_Click);
-            // 
             // txtPretraga
             // 
             this.txtPretraga.Location = new System.Drawing.Point(16, 34);
             this.txtPretraga.Name = "txtPretraga";
             this.txtPretraga.Size = new System.Drawing.Size(242, 20);
             this.txtPretraga.TabIndex = 2;
+            this.txtPretraga.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtPretraga_KeyUp);
             // 
             // label1
             // 
@@ -163,15 +155,34 @@
             this.btnDodajClana.UseVisualStyleBackColor = true;
             this.btnDodajClana.Click += new System.EventHandler(this.btnDodajClana_Click);
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(277, 10);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(86, 13);
+            this.label2.TabIndex = 10;
+            this.label2.Text = "Plesači/Roditelji:";
+            // 
+            // cmbFilter
+            // 
+            this.cmbFilter.FormattingEnabled = true;
+            this.cmbFilter.Location = new System.Drawing.Point(280, 33);
+            this.cmbFilter.Name = "cmbFilter";
+            this.cmbFilter.Size = new System.Drawing.Size(121, 21);
+            this.cmbFilter.TabIndex = 9;
+            this.cmbFilter.SelectedIndexChanged += new System.EventHandler(this.cmbFilter_SelectedIndexChanged);
+            // 
             // frmClanovi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 478);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.cmbFilter);
             this.Controls.Add(this.btnDodajClana);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtPretraga);
-            this.Controls.Add(this.btnPrikazi);
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MinimizeBox = false;
@@ -191,7 +202,6 @@
 
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.DataGridView dgvClanovi;
-        private System.Windows.Forms.Button btnPrikazi;
         private System.Windows.Forms.TextBox txtPretraga;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridViewTextBoxColumn KorisnikId;
@@ -201,5 +211,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn BrojPasosa;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Aktivan;
         private System.Windows.Forms.Button btnDodajClana;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox cmbFilter;
     }
 }

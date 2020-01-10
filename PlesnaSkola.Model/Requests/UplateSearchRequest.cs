@@ -8,6 +8,7 @@ namespace PlesnaSkola.Model.Requests
     {
         public bool IncludeClanovi { get; set; }
         public string ImePrezime { get; set; }
-
+        public int VrstaUplate { get; set; }
+        
     }
 }

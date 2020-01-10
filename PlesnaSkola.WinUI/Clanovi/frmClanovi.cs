@@ -28,17 +28,38 @@ namespace PlesnaSkola.WinUI.Clanovi
 
         private async void frmClanovi_Load(object sender, EventArgs e)
         {
+            UcitajFilter();
             await UcitajDataGrid();
 
+        }
+
+        private void UcitajFilter()
+        {
+            var list = new List<string>
+            {
+                "Sve",
+                "Plesači",
+                "Roditelji"
+            };
+
+            cmbFilter.DataSource = list;
         }
 
         private async Task UcitajDataGrid()
         {
             var request = new Model.Requests.KorisniciSearchRequest
             {
-                IncludeClanovi = true,
+                //IncludeClanovi = true,
                 ImePrezime = txtPretraga.Text
             };
+
+            int OdabraniFilter = cmbFilter.SelectedIndex;
+            if (OdabraniFilter == 1)
+                request.IncludePlesaci = true;
+            else if (OdabraniFilter == 2)
+                request.IncludeRoditelji = true;
+            else
+                request.IncludeClanovi = true;
 
             var list = await _serviceKorisnici.Get<List<Model.Korisnici>>(request);
             dgvClanovi.AutoGenerateColumns = false;
@@ -71,6 +92,18 @@ namespace PlesnaSkola.WinUI.Clanovi
                 frm.ShowDialog();
                 await UcitajDataGrid();
             }
+        }
+
+        private async void cmbFilter_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            await UcitajDataGrid();
+
+        }
+
+        private async void txtPretraga_KeyUp(object sender, KeyEventArgs e)
+        {
+            await UcitajDataGrid();
+
         }
     }
 }
