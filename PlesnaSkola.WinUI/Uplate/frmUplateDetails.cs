@@ -187,7 +187,7 @@ namespace PlesnaSkola.WinUI.Uplate
         private void cmbVrstaUplate_Validating(object sender, CancelEventArgs e)
         {
             ComboBox control = sender as ComboBox;
-            if (control.SelectedIndex <= 0)
+            if (control.SelectedIndex < 0)
             {
                 errorProvider1.SetError(control, Properties.Resources.Validation_Required);
                 e.Cancel = true;

@@ -132,6 +132,7 @@
             this.txtKorisnickoIme.Name = "txtKorisnickoIme";
             this.txtKorisnickoIme.Size = new System.Drawing.Size(149, 20);
             this.txtKorisnickoIme.TabIndex = 9;
+            this.txtKorisnickoIme.Validating += new System.ComponentModel.CancelEventHandler(this.txtKorisnickoIme_Validating);
             // 
             // label5
             // 
@@ -149,6 +150,7 @@
             this.txtLozinka.Size = new System.Drawing.Size(149, 20);
             this.txtLozinka.TabIndex = 11;
             this.txtLozinka.UseSystemPasswordChar = true;
+            this.txtLozinka.Validating += new System.ComponentModel.CancelEventHandler(this.txtLozinka_Validating);
             // 
             // label6
             // 
@@ -166,6 +168,7 @@
             this.txtPotvrdaLozinke.Size = new System.Drawing.Size(149, 20);
             this.txtPotvrdaLozinke.TabIndex = 13;
             this.txtPotvrdaLozinke.UseSystemPasswordChar = true;
+            this.txtPotvrdaLozinke.Validating += new System.ComponentModel.CancelEventHandler(this.txtPotvrdaLozinke_Validating);
             // 
             // label7
             // 

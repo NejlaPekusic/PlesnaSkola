@@ -19,7 +19,7 @@ namespace PlesnaSkola.WinUI.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -99,11 +99,20 @@ namespace PlesnaSkola.WinUI.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Broj pasoša nije u ispravnom formatu..
+        ///   Looks up a localized string similar to Broj pasoša nije u ispravnom formatu (primjer: A1234567).
         /// </summary>
         internal static string Validation_PassportInvalid {
             get {
                 return ResourceManager.GetString("Validation_PassportInvalid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Lozinke se moraju podudarati..
+        /// </summary>
+        internal static string Validation_Password {
+            get {
+                return ResourceManager.GetString("Validation_Password", resourceCulture);
             }
         }
         

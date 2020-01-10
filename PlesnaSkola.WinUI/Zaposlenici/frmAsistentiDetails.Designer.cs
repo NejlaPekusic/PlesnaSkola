@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.txtIme = new System.Windows.Forms.TextBox();
@@ -52,9 +53,11 @@
             this.txtBrojPasosa = new System.Windows.Forms.TextBox();
             this.chbAktivan = new System.Windows.Forms.CheckBox();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbSlika)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // label2
@@ -81,6 +84,7 @@
             this.txtIme.Name = "txtIme";
             this.txtIme.Size = new System.Drawing.Size(149, 20);
             this.txtIme.TabIndex = 4;
+            this.txtIme.Validating += new System.ComponentModel.CancelEventHandler(this.txtIme_Validating);
             // 
             // txtPrezime
             // 
@@ -88,6 +92,7 @@
             this.txtPrezime.Name = "txtPrezime";
             this.txtPrezime.Size = new System.Drawing.Size(149, 20);
             this.txtPrezime.TabIndex = 5;
+            this.txtPrezime.Validating += new System.ComponentModel.CancelEventHandler(this.txtPrezime_Validating);
             // 
             // txtMail
             // 
@@ -95,6 +100,7 @@
             this.txtMail.Name = "txtMail";
             this.txtMail.Size = new System.Drawing.Size(149, 20);
             this.txtMail.TabIndex = 7;
+            this.txtMail.Validating += new System.ComponentModel.CancelEventHandler(this.txtMail_Validating);
             // 
             // label4
             // 
@@ -111,6 +117,7 @@
             this.txtKorisnickoIme.Name = "txtKorisnickoIme";
             this.txtKorisnickoIme.Size = new System.Drawing.Size(149, 20);
             this.txtKorisnickoIme.TabIndex = 9;
+            this.txtKorisnickoIme.Validating += new System.ComponentModel.CancelEventHandler(this.txtKorisnickoIme_Validating);
             // 
             // label5
             // 
@@ -128,6 +135,7 @@
             this.txtLozinka.Size = new System.Drawing.Size(149, 20);
             this.txtLozinka.TabIndex = 11;
             this.txtLozinka.UseSystemPasswordChar = true;
+            this.txtLozinka.Validating += new System.ComponentModel.CancelEventHandler(this.txtLozinka_Validating);
             // 
             // label6
             // 
@@ -145,6 +153,7 @@
             this.txtPotvrdaLozinke.Size = new System.Drawing.Size(149, 20);
             this.txtPotvrdaLozinke.TabIndex = 13;
             this.txtPotvrdaLozinke.UseSystemPasswordChar = true;
+            this.txtPotvrdaLozinke.Validating += new System.ComponentModel.CancelEventHandler(this.txtPotvrdaLozinke_Validating);
             // 
             // label7
             // 
@@ -266,6 +275,7 @@
             this.txtBrojPasosa.Name = "txtBrojPasosa";
             this.txtBrojPasosa.Size = new System.Drawing.Size(149, 20);
             this.txtBrojPasosa.TabIndex = 17;
+            this.txtBrojPasosa.Validating += new System.ComponentModel.CancelEventHandler(this.txtBrojPasosa_Validating);
             // 
             // chbAktivan
             // 
@@ -281,6 +291,10 @@
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
             // 
             // frmAsistentiDetails
             // 
@@ -302,6 +316,7 @@
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbSlika)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -332,5 +347,6 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.PictureBox pbSlika;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }

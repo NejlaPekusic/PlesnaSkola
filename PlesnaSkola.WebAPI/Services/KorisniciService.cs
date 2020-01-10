@@ -167,6 +167,15 @@ namespace PlesnaSkola.WebAPI.Services
                 entity.Plesac.GrupaId = request.Plesac.GrupaId;
                 entity.Plesac.RoditeljId = request.Plesac.RoditeljId;
             }
+            if (request.Voditelj != null)
+            {
+                entity.Voditelj.Telefon = request.Voditelj.Telefon;
+            }
+            if (request.Trener != null)
+            {
+                entity.Trener.Licenca = request.Trener.Licenca;
+                entity.Trener.Funkcija = (Models.Funkcija)((int)request.Trener.Funkcija);
+            }
 
             _context.SaveChanges();
 

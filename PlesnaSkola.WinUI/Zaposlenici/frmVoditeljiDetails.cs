@@ -6,7 +6,9 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Net.Mail;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -126,6 +128,158 @@ namespace PlesnaSkola.WinUI.Zaposlenici
                 pbSlika.Image = Image.FromStream(stream);
 
             }
+        }
+
+        private void txtIme_Validating(object sender, CancelEventArgs e)
+        {
+            TextBox control = sender as TextBox;
+            if (string.IsNullOrEmpty(control.Text))
+            {
+                errorProvider1.SetError(control, Properties.Resources.Validation_Required);
+                e.Cancel = true;
+            }
+            else
+            {
+                errorProvider1.SetError(control, null);
+            }
+        }
+
+        private void txtPrezime_Validating(object sender, CancelEventArgs e)
+        {
+            TextBox control = sender as TextBox;
+            if (string.IsNullOrEmpty(control.Text))
+            {
+                errorProvider1.SetError(control, Properties.Resources.Validation_Required);
+                e.Cancel = true;
+            }
+            else
+            {
+                errorProvider1.SetError(control, null);
+            }
+        }
+
+        private void txtMail_Validating(object sender, CancelEventArgs e)
+        {
+            TextBox control = sender as TextBox;
+            if (string.IsNullOrEmpty(control.Text))
+            {
+                errorProvider1.SetError(control, Properties.Resources.Validation_Required);
+                e.Cancel = true;
+            }
+            else
+            {
+                try
+                {
+                    MailAddress mail = new MailAddress(control.Text);
+                    errorProvider1.SetError(control, null);
+                }
+                catch (Exception)
+                {
+                    errorProvider1.SetError(control, Properties.Resources.Validation_EmailInvalid);
+                    e.Cancel = true;
+                }
+
+            }
+        }
+
+        private void txtBrojPasosa_Validating(object sender, CancelEventArgs e)
+        {
+            TextBox control = sender as TextBox;
+            if (string.IsNullOrEmpty(control.Text))
+            {
+                errorProvider1.SetError(control, Properties.Resources.Validation_Required);
+                e.Cancel = true;
+            }
+            else
+            {
+                Regex expr = new Regex(@"[A-Z][0-9]{7}");
+                if (expr.IsMatch(control.Text))
+                {
+                    errorProvider1.SetError(control, null);
+                }
+                else
+                {
+                    errorProvider1.SetError(control, Properties.Resources.Validation_PassportInvalid);
+                    e.Cancel = true;
+                }
+
+
+            }
+        }
+
+        private void txtKorisnickoIme_Validating(object sender, CancelEventArgs e)
+        {
+            int minimumLength = 2;
+            if (string.IsNullOrWhiteSpace(txtKorisnickoIme.Text))
+            {
+                errorProvider1.SetError(txtKorisnickoIme, Properties.Resources.Validation_Required);
+            }
+            else if (txtKorisnickoIme.Text.Length < minimumLength)
+            {
+                errorProvider1.SetError(txtKorisnickoIme, "Korisničko ime mora sadržavati minimalno " + minimumLength + " karaktera.");
+            }
+            else
+            {
+                errorProvider1.SetError(txtKorisnickoIme, null);
+                return;
+            }
+            e.Cancel = true;
+        }
+
+        private void txtLozinka_Validating(object sender, CancelEventArgs e)
+        {
+            int minimumLength = 3;
+
+            if (_korisnikId == 0 && string.IsNullOrEmpty(txtLozinka.Text))
+            {
+                errorProvider1.SetError(txtLozinka, Properties.Resources.Validation_Required);
+            }
+            else if ((_korisnikId == 0 || !string.IsNullOrEmpty(txtLozinka.Text)) && txtLozinka.Text.Length < minimumLength)
+            {
+                errorProvider1.SetError(txtLozinka, "Lozinka mora sadržavati minimalno " + minimumLength + " karaktera.");
+            }
+            else
+            {
+                errorProvider1.SetError(txtLozinka, null);
+                return;
+            }
+            e.Cancel = true;
+        }
+
+        private void txtPotvrdaLozinke_Validating(object sender, CancelEventArgs e)
+        {
+            if ((_korisnikId == 0 || !string.IsNullOrEmpty(txtLozinka.Text)) && string.IsNullOrEmpty(txtPotvrdaLozinke.Text))
+            {
+                errorProvider1.SetError(txtPotvrdaLozinke, Properties.Resources.Validation_Required);
+            }
+            else if ((_korisnikId == 0 || !string.IsNullOrEmpty(txtLozinka.Text)) && txtLozinka.Text != txtPotvrdaLozinke.Text)
+            {
+                errorProvider1.SetError(txtPotvrdaLozinke, Properties.Resources.Validation_Password);
+            }
+            else
+            {
+                errorProvider1.SetError(txtPotvrdaLozinke, null);
+                return;
+            }
+            e.Cancel = true;
+        }
+
+        private void txtTelefon_Validating(object sender, CancelEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtTelefon.Text))
+            {
+                errorProvider1.SetError(txtTelefon, Properties.Resources.Validation_Required);
+            }
+            else if (!txtTelefon.MaskCompleted)
+            {
+                errorProvider1.SetError(txtTelefon, "Broj telefona nije ispravan.");
+            }
+            else
+            {
+                errorProvider1.SetError(txtTelefon, null);
+                return;
+            }
+            e.Cancel = true;
         }
     }
 }

@@ -453,5 +453,62 @@ namespace PlesnaSkola.WinUI.Clanovi
                 cmbGrupa.SelectedIndex = cmbGrupa.Items.Count - 1;
             }
         }
+
+        private void txtKorisnickoIme_Validating(object sender, CancelEventArgs e)
+        {
+            int minimumLength = 2;
+            if (string.IsNullOrWhiteSpace(txtKorisnickoIme.Text))
+            {
+                errorProvider1.SetError(txtKorisnickoIme, Properties.Resources.Validation_Required);
+            }
+            else if (txtKorisnickoIme.Text.Length < minimumLength)
+            {
+                errorProvider1.SetError(txtKorisnickoIme, "Korisničko ime mora sadržavati minimalno " + minimumLength + " karaktera.");
+            }
+            else
+            {
+                errorProvider1.SetError(txtKorisnickoIme, null);
+                return;
+            }
+            e.Cancel = true;
+        }
+
+        private void txtLozinka_Validating(object sender, CancelEventArgs e)
+        {
+            int minimumLength = 3;
+
+            if (_korisnikId == 0 && string.IsNullOrEmpty(txtLozinka.Text))
+            {
+                errorProvider1.SetError(txtLozinka, Properties.Resources.Validation_Required);
+            }
+            else if ((_korisnikId == 0 || !string.IsNullOrEmpty(txtLozinka.Text)) && txtLozinka.Text.Length < minimumLength)
+            {
+                errorProvider1.SetError(txtLozinka, "Lozinka mora sadržavati minimalno " + minimumLength + " karaktera.");
+            }
+            else
+            {
+                errorProvider1.SetError(txtLozinka, null);
+                return;
+            }
+            e.Cancel = true;
+        }
+
+        private void txtPotvrdaLozinke_Validating(object sender, CancelEventArgs e)
+        {
+            if ((_korisnikId == 0 || !string.IsNullOrEmpty(txtLozinka.Text)) && string.IsNullOrEmpty(txtPotvrdaLozinke.Text))
+            {
+                errorProvider1.SetError(txtPotvrdaLozinke, Properties.Resources.Validation_Required);
+            }
+            else if ((_korisnikId == 0 || !string.IsNullOrEmpty(txtLozinka.Text)) && txtLozinka.Text != txtPotvrdaLozinke.Text)
+            {
+                errorProvider1.SetError(txtPotvrdaLozinke, Properties.Resources.Validation_Password);
+            }
+            else
+            {
+                errorProvider1.SetError(txtPotvrdaLozinke, null);
+                return;
+            }
+            e.Cancel = true;
+        }
     }
 }

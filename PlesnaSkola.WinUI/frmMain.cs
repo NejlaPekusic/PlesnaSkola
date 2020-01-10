@@ -46,7 +46,7 @@ namespace PlesnaSkola.WinUI
                 {
                     if(child is Pravdanja.frmPravdanja forma)
                     {
-                        forma.UcitajDataGrid();
+                        await forma.UcitajDataGrid();
                     }
                 }
             }

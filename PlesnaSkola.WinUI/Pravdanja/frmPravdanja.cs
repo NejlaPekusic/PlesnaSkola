@@ -31,7 +31,7 @@ namespace PlesnaSkola.WinUI.Pravdanja
             dgvPravdanja.DataSource = list;
         }
 
-        private async void frmPravdanja_Load(object sender, EventArgs e)
+        private void frmPravdanja_Load(object sender, EventArgs e)
         {
             UcitajFilterDropdown();
         }

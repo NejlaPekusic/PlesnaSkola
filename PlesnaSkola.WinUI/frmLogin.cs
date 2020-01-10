@@ -30,7 +30,7 @@ namespace PlesnaSkola.WinUI
                 APIService.PrijavljeniKorisnik = await _serviceKorisnici.Get<Model.Korisnici>(null, "MyProfile");
                 if (APIService.PrijavljeniKorisnik.Asistent == null && APIService.PrijavljeniKorisnik.Voditelj == null && APIService.PrijavljeniKorisnik.Trener == null)
                 {
-                    MessageBox.Show("Nemate pravo pristupa ovoj aplikaciji.", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Greška", "Nemate pravo pristupa ovoj aplikaciji.", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
                 {
