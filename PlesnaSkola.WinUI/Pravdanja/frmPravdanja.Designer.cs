@@ -31,8 +31,6 @@
             this.btnDodajPravdanje = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgvPravdanja = new System.Windows.Forms.DataGridView();
-            this.lblFilter = new System.Windows.Forms.Label();
-            this.cmbFilter = new System.Windows.Forms.ComboBox();
             this.PravdanjeId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DatumOd = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DatumDo = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -40,6 +38,8 @@
             this.Opis = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DatumZahtjeva = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DatumIzdavanja = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lblFilter = new System.Windows.Forms.Label();
+            this.cmbFilter = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPravdanja)).BeginInit();
             this.SuspendLayout();
@@ -89,24 +89,6 @@
             this.dgvPravdanja.Size = new System.Drawing.Size(769, 291);
             this.dgvPravdanja.TabIndex = 0;
             this.dgvPravdanja.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPravdanja_CellDoubleClick);
-            // 
-            // lblFilter
-            // 
-            this.lblFilter.AutoSize = true;
-            this.lblFilter.Location = new System.Drawing.Point(15, 17);
-            this.lblFilter.Name = "lblFilter";
-            this.lblFilter.Size = new System.Drawing.Size(32, 13);
-            this.lblFilter.TabIndex = 12;
-            this.lblFilter.Text = "Filter:";
-            // 
-            // cmbFilter
-            // 
-            this.cmbFilter.FormattingEnabled = true;
-            this.cmbFilter.Location = new System.Drawing.Point(54, 13);
-            this.cmbFilter.Name = "cmbFilter";
-            this.cmbFilter.Size = new System.Drawing.Size(121, 21);
-            this.cmbFilter.TabIndex = 13;
-            this.cmbFilter.SelectedIndexChanged += new System.EventHandler(this.cmbFilter_SelectedIndexChanged);
             // 
             // PravdanjeId
             // 
@@ -161,11 +143,29 @@
             this.DatumIzdavanja.ReadOnly = true;
             this.DatumIzdavanja.Width = 120;
             // 
+            // lblFilter
+            // 
+            this.lblFilter.AutoSize = true;
+            this.lblFilter.Location = new System.Drawing.Point(15, 17);
+            this.lblFilter.Name = "lblFilter";
+            this.lblFilter.Size = new System.Drawing.Size(32, 13);
+            this.lblFilter.TabIndex = 12;
+            this.lblFilter.Text = "Filter:";
+            // 
+            // cmbFilter
+            // 
+            this.cmbFilter.FormattingEnabled = true;
+            this.cmbFilter.Location = new System.Drawing.Point(54, 13);
+            this.cmbFilter.Name = "cmbFilter";
+            this.cmbFilter.Size = new System.Drawing.Size(121, 21);
+            this.cmbFilter.TabIndex = 13;
+            this.cmbFilter.SelectedIndexChanged += new System.EventHandler(this.cmbFilter_SelectedIndexChanged);
+            // 
             // frmPravdanja
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 452);
+            this.ClientSize = new System.Drawing.Size(800, 492);
             this.Controls.Add(this.cmbFilter);
             this.Controls.Add(this.lblFilter);
             this.Controls.Add(this.btnDodajPravdanje);

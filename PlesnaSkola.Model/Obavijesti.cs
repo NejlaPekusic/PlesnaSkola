@@ -15,6 +15,7 @@ namespace PlesnaSkola.Model
         public string Sazetak { get => Sadrzaj.Substring(0, 300) + "...";  }
         public byte[] Prilog { get; set; }
         public string PrilogFileName { get; set; }
+        public bool PrilogPostoji { get => Prilog != null && Prilog.Length > 0 && !string.IsNullOrEmpty(PrilogFileName); }
 
         public int KorisnikId { get; set; }
         public Korisnici Korisnik { get; set; }

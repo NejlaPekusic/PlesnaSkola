@@ -44,7 +44,7 @@ namespace PlesnaSkola.WinUI
 
                 foreach (var child in this.MdiChildren)
                 {
-                    if(child is Pravdanja.frmPravdanja forma)
+                    if (child is Pravdanja.frmPravdanja forma)
                     {
                         await forma.UcitajDataGrid();
                     }
@@ -57,8 +57,8 @@ namespace PlesnaSkola.WinUI
         private void prikažiČlanoveToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var frm = new Clanovi.frmClanovi();
-            this.IsMdiContainer = true; frm.ParentChanged += MdiFormParentChangedHandler;  frm.MdiParent = this;
-           frm.Show();
+            this.IsMdiContainer = true; frm.ParentChanged += MdiFormParentChangedHandler; frm.MdiParent = this;
+            frm.Show();
         }
 
         private void dodajPlesačaToolStripMenuItem_Click(object sender, EventArgs e)
@@ -76,8 +76,8 @@ namespace PlesnaSkola.WinUI
         private void prikažiUplateToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var frm = new Uplate.frmUplate();
-            this.IsMdiContainer = true; frm.ParentChanged += MdiFormParentChangedHandler;  frm.MdiParent = this;
-           frm.Show();
+            this.IsMdiContainer = true; frm.ParentChanged += MdiFormParentChangedHandler; frm.MdiParent = this;
+            frm.Show();
         }
 
         private void dodajUplatuToolStripMenuItem_Click(object sender, EventArgs e)
@@ -89,8 +89,8 @@ namespace PlesnaSkola.WinUI
         private void prikažiKoregrafijeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var frm = new Koreografije.frmKoreografije();
-            this.IsMdiContainer = true; frm.ParentChanged += MdiFormParentChangedHandler;  frm.MdiParent = this;
-           frm.Show();
+            this.IsMdiContainer = true; frm.ParentChanged += MdiFormParentChangedHandler; frm.MdiParent = this;
+            frm.Show();
         }
 
         private void dodajKoreografiuToolStripMenuItem_Click(object sender, EventArgs e)
@@ -102,8 +102,8 @@ namespace PlesnaSkola.WinUI
         private void prikažiGrupeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var frm = new Grupe.frmGrupe();
-            this.IsMdiContainer = true; frm.ParentChanged += MdiFormParentChangedHandler;  frm.MdiParent = this;
-           frm.Show();
+            this.IsMdiContainer = true; frm.ParentChanged += MdiFormParentChangedHandler; frm.MdiParent = this;
+            frm.Show();
         }
 
         private void dodajGrupuToolStripMenuItem_Click(object sender, EventArgs e)
@@ -115,8 +115,8 @@ namespace PlesnaSkola.WinUI
         private void prikažiTreningeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var frm = new Treninzi.frmTreninzi();
-            this.IsMdiContainer = true; frm.ParentChanged += MdiFormParentChangedHandler;  frm.MdiParent = this;
-           frm.Show();
+            this.IsMdiContainer = true; frm.ParentChanged += MdiFormParentChangedHandler; frm.MdiParent = this;
+            frm.Show();
         }
 
         private void dodajTreningToolStripMenuItem_Click(object sender, EventArgs e)
@@ -128,8 +128,8 @@ namespace PlesnaSkola.WinUI
         private void prikažiObavijestiToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var frm = new Obavijesti.frmObavijesti();
-            this.IsMdiContainer = true; frm.ParentChanged += MdiFormParentChangedHandler;  frm.MdiParent = this;
-           frm.Show();
+            this.IsMdiContainer = true; frm.ParentChanged += MdiFormParentChangedHandler; frm.MdiParent = this;
+            frm.Show();
         }
 
         private void dodajObavijestToolStripMenuItem_Click(object sender, EventArgs e)
@@ -141,8 +141,8 @@ namespace PlesnaSkola.WinUI
         private void prikažiPravdanjaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var frm = new Pravdanja.frmPravdanja();
-            this.IsMdiContainer = true; frm.ParentChanged += MdiFormParentChangedHandler;  frm.MdiParent = this;
-           frm.Show();
+            this.IsMdiContainer = true; frm.ParentChanged += MdiFormParentChangedHandler; frm.MdiParent = this;
+            frm.Show();
         }
 
         private void dodajPravdanjeToolStripMenuItem_Click(object sender, EventArgs e)
@@ -154,8 +154,8 @@ namespace PlesnaSkola.WinUI
         private void prikažiRadioniceToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var frm = new Radionice.frmRadionice();
-            this.IsMdiContainer = true; frm.ParentChanged += MdiFormParentChangedHandler;  frm.MdiParent = this;
-           frm.Show();
+            this.IsMdiContainer = true; frm.ParentChanged += MdiFormParentChangedHandler; frm.MdiParent = this;
+            frm.Show();
         }
 
         private void dodajRadionicuToolStripMenuItem_Click(object sender, EventArgs e)
@@ -177,8 +177,8 @@ namespace PlesnaSkola.WinUI
         private void notifyIcon2_BalloonTipClicked(object sender, EventArgs e)
         {
             var frm = new Pravdanja.frmPravdanja();
-            this.IsMdiContainer = true; frm.ParentChanged += MdiFormParentChangedHandler;  frm.MdiParent = this;
-           frm.Show();
+            this.IsMdiContainer = true; frm.ParentChanged += MdiFormParentChangedHandler; frm.MdiParent = this;
+            frm.Show();
         }
 
         private void UpdateDostupneMenije()
@@ -195,7 +195,10 @@ namespace PlesnaSkola.WinUI
             radioniceToolStripMenuItem.Visible = IsVoditelj || IsAsistent;
 
             if (IsVoditelj)
+            {
                 myTimer.Enabled = true;
+                _ = NotifikacijaBrojZahtjeva();
+            }
 
         }
 
@@ -210,7 +213,7 @@ namespace PlesnaSkola.WinUI
             }
 
             var frm = new frmLogin();
-            if(frm.ShowDialog() == DialogResult.OK)
+            if (frm.ShowDialog() == DialogResult.OK)
             {
                 UpdateDostupneMenije();
             }
@@ -223,8 +226,8 @@ namespace PlesnaSkola.WinUI
         private void prikažiZaposlenikeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var frm = new Zaposlenici.frmZaposlenici();
-            this.IsMdiContainer = true; frm.ParentChanged += MdiFormParentChangedHandler;  frm.MdiParent = this;
-           frm.Show();
+            this.IsMdiContainer = true; frm.ParentChanged += MdiFormParentChangedHandler; frm.MdiParent = this;
+            frm.Show();
         }
 
         private void voditeljToolStripMenuItem_Click(object sender, EventArgs e)
@@ -247,7 +250,7 @@ namespace PlesnaSkola.WinUI
 
         private void frmMain_MdiChildActivate(object sender, EventArgs e)
         {
-           // pbLogo.Visible = false;
+            // pbLogo.Visible = false;
         }
 
         private void MdiFormParentChangedHandler(object sender, EventArgs args)
@@ -265,6 +268,25 @@ namespace PlesnaSkola.WinUI
                     if (this.MdiChildren.Count() == 0)
                         pbLogo.Visible = true;
                 }
+            }
+        }
+
+        private async void frmMain_Load(object sender, EventArgs e)
+        {
+            if (APIService.PrijavljeniKorisnik.Voditelj != null)
+            {
+                await NotifikacijaBrojZahtjeva();
+            }
+
+        }
+
+        private async Task NotifikacijaBrojZahtjeva()
+        {
+            int BrojZahtjeva = await _servicePravdanja.Get<int>(null, "GetBrojZahtjeva");
+            if (BrojZahtjeva > 0)
+            {
+                notifyIcon2.BalloonTipText = "Imate " + BrojZahtjeva + " " + (BrojZahtjeva == 1 ? "zahtjev" : "zahtjeva") + " na čekanju.";
+                notifyIcon2.ShowBalloonTip(10);
             }
         }
     }

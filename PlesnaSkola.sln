@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28010.2046
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29613.14
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PlesnaSkola.WebAPI", "PlesnaSkola.WebAPI\PlesnaSkola.WebAPI.csproj", "{ADDDAFE9-C711-47C6-B860-0B97134A5D96}"
 EndProject
@@ -15,7 +15,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlesnaSkola.Mobile.Android"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlesnaSkola.Mobile.UWP", "PlesnaSkola.Mobile\PlesnaSkola.Mobile.UWP\PlesnaSkola.Mobile.UWP.csproj", "{2B2A2289-87FA-4C30-AEE2-43D0CF641F45}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlesnaSkola.Mobile", "PlesnaSkola.Mobile\PlesnaSkola.Mobile\PlesnaSkola.Mobile.csproj", "{2D4052AB-225D-46C4-9E1C-4149CC77D530}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PlesnaSkola.Mobile", "PlesnaSkola.Mobile\PlesnaSkola.Mobile\PlesnaSkola.Mobile.csproj", "{2D4052AB-225D-46C4-9E1C-4149CC77D530}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -78,8 +78,6 @@ Global
 		{6CF1477B-7BD1-4C21-B449-22415C9058D6}.Release|x86.ActiveCfg = Release|Any CPU
 		{6CF1477B-7BD1-4C21-B449-22415C9058D6}.Release|x86.Build.0 = Release|Any CPU
 		{24CE3C36-16B9-426D-AA0C-5961ECF8D88C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{24CE3C36-16B9-426D-AA0C-5961ECF8D88C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{24CE3C36-16B9-426D-AA0C-5961ECF8D88C}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
 		{24CE3C36-16B9-426D-AA0C-5961ECF8D88C}.Debug|ARM.ActiveCfg = Debug|Any CPU
 		{24CE3C36-16B9-426D-AA0C-5961ECF8D88C}.Debug|ARM.Build.0 = Debug|Any CPU
 		{24CE3C36-16B9-426D-AA0C-5961ECF8D88C}.Debug|ARM.Deploy.0 = Debug|Any CPU
@@ -100,6 +98,8 @@ Global
 		{24CE3C36-16B9-426D-AA0C-5961ECF8D88C}.Release|x86.Build.0 = Release|Any CPU
 		{24CE3C36-16B9-426D-AA0C-5961ECF8D88C}.Release|x86.Deploy.0 = Release|Any CPU
 		{2B2A2289-87FA-4C30-AEE2-43D0CF641F45}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{2B2A2289-87FA-4C30-AEE2-43D0CF641F45}.Debug|Any CPU.Build.0 = Debug|x86
+		{2B2A2289-87FA-4C30-AEE2-43D0CF641F45}.Debug|Any CPU.Deploy.0 = Debug|x86
 		{2B2A2289-87FA-4C30-AEE2-43D0CF641F45}.Debug|ARM.ActiveCfg = Debug|ARM
 		{2B2A2289-87FA-4C30-AEE2-43D0CF641F45}.Debug|ARM.Build.0 = Debug|ARM
 		{2B2A2289-87FA-4C30-AEE2-43D0CF641F45}.Debug|ARM.Deploy.0 = Debug|ARM

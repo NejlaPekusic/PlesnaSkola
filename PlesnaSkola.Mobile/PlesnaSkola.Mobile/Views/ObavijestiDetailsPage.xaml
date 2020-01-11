@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PlesnaSkola.Mobile.Views.ObavijestiDetailsPage"
+             Title="{Binding Title}">
+
+    <ContentPage.Content>
+
+        <StackLayout Padding="10">
+
+            <Label Text="{Binding Sadrzaj}"/>
+
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Autor:"/>
+                <Label Text="{Binding Korisnik}" FontAttributes="Bold"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" IsVisible="{Binding PrilogPostoji}">
+                <Label Text="Prilog:"/>
+                <Label Text="{Binding PrilogFileName}" FontAttributes="Bold"/>
+            </StackLayout>
+
+            <Button Text="Nazad" Clicked="Button_Clicked"/>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

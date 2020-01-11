@@ -13,6 +13,7 @@ namespace PlesnaSkola.Mobile
         {
             InitializeComponent();
 
+            Bootstrap.Instance.Setup();
 
             MainPage = new LoginPage();
         }

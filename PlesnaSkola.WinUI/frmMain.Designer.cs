@@ -196,20 +196,20 @@
             this.prikažiKoregrafijeToolStripMenuItem,
             this.dodajKoreografiuToolStripMenuItem});
             this.koreografijaToolStripMenuItem.Name = "koreografijaToolStripMenuItem";
-            this.koreografijaToolStripMenuItem.Size = new System.Drawing.Size(122, 20);
+            this.koreografijaToolStripMenuItem.Size = new System.Drawing.Size(83, 20);
             this.koreografijaToolStripMenuItem.Text = "Koreografija";
             // 
             // prikažiKoregrafijeToolStripMenuItem
             // 
             this.prikažiKoregrafijeToolStripMenuItem.Name = "prikažiKoregrafijeToolStripMenuItem";
-            this.prikažiKoregrafijeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.prikažiKoregrafijeToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.prikažiKoregrafijeToolStripMenuItem.Text = "Prikaži koregrafije";
             this.prikažiKoregrafijeToolStripMenuItem.Click += new System.EventHandler(this.prikažiKoregrafijeToolStripMenuItem_Click);
             // 
             // dodajKoreografiuToolStripMenuItem
             // 
             this.dodajKoreografiuToolStripMenuItem.Name = "dodajKoreografiuToolStripMenuItem";
-            this.dodajKoreografiuToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.dodajKoreografiuToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.dodajKoreografiuToolStripMenuItem.Text = "Dodaj koreografiju";
             this.dodajKoreografiuToolStripMenuItem.Click += new System.EventHandler(this.dodajKoreografiuToolStripMenuItem_Click);
             // 
@@ -242,7 +242,7 @@
             this.prikažiTreningeToolStripMenuItem,
             this.dodajTreningToolStripMenuItem});
             this.treninziToolStripMenuItem.Name = "treninziToolStripMenuItem";
-            this.treninziToolStripMenuItem.Size = new System.Drawing.Size(60, 20);
+            this.treninziToolStripMenuItem.Size = new System.Drawing.Size(59, 20);
             this.treninziToolStripMenuItem.Text = "Treninzi";
             // 
             // prikažiTreningeToolStripMenuItem
@@ -294,14 +294,14 @@
             // prikažiPravdanjaToolStripMenuItem
             // 
             this.prikažiPravdanjaToolStripMenuItem.Name = "prikažiPravdanjaToolStripMenuItem";
-            this.prikažiPravdanjaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.prikažiPravdanjaToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
             this.prikažiPravdanjaToolStripMenuItem.Text = "Prikaži pravdanja";
             this.prikažiPravdanjaToolStripMenuItem.Click += new System.EventHandler(this.prikažiPravdanjaToolStripMenuItem_Click);
             // 
             // dodajPravdanjeToolStripMenuItem
             // 
             this.dodajPravdanjeToolStripMenuItem.Name = "dodajPravdanjeToolStripMenuItem";
-            this.dodajPravdanjeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.dodajPravdanjeToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
             this.dodajPravdanjeToolStripMenuItem.Text = "Dodaj pravdanje";
             this.dodajPravdanjeToolStripMenuItem.Click += new System.EventHandler(this.dodajPravdanjeToolStripMenuItem_Click);
             // 
@@ -378,6 +378,7 @@
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Plesna škola";
+            this.Load += new System.EventHandler(this.frmMain_Load);
             this.MdiChildActivate += new System.EventHandler(this.frmMain_MdiChildActivate);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();

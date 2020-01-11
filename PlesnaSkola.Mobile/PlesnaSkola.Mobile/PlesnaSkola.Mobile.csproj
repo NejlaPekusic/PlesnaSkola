@@ -12,6 +12,7 @@
   <ItemGroup>
     <PackageReference Include="Flurl" Version="2.8.2" />
     <PackageReference Include="Flurl.Http" Version="2.4.2" />
+    <PackageReference Include="MvvmLightLibs" Version="5.4.1.1" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
     <PackageReference Include="System.ComponentModel.Annotations" Version="4.6.0" />
     <PackageReference Include="Xam.Plugin.Media" Version="4.0.1.5" />
@@ -23,6 +24,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Views\ObavijestiDetailsPage.xaml.cs">
+      <DependentUpon>ObavijestiDetailsPage.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\ZahtjevPage.xaml.cs">
       <DependentUpon>ZahtjevPage.xaml</DependentUpon>
     </Compile>
