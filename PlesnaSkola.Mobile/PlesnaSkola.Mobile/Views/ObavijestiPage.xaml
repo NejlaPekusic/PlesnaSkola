@@ -11,6 +11,7 @@
             <ListView
           ItemsSource="{Binding ObavijestiList}"
           VerticalOptions="FillAndExpand"
+                ItemTapped="ListView_ItemTapped"
                HasUnevenRows="True"
                 >
                 <ListView.ItemTemplate>

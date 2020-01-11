@@ -1,4 +1,7 @@
-﻿using System;
+﻿using GalaSoft.MvvmLight.Ioc;
+using PlesnaSkola.Mobile.Services;
+using PlesnaSkola.Mobile.UWP.Services;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -53,6 +56,7 @@ namespace PlesnaSkola.Mobile.UWP
                 rootFrame.NavigationFailed += OnNavigationFailed;
 
                 Xamarin.Forms.Forms.Init(e);
+                SimpleIoc.Default.Register<IFileService, FileService>();
 
                 if (e.PreviousExecutionState == ApplicationExecutionState.Terminated)
                 {

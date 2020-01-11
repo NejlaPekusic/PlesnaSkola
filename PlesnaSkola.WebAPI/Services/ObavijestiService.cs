@@ -40,7 +40,7 @@ namespace PlesnaSkola.WebAPI.Services
 
         public Model.Obavijesti GetById(int id)
         {
-            var entity = _context.Obavijesti.Where(x => x.ObavijestId == id).FirstOrDefault();
+            var entity = _context.Obavijesti.Where(x => x.ObavijestId == id).Include(x=>x.Korisnik).FirstOrDefault();
 
             return _mapper.Map<Model.Obavijesti>(entity);
         }

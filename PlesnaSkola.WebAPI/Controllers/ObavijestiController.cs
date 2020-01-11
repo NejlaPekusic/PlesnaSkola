@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
@@ -29,6 +30,21 @@ namespace PlesnaSkola.WebAPI.Controllers
         public List<Model.Obavijesti> Get([FromQuery] Model.Requests.ObavijestiSearchRequest request)
         {
             return _service.Get(request);
+        }
+
+
+        [HttpGet("DownloadAttachment/{id}")]
+        [AllowAnonymous]
+        public IActionResult DownloadAttachment(int id)
+        {
+            Model.Obavijesti obavijest = _service.GetById(id);
+
+            if (obavijest == null)
+                return NotFound();
+
+            Stream stream = new MemoryStream(obavijest.Prilog);
+            return File(stream, "application/octet-stream", obavijest.PrilogFileName);
+
         }
 
         [HttpGet("{Id}")]

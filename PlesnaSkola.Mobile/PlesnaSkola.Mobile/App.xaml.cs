@@ -12,15 +12,15 @@ namespace PlesnaSkola.Mobile
         public App()
         {
             InitializeComponent();
-
-            Bootstrap.Instance.Setup();
-
-            MainPage = new LoginPage();
+            MainPage = new ContentPage();
         }
 
         protected override void OnStart()
         {
             // Handle when your app starts
+            Bootstrap.Instance.Setup();
+
+            MainPage = new LoginPage();
         }
 
         protected override void OnSleep()

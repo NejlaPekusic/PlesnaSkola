@@ -6,6 +6,9 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
+using GalaSoft.MvvmLight.Ioc;
+using PlesnaSkola.Mobile.Services;
+using PlesnaSkola.Mobile.Droid.Services;
 
 namespace PlesnaSkola.Mobile.Droid
 {
@@ -18,8 +21,14 @@ namespace PlesnaSkola.Mobile.Droid
             ToolbarResource = Resource.Layout.Toolbar;
 
             base.OnCreate(savedInstanceState);
+            Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
+
+            SimpleIoc.Default.Register<IFileService, FileService>();
+
+
             LoadApplication(new App());
         }
+
     }
 }

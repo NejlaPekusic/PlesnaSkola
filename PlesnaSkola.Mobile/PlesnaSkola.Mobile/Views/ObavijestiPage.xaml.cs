@@ -1,4 +1,5 @@
 ﻿using PlesnaSkola.Mobile.ViewModels;
+using PlesnaSkola.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,5 +29,10 @@ namespace PlesnaSkola.Mobile.Views
             await VM.LoadData();
         }
 
+        private async void ListView_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            var Obavijest = e.Item as Obavijesti;
+            await Navigation.PushAsync(new ObavijestiDetailsPage(Obavijest.ObavijestId));
+        }
     }
 }

@@ -1,4 +1,5 @@
-﻿using PlesnaSkola.Mobile.Services;
+﻿using GalaSoft.MvvmLight.Ioc;
+using PlesnaSkola.Mobile.Services;
 using PlesnaSkola.Mobile.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -15,11 +16,13 @@ namespace PlesnaSkola.Mobile.Views
 	public partial class ObavijestiDetailsPage : ContentPage
 	{
         private readonly ObavijestiDetailsViewModel VM;
+        private readonly int obavijestId;
 
-        public ObavijestiDetailsPage(int ObavijestId, IDownloadService downloadService)
+        public ObavijestiDetailsPage(int ObavijestId)
         {
             InitializeComponent();
-            BindingContext = VM = new ObavijestiDetailsViewModel(ObavijestId, downloadService);
+            BindingContext = VM = new ObavijestiDetailsViewModel(ObavijestId);
+            obavijestId = ObavijestId;
         }
 
         protected override async void OnAppearing()
@@ -32,6 +35,11 @@ namespace PlesnaSkola.Mobile.Views
         private async void Button_Clicked(object sender, EventArgs e)
         {
             await Navigation.PopAsync();
+        }
+
+        private async void Button_Clicked_1(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new DownloadPage(VM.Obavijest));
         }
     }
 }

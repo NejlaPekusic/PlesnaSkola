@@ -8,15 +8,18 @@
 
         <StackLayout Padding="10">
 
-            <Label Text="{Binding Sadrzaj}"/>
+            <Label Text="{Binding Obavijest.Sadrzaj}"/>
 
             <StackLayout Orientation="Horizontal">
                 <Label Text="Autor:"/>
-                <Label Text="{Binding Korisnik}" FontAttributes="Bold"/>
+                <Label Text="{Binding Obavijest.Korisnik.ImePrezime}" FontAttributes="Bold"/>
             </StackLayout>
-            <StackLayout Orientation="Horizontal" IsVisible="{Binding PrilogPostoji}">
-                <Label Text="Prilog:"/>
-                <Label Text="{Binding PrilogFileName}" FontAttributes="Bold"/>
+            <StackLayout Orientation="Vertical" IsVisible="{Binding Obavijest.PrilogPostoji}">
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Prilog:"/>
+                    <Label Text="{Binding Obavijest.PrilogFileName}" FontAttributes="Bold"/>
+                </StackLayout>
+                <Button Text="Download" Clicked="Button_Clicked_1"/>
             </StackLayout>
 
             <Button Text="Nazad" Clicked="Button_Clicked"/>

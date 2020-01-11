@@ -5,6 +5,7 @@ using System.Net.Http;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using Xamarin.Essentials;
 
 namespace PlesnaSkola.Mobile.Services
 {
@@ -53,7 +54,7 @@ namespace PlesnaSkola.Mobile.Services
                 }
 
                 // Step 2 : Filename
-                var fileName = response.Content.Headers?.ContentDisposition?.FileName ?? "tmp.zip";
+                var fileName = response.Content.Headers?.ContentDisposition?.FileName.Replace("\"", "") ?? "tmp.zip";
 
                 // Step 3 : Get total of data
                 var totalData = response.Content.Headers.ContentLength.GetValueOrDefault(-1L);
@@ -95,6 +96,17 @@ namespace PlesnaSkola.Mobile.Services
                             }
                         } while (isMoreDataToRead);
                     }
+                }
+
+                string fullPath = filePath;
+                bool canOpen = await Launcher.CanOpenAsync(fullPath);
+                if (canOpen)
+                {
+                    await Launcher.OpenAsync(new OpenFileRequest
+                    {
+                        File = new ReadOnlyFile(fullPath)
+                    });
+
                 }
             }
             catch (Exception e)

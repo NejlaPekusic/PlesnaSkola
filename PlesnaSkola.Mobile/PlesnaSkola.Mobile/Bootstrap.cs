@@ -1,5 +1,6 @@
 ﻿using GalaSoft.MvvmLight.Ioc;
 using PlesnaSkola.Mobile.Services;
+using PlesnaSkola.Mobile.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -30,6 +31,7 @@ namespace PlesnaSkola.Mobile
         public void Setup()
         {
             SimpleIoc.Default.Register<IDownloadService, DownloadService>();
+            SimpleIoc.Default.Register<DownloadViewModel>();
         }
     }
 }
